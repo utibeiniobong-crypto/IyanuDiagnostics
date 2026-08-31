@@ -1,0 +1,14 @@
+Section,Question Title,Question Type,Options (semicolon-separated),Required,Description
+Session Details,Date of interview,Short answer,,No,
+Session Details,Interviewer / counselor name,Short answer,,No,
+Session Details,Location,Short answer,,No,
+Pastoral Counsel Contact (Optional),Full name,Short answer,,No,Only fill in with the interviewee's consent.
+Pastoral Counsel Contact (Optional),Age,Short answer,,No,
+Pastoral Counsel Contact (Optional),Sex,Multiple choice,Female;Male;Prefer not to say,No,
+Pastoral Counsel Contact (Optional),Phone number,Short answer,,No,
+Pastoral Counsel Contact (Optional),Location (city / state / country),Short answer,,No,
+Pastoral Counsel Contact (Optional),Anything else relevant for counsel,Paragraph,,No,
+Recurring Dreams,Have you had any of the following recurring dreams or dream themes? (select all that apply),Checkboxes,Swimming in river / water;Sex in dream / spirit spouse;Eating in dream;Chased by dogs / masquerade;Graveyard / dead people;Burial / coffin / your funeral;Snake / python spirit;Flying / falling from height;Lost / exam failure;Naked in public / shame;Money lost / wallet stolen;Attack in house / home,No,
+Main Life Challenges,Which of the following describe struggles or patterns you have experienced? (select all that apply),Checkboxes,Stagnation / no progress;Poverty pattern / money finishes;Marriage delay / constant breakup;Barrenness / miscarriage;Financial leak / witchcraft;Addiction: porn / anger / alcohol;Pattern of sickness;Mental torment: fear / suicide;Accidents / near death;Spiritual attacks in sleep;Closed doors / rejection;Frustration / urge to quit;Spiritual blindness: can't pray;Near-success syndrome,No,
+Family Background,Are you aware of any of the following in your family history or background? (select all that apply),Checkboxes,Ancestral shrine / household witchcraft;Blood sacrifice in family;Dedicated to idol / river as child;Pattern of untimely death;Generational divorce / polygamy;Poverty covenant: "no one gets rich";Mental illness / madness in family;Family curse / generational;Unconfessed sin;Occult / satanic / charms;Bitterness / unforgiveness;Cult / secret society,No,These are sensitive questions. Let the interviewee answer at their own pace and skip any they aren't ready to share.
+Interviewer Notes,Anything else the interviewee shared that doesn't fit a checkbox,Paragraph,,No,Context tone or details worth remembering when entering responses into the app.

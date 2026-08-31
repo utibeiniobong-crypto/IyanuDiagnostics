@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bible Study Pack — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --parchment: #EFE9D6; --paper: #FBF8EF; --ink: #23233A;
+        --indigo: #2B2E63; --indigo-deep: #1D2050;
+        --gold: #A67C2E; --gold-soft: #C79A4B;
+        --wine: #7A2331; --forest: #2F5233;
+        --hairline: #CBBE96; --hairline-soft: #DED3AE;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Work Sans', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(166,124,46,0.10), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(43,46,99,0.10), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container { max-width: 780px; margin: 0 auto; background: var(--paper); padding: 56px 52px 48px; border: 1px solid var(--hairline); position: relative; }
+    .container::before { content:""; position:absolute; inset:10px; border:1px solid var(--hairline-soft); pointer-events:none; }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} .container::before{inset:6px;} }
+
+    .back-link { display:inline-block; margin-bottom: 22px; font-size: 13.5px; color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:13px; letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; color:var(--indigo-deep); text-align:center; font-size:38px; margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#5b5a72; font-size:15px; max-width:520px; margin:0 auto 26px; }
+    .disclaimer { font-size:12.5px; color:#6b6a80; text-align:center; max-width:540px; margin:0 auto 20px; border-top:1px solid var(--hairline-soft); padding-top:14px; }
+
+    .toc { background:var(--paper); border:1px solid var(--hairline); padding:20px 24px; margin: 26px 0 10px; }
+    .toc-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:19px; color:var(--indigo); margin-bottom:10px; }
+    .toc a { display:block; font-size:14.5px; color:var(--ink); text-decoration:none; padding:5px 0; border-bottom:1px dashed var(--hairline-soft); }
+    .toc a:hover { color: var(--indigo); }
+
+    .ornament { display:flex; align-items:center; gap:14px; margin: 44px 0 18px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:19px; color:var(--indigo); white-space:nowrap; }
+
+    .session { margin-top: 20px; }
+    .session-num { font-size:12.5px; color:var(--wine); letter-spacing:0.05em; margin-bottom:4px; }
+    .session-title { font-family:'Cormorant Garamond',serif; font-weight:700; font-style:italic; color:var(--ink); font-size:28px; margin:0 0 14px; }
+    .anchor-verse { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--indigo-deep); border-left:3px solid var(--gold); padding:4px 0 4px 16px; margin:0 0 18px; }
+
+    .subhead2 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; font-size:19px; color:var(--indigo); margin:24px 0 10px; }
+    p { font-size:15px; margin:0 0 12px; }
+    .verse-block { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:#3b3a52; background:#FDFBF3; border:1px solid var(--hairline-soft); padding:14px 16px; margin:10px 0 16px; }
+    .verse-ref { font-family:'Work Sans',sans-serif; font-style:normal; font-weight:600; font-size:12.5px; color:var(--gold); display:block; margin-bottom:6px; }
+
+    ol.discussion, ul.plain { padding-left: 22px; margin: 0 0 14px; }
+    ol.discussion li, ul.plain li { font-size:15px; margin-bottom:10px; }
+
+    .balance-box {
+        background:#EFF1F8; border:1px solid #C7CCE6; border-left:4px solid var(--indigo);
+        padding:16px 20px; margin:20px 0; font-size:14.5px;
+    }
+    .balance-box .balance-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:17px; color:var(--indigo-deep); display:block; margin-bottom:6px; }
+
+    .declaration-box {
+        background:#fffaf0; border:2px solid var(--gold); padding:18px 20px; margin:18px 0; font-size:15px;
+    }
+    .declaration-box .decl-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:17px; color:var(--indigo-deep); display:block; margin-bottom:8px; }
+
+    .reflection-lines { margin: 10px 0 20px; }
+    .reflection-lines div { border-bottom: 1px solid var(--hairline-soft); height: 26px; }
+
+    .care-note { background:#FBF0F1; border-left:4px solid var(--wine); padding:14px 18px; margin:20px 0; font-size:14px; color:#3b3a52; }
+
+    @media print {
+        body { background:#fff; padding:0; }
+        .container { border:none; padding:10px; }
+        .container::before { display:none; }
+        .back-link { display:none; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="Iyanu_Diagnostics.html">&larr; Back to Iyanu Diagnostics</a>
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>Bible Study Pack</h1>
+    <p class="subhead">A five-session study built around the same framework as the diagnostic tool — for personal reflection, a small group, or a pastoral counseling series.</p>
+    <p class="disclaimer">This study reflects one tradition within Christian teaching on spiritual warfare and deliverance — it is not the only Christian view on these questions, and points of disagreement are noted where they matter. All Scripture quoted is from the King James Version (public domain). This is a devotional resource, not medical or psychological guidance.</p>
+
+    <div class="toc">
+        <div class="toc-title">In this study</div>
+        <a href="#session0">Session 0 — Identity and Authority in Christ</a>
+        <a href="#session1">Session 1 — The Law of Legal Rights</a>
+        <a href="#session2">Session 2 — The Law of Altars &amp; Territorial Spirits</a>
+        <a href="#session3">Session 3 — The Law of Marine / Water Spirits</a>
+        <a href="#session4">Session 4 — Walking It Out: Staying Free</a>
+        <a href="#closing">Closing Word — Holding This Framework with an Open Hand</a>
+    </div>
+
+    <div class="ornament" id="session0"><span>Session 0</span></div>
+    <div class="session">
+        <div class="session-num">Foundation</div>
+        <div class="session-title">Identity and Authority in Christ</div>
+        <div class="anchor-verse">"Behold, I give unto you power to tread on serpents and scorpions, and over all the power of the enemy: and nothing shall by any means hurt you." — Luke 10:19, KJV</div>
+
+        <div class="subhead2">Why start here</div>
+        <p>Every session that follows deals with a specific way the enemy is believed to operate — through legal ground, through altars, through water spirits. But none of that teaching is safe to build on without first being clear about one thing: who you are in Christ, and what authority has already been given to you. A study of spiritual warfare that starts with the enemy's tactics, rather than with the believer's position in Christ, tends to produce fear instead of freedom. This session exists to put the foundation in the right place before anything else is built on it.</p>
+
+        <div class="subhead2">Key texts</div>
+        <div class="verse-block"><span class="verse-ref">2 Corinthians 5:17, KJV</span>Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.</div>
+        <div class="verse-block"><span class="verse-ref">Colossians 1:13-14, KJV</span>Who hath delivered us from the power of darkness, and hath translated us into the kingdom of his dear Son: In whom we have redemption through his blood, even the forgiveness of sins.</div>
+        <div class="verse-block"><span class="verse-ref">2 Corinthians 10:3-5, KJV</span>For though we walk in the flesh, we do not war after the flesh: (For the weapons of our warfare are not carnal, but mighty through God to the pulling down of strong holds;) Casting down imaginations, and every high thing that exalteth itself against the knowledge of God, and bringing into captivity every thought to the obedience of Christ.</div>
+        <div class="verse-block"><span class="verse-ref">1 John 4:4, KJV</span>Ye are of God, little children, and have overcome them: because greater is he that is in you, than he that is in the world.</div>
+
+        <div class="subhead2">Teaching</div>
+        <p>Two things are true at the same time in the New Testament's picture of the Christian life: there is a real spiritual conflict, and the believer is not the underdog in it. Colossians describes a transfer that has already happened — out of the power of darkness and into the kingdom of the Son — as a completed fact, not a future hope. Authority is not something a believer works up to; it is something given, the way Luke 10:19 describes Jesus giving it to His followers before sending them out.</p>
+        <p>This matters for how the rest of this study should be read. The sessions ahead describe patterns the tradition behind this app associates with prolonged oppression — legal ground, altars, water-spirit covenants. None of that teaching is meant to be read as though the believer is fundamentally vulnerable and only barely holding the line. It's the opposite: these sessions describe obstacles to a freedom that is already legally secured in Christ, the way a title deed can be secure even while someone still has to physically move a squatter off the property.</p>
+
+        <div class="subhead2">Discussion questions</div>
+        <ol class="discussion">
+            <li>Before this study, did you tend to think about spiritual warfare more from a place of fear or from a place of confidence? What shaped that?</li>
+            <li>Colossians 1:13 describes deliverance from darkness as something that has "already" happened for the believer. How does that change the way you'd pray about an ongoing struggle?</li>
+            <li>What is the difference between healthy watchfulness (1 Peter 5:8) and living in a state of fear about the enemy?</li>
+            <li>Who is someone in your life who models spiritual authority without anxiety? What do you notice about how they talk about spiritual struggle?</li>
+        </ol>
+
+        <div class="declaration-box">
+            <span class="decl-title">Closing declaration</span>
+            I am a new creation in Christ. I have been delivered from the power of darkness and brought into the kingdom of the Son. The authority I need for this study has already been given to me — I do not need to fight for a position I already hold.
+        </div>
+    </div>
+
+    <div class="ornament" id="session1"><span>Session 1</span></div>
+    <div class="session">
+        <div class="session-num">The Law of Legal Rights</div>
+        <div class="session-title">What Gives the Enemy Ground</div>
+        <div class="anchor-verse">"Neither give place to the devil." — Ephesians 4:27, KJV</div>
+
+        <div class="subhead2">Key texts</div>
+        <div class="verse-block"><span class="verse-ref">James 4:7, KJV</span>Submit yourselves therefore to God. Resist the devil, and he will flee from you.</div>
+        <div class="verse-block"><span class="verse-ref">1 Peter 5:8-9, KJV</span>Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour: Whom resist stedfast in the faith.</div>
+        <div class="verse-block"><span class="verse-ref">Psalm 66:18, KJV</span>If I regard iniquity in my heart, the LORD will not hear me.</div>
+        <div class="verse-block"><span class="verse-ref">1 John 1:9, KJV</span>If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.</div>
+        <div class="verse-block"><span class="verse-ref">Matthew 5:23-24, KJV</span>Therefore if thou bring thy gift to the altar, and there rememberest that thy brother hath ought against thee; Leave there thy gift before the altar, and go thy way; first be reconciled to thy brother, and then come and offer thy gift.</div>
+
+        <div class="subhead2">Teaching</div>
+        <p>The Law of Legal Rights, as taught in this tradition, holds that unconfessed sin, unforgiveness, and unresolved wrongdoing function like an open door — not because God is looking for a reason to punish, but because these things genuinely damage the relationships and posture that Scripture ties to spiritual protection and clarity. Psalm 66:18 makes a direct connection between regarded (harbored) sin and a sense of God's silence. Ephesians 4:27 sits inside a passage about practical relational conduct — put away lying, don't let the sun go down on your anger — before it ever mentions the devil at all, suggesting the "ground" in view is primarily about how we treat God and other people, not abstract spiritual technicalities.</p>
+        <p>Matthew 5:23-24 is worth sitting with here: Jesus interrupts an act of worship to prioritize reconciliation with another person. Whatever else this teaches, it establishes that unresolved relational wrongs are not a private, spiritually neutral matter — they are treated as something that needs attention before worship can be fully whole.</p>
+
+        <div class="subhead2">Discussion questions</div>
+        <ol class="discussion">
+            <li>Is there a person you are currently holding something against? What would it look like, practically, to begin the process Matthew 5:23-24 describes?</li>
+            <li>Psalm 66:18 links "regarding iniquity" with unanswered prayer. What's the difference between briefly struggling with sin and "regarding" or nursing it?</li>
+            <li>What is something you have been reluctant to confess, even to God — and what does 1 John 1:9 promise about that moment?</li>
+            <li>Is there unlawfully or dishonestly gained property, money, or advantage in your life that this session brings to mind?</li>
+        </ol>
+
+        <div class="balance-box">
+            <span class="balance-title">A point worth knowing</span>
+            Not all Christian traditions frame ongoing struggle primarily in terms of "legal ground" given to the enemy. Many pastoral counselors would say the same passages point simply to the ordinary, well-established connection between unconfessed sin, unforgiveness, and a troubled conscience or damaged relationships — without needing a courtroom metaphor to explain why those things matter. Both framings agree on the practical response (confess, forgive, reconcile); they differ on the underlying mechanism.
+        </div>
+
+        <div class="subhead2">Reflection</div>
+        <p>Use the space below to write out, privately, anything this session brought to mind that you want to bring to God in prayer.</p>
+        <div class="reflection-lines"><div></div><div></div><div></div><div></div></div>
+
+        <div class="declaration-box">
+            <span class="decl-title">Closing declaration</span>
+            Lord, I choose to walk in the light, holding nothing back from You. I forgive as I have been forgiven, and I release anything I have been holding onto that does not belong in Your hands.
+        </div>
+    </div>
+
+    <div class="ornament" id="session2"><span>Session 2</span></div>
+    <div class="session">
+        <div class="session-num">The Law of Altars &amp; Territorial Spirits</div>
+        <div class="session-title">What We Build Our Lives Around</div>
+        <div class="anchor-verse">"Throw down the altar of Baal that thy father hath, and cut down the grove that is by it." — Judges 6:25, KJV</div>
+
+        <div class="subhead2">Key texts</div>
+        <div class="verse-block"><span class="verse-ref">Deuteronomy 7:5, KJV</span>But thus shall ye deal with them; ye shall destroy their altars, and break down their images, and cut down their groves, and burn their graven images with fire.</div>
+        <div class="verse-block"><span class="verse-ref">Joshua 24:15, KJV</span>And if it seem evil unto you to serve the LORD, choose you this day whom ye will serve... but as for me and my house, we will serve the LORD.</div>
+        <div class="verse-block"><span class="verse-ref">Genesis 35:2-3, KJV</span>Then Jacob said unto his household... Put away the strange gods that are among you, and be clean, and change your garments: And let us arise, and go up to Bethel; and I will make there an altar unto God.</div>
+        <div class="verse-block"><span class="verse-ref">1 Corinthians 10:20-21, KJV</span>But I say, that the things which the Gentiles sacrifice, they sacrifice to devils, and not to God: and I would not that ye should have fellowship with devils. Ye cannot drink the cup of the Lord, and the cup of devils.</div>
+
+        <div class="subhead2">Teaching</div>
+        <p>An altar, in the plain sense of the biblical text, is simply the place where sacrifice and devotion happen — where a person or household says, in effect, "this is what we build our life around." The Old Testament's repeated instruction to tear down altars to other gods is inseparable from its call to exclusive worship (Joshua 24:15). This tradition applies that pattern to physical shrines, charms, and objects connected to occult or idolatrous practice, and treats them as functioning the way old altars did — anchoring devotion, and by extension spiritual influence, to a place or a family line.</p>
+        <p>Jacob's household in Genesis 35 offers a useful pattern for what to do about this: identify what doesn't belong (the "strange gods" and even ordinary jewelry associated with them), physically remove it, and replace the old altar with a new act of devotion to God. The move isn't just subtraction — tearing something down — but also addition: building something new in its place.</p>
+        <p>It's worth being honest that "territorial spirits" — the idea that specific demonic beings are assigned to geographic regions — is a more specific and more debated claim than the general principle of not giving devotion to idols. The broader "you shall destroy their altars" instruction is squarely biblical; the specific claim that a particular region or household has an identifiable resident spirit that can be addressed by name is a theological extrapolation that not all Christian traditions accept (see the balance note below).</p>
+
+        <div class="subhead2">Discussion questions</div>
+        <ol class="discussion">
+            <li>Setting aside literal shrines, what does your life currently seem to be "built around" — where does your time, money, and attention actually go?</li>
+            <li>Is there an object, place, or practice in your family history that this session brings to mind?</li>
+            <li>Jacob didn't just remove the old gods — he built a new altar. What would "building a new altar" look like practically in your own life or home?</li>
+            <li>How do you personally hold the tension between taking spiritual influence seriously and not becoming fearful of places or objects?</li>
+        </ol>
+
+        <div class="balance-box">
+            <span class="balance-title">A point worth knowing</span>
+            The concept of geographically-assigned "territorial spirits" that can be identified and addressed by name became prominent through the "strategic-level spiritual warfare" teaching associated with missiologist C. Peter Wagner in the late twentieth century. It has been influential, but it is also one of the more contested ideas even within charismatic and Pentecostal circles — critics argue Scripture supports the reality of demonic influence over unbelief and idolatry in a region without necessarily supporting the practice of identifying, naming, and directly confronting a specific named territorial spirit. Both sides affirm the reality of spiritual opposition; they differ on this particular method.
+        </div>
+
+        <div class="declaration-box">
+            <span class="decl-title">Closing declaration</span>
+            Lord, reveal anything I have unknowingly built my life around that does not belong there. I choose You as the center of my household, and I dedicate what remains to You alone.
+        </div>
+    </div>
+
+    <div class="ornament" id="session3"><span>Session 3</span></div>
+    <div class="session">
+        <div class="session-num">The Law of Marine / Water Spirits</div>
+        <div class="session-title">Chaos, the Sea, and the God Who Speaks Peace</div>
+        <div class="anchor-verse">"In that day the LORD... shall punish leviathan the piercing serpent... and he shall slay the dragon that is in the sea." — Isaiah 27:1, KJV</div>
+
+        <div class="subhead2">Key texts</div>
+        <div class="verse-block"><span class="verse-ref">Genesis 1:2, KJV</span>And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.</div>
+        <div class="verse-block"><span class="verse-ref">Psalm 107:28-29, KJV</span>Then they cry unto the LORD in their trouble, and he bringeth them out of their distresses. He maketh the storm a calm, so that the waves thereof are still.</div>
+        <div class="verse-block"><span class="verse-ref">Mark 4:39, KJV</span>And he arose, and rebuked the wind, and said unto the sea, Peace, be still. And the wind ceased, and there was a great calm.</div>
+        <div class="verse-block"><span class="verse-ref">Revelation 21:1, KJV</span>And I saw a new heaven and a new earth: for the first heaven and the first earth were passed away; and there was no more sea.</div>
+
+        <div class="subhead2">Teaching</div>
+        <p>Throughout Scripture, the sea and "the deep" are used as recurring images of chaos, danger, and what is beyond human control — from the formless deep in Genesis 1, to the storm the disciples faced in Mark 4, to the symbolic absence of any sea at all in the renewed creation of Revelation 21. This tradition's teaching on "marine spirits" takes that symbolic thread and treats it in a more literal and specific way — as spirits that operate from actual bodies of water and can form covenants through dreams involving water, eating, or intimacy.</p>
+        <p>Whatever view a reader takes on the more specific claims, the consistent pattern across every one of these passages is the same: it is God, not the chaos itself, who has the final word. The Spirit hovers over the deep before anything is formed. The Psalmist cries out and the storm becomes calm. Jesus speaks two words to the sea and it obeys instantly. However literally or symbolically a person reads the "marine spirit" teaching, the theological center of gravity in all of these texts is the same — God's authority over what looks uncontrollable, not the power of the chaos itself.</p>
+
+        <div class="subhead2">Discussion questions</div>
+        <ol class="discussion">
+            <li>Where in your life right now does something feel like "the sea" — chaotic, beyond your control, or frightening?</li>
+            <li>Mark 4 shows the disciples afraid in the middle of the very storm Jesus was about to calm. What does their fear, even with Jesus present, say to you?</li>
+            <li>Revelation 21:1 pictures a future with "no more sea" — no more chaos. How does having that as a future hope change how you carry a present struggle?</li>
+            <li>If you have had recurring dreams involving water, what feeling do they tend to leave you with — and have you brought that feeling to God directly?</li>
+        </ol>
+
+        <div class="declaration-box">
+            <span class="decl-title">Closing declaration</span>
+            Lord, You spoke peace over the sea, and Your word still holds authority over whatever feels chaotic or out of control in my life. I bring what troubles me to You, the way the disciples did, and I trust You to speak into it.
+        </div>
+    </div>
+
+    <div class="ornament" id="session4"><span>Session 4</span></div>
+    <div class="session">
+        <div class="session-num">Living It Out</div>
+        <div class="session-title">Staying Free, Not Just Getting Free</div>
+        <div class="anchor-verse">"Stand fast therefore in the liberty wherewith Christ hath made us free, and be not entangled again with the yoke of bondage." — Galatians 5:1, KJV</div>
+
+        <div class="subhead2">Key texts</div>
+        <div class="verse-block"><span class="verse-ref">Romans 12:2, KJV</span>And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</div>
+        <div class="verse-block"><span class="verse-ref">Ephesians 6:10-13, KJV</span>Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places. Wherefore take unto you the whole armour of God, that ye may be able to withstand in the evil day, and having done all, to stand.</div>
+        <div class="verse-block"><span class="verse-ref">Matthew 12:43-45, KJV</span>When the unclean spirit is gone out of a man, he walketh through dry places, seeking rest, and findeth none. Then he saith, I will return into my house from whence I came out; and when he is come, he findeth it empty, swept, and garnished. Then goeth he, and taketh with himself seven other spirits more wicked than himself, and they enter in and dwell there... Even so shall it be also unto this wicked generation.</div>
+        <div class="verse-block"><span class="verse-ref">Galatians 6:1-2, KJV</span>Brethren, if a man be overtaken in a fault, ye which are spiritual, restore such an one in the spirit of meekness... Bear ye one another's burdens, and so fulfil the law of Christ.</div>
+
+        <div class="subhead2">Teaching</div>
+        <p>Matthew 12:43-45 is a sobering passage to end a study like this on, and it's included deliberately: Jesus describes a house that is "swept and garnished" — cleaned out — but left empty, and the result is worse than before. A season of prayer, confession, or deliverance that removes something without putting anything in its place tends not to hold. Romans 12:2 supplies what the empty house lacks: ongoing, active renewal, not a one-time event.</p>
+        <p>Ephesians 6's armor is worth noticing for what it's made of: truth, righteousness, the gospel of peace, faith, salvation, the word of God, and prayer. It is not a list of aggressive techniques; it is a description of an ordinary, sustained Christian life — the same things that make up spiritual maturity in any other context. And Galatians 6 insists this was never meant to be walked alone — bearing one another's burdens is described as fulfilling the law of Christ, not as optional support.</p>
+        <p>Practically, this means the seven-day prayer plans in this app's diagnostic reports are a beginning, not a finish line. What sustains freedom afterward tends to be ordinary: consistent time in Scripture, honest community, ongoing accountability, and — where the underlying struggle has a medical or psychological dimension — professional care alongside the spiritual.</p>
+
+        <div class="subhead2">Discussion questions</div>
+        <ol class="discussion">
+            <li>What has historically made a season of spiritual breakthrough "stick" for you, or fail to stick?</li>
+            <li>Which piece of the armor in Ephesians 6 do you currently neglect most: truth, righteousness, peace, faith, salvation, the word, or prayer?</li>
+            <li>Who could you ask to help "bear the burden" (Galatians 6:2) of whatever this study has surfaced for you?</li>
+            <li>What's one concrete, ordinary practice you will commit to in the next 30 days to keep the "house" from staying empty?</li>
+        </ol>
+
+        <div class="declaration-box">
+            <span class="decl-title">Closing declaration</span>
+            Lord, I don't just want to be free — I want to stay free. Renew my mind daily. Fill what has been emptied. Surround me with people who will walk with me, not just a single moment of prayer.
+        </div>
+    </div>
+
+    <div class="ornament" id="closing"><span>Closing Word</span></div>
+    <div class="session">
+        <p>This study has followed one specific tradition's framework closely, because that is the framework the Iyanu Diagnostics tool itself is built on. It's worth saying plainly, as this study closes, that this is one lens within a much larger and more varied Christian conversation about suffering, sin, and spiritual conflict — not the only faithful way to read these questions, and not one that should be held more tightly than the Scripture it's drawn from.</p>
+        <p>Two things are worth carrying forward. First: hold the more specific and more debated claims in this framework — territorial spirits, marine covenants, generational curses — with some humility, the way thoughtful teachers within this same tradition generally recommend. Scripture is clearer on some of these points than on others. Second: nothing in this study is a substitute for medical or psychological care where that is what's actually needed. Pursuing this material and seeing a doctor, therapist, or counselor were never meant to be either/or.</p>
+        <div class="care-note">If working through this study brings up thoughts of suicide or self-harm, please reach out right now to a crisis line in your area (in the US: call or text 988) or go to your nearest emergency room. If it surfaces mental health or medical symptoms, please also see a qualified professional alongside anything here.</div>
+    </div>
+
+</div>
+</body>
+</html>
