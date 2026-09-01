@@ -81,6 +81,23 @@
         /* ---------- Header / brandmark ---------- */
         .brandmark { width: 76px; margin: 0 auto 14px; }
         .brandmark svg { display: block; width: 100%; height: auto; }
+        .header-portrait-slot {
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 84px; height: 84px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            background: var(--parchment);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            font-size: 10px;
+            color: #8a8a9a;
+            line-height: 1.3;
+            padding: 4px;
+            overflow: hidden;
+        }
+        .header-portrait-slot img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        @media (max-width: 640px) { .header-portrait-slot { width: 56px; height: 56px; top: 12px; right: 12px; font-size: 8px; } }
 
         .kicker {
             text-align: center;
@@ -109,6 +126,28 @@
             max-width: 480px;
             margin: 0 auto 18px;
         }
+
+        .hero-headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: calc(19px * var(--fs));
+            color: var(--indigo);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 18px;
+            line-height: 1.4;
+        }
+        .badge-row {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 8px; margin: 0 auto 18px;
+        }
+        .badge {
+            font-size: 12px; font-weight: 600; color: var(--forest);
+            background: #EEF5EE; border: 1px solid #C9DFC9;
+            padding: 5px 12px; border-radius: 999px;
+        }
+        .hero-cta { max-width: 320px; margin: 0 auto 26px; display: block; }
 
         .disclaimer {
             font-size: calc(12.5px * var(--fs));
@@ -231,6 +270,7 @@
 
         .share-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
         .share-row button { width:auto; flex:1; min-width:150px; margin-top:0; }
+        .share-prompt { font-size: calc(14px * var(--fs)); font-weight:600; color: var(--ink); margin-bottom: 4px; }
 
         /* ---------- history ---------- */
         .history-item {
@@ -363,11 +403,16 @@
         }
         .day-box {
             display: grid;
-            grid-template-columns: 46px 1fr;
+            grid-template-columns: 24px 46px 1fr;
             gap: 14px;
             padding: 12px 0;
             border-bottom: 1px solid var(--hairline-soft);
+            align-items: start;
         }
+        .day-box.day-complete { opacity: 0.6; }
+        .day-checkbox { padding-top: 10px; }
+        .day-checkbox input { width: 18px; height: 18px; accent-color: var(--forest); cursor: pointer; }
+        .plan-progress { font-size: calc(13px * var(--fs)); font-weight: 400; color: var(--gold); font-style: normal; }
         .day-badge {
             width: 40px; height: 40px;
             border: 1px solid var(--gold);
@@ -427,6 +472,41 @@
         .ministry-guide ul { padding-left: 20px; margin-top: 10px; }
         .ministry-guide li { margin-bottom: 8px; }
 
+        /* ---------- wizard mode ---------- */
+        .wizard-progress { font-size: calc(12.5px * var(--fs)); color: #6b6a80; text-align: center; margin-bottom: 8px; }
+        .wizard-section-label { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size: calc(15px * var(--fs)); color: var(--gold); text-align: center; margin-bottom: 6px; }
+        .wizard-question { font-size: calc(19px * var(--fs)); text-align: center; padding: 30px 10px; min-height: 60px; color: var(--ink); }
+        .wizard-nav { display: flex; gap: 10px; }
+        .wizard-nav button { margin-top: 0; }
+
+        /* ---------- creator / contact / footer ---------- */
+        .creator-section, .contact-donate-box, .future-plans-box {
+            font-size: calc(14.5px * var(--fs));
+        }
+        .creator-photo-slot {
+            width: 140px; height: 140px; border-radius: 50%;
+            border: 2px dashed var(--hairline);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; font-size: calc(12px * var(--fs));
+            color: #6b6a80; margin: 0 auto 14px; padding: 10px;
+        }
+        .creator-placeholder-note {
+            font-size: calc(12.5px * var(--fs)); color: var(--wine);
+            text-align: center; font-style: italic; margin-bottom: 16px;
+        }
+        .creator-audio-slot { margin-top: 16px; }
+        .plain-list { padding-left: 20px; margin: 8px 0 14px; }
+        .plain-list li { margin-bottom: 4px; }
+        .subhead2-inline {
+            font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic;
+            font-size: calc(16px * var(--fs)); color: var(--indigo); margin: 16px 0 4px;
+        }
+        .site-footer {
+            margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--hairline-soft);
+            font-size: calc(11.5px * var(--fs)); color: #6b6a80; text-align: center;
+        }
+        .share-prompt { font-size: calc(14px * var(--fs)); color: var(--ink); margin-bottom: 4px; }
+
         @media print {
             .settings-bar { display: none; }
             body { background:#fff; padding:0; }
@@ -452,6 +532,8 @@
         </div>
     </div>
 
+    <div class="header-portrait-slot" aria-hidden="true">Portrait not yet added</div>
+
     <div class="brandmark" aria-hidden="true">
         <svg viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="46" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
@@ -466,17 +548,27 @@
                 <line x1="78" y1="22" x2="70" y2="30"/>
                 <line x1="22" y1="78" x2="30" y2="70"/>
             </g>
-            <path d="M50 28 C60 42 60 54 50 66 C40 54 40 42 50 28 Z" fill="var(--indigo-deep)"/>
-            <circle cx="50" cy="50" r="3" fill="var(--gold)"/>
+            <path d="M46.5 28 L53.5 28 L53.5 40 L65 40 L65 47 L53.5 47 L53.5 72 L46.5 72 L46.5 47 L35 47 L35 40 L46.5 40 Z" fill="var(--indigo-deep)"/>
         </svg>
     </div>
     <div class="kicker">Iyanu Diagnostics</div>
     <h1>Spiritual Law Diagnostic</h1>
-    <p class="subhead">Select what applies to you below. Each answer points to a specific spiritual law, so your prayer can be targeted rather than general.</p>
-    <p class="disclaimer">This tool offers a devotional, faith-based perspective — not a medical or psychological diagnosis. If you're dealing with symptoms that could have a medical, psychiatric, or emotional cause, please also see a qualified doctor, therapist, or counselor alongside anything here.</p>
+    <p class="hero-headline">Struggling with stagnation, delay, or unexplained attacks? Find the spiritual law behind it — and a focused way to pray.</p>
+    <div class="badge-row">
+        <span class="badge">100% Free</span>
+        <span class="badge">Runs entirely in your browser — nothing sent to a server</span>
+    </div>
+    <button type="button" class="btn-primary hero-cta" onclick="scrollToForm()">Start your diagnostic</button>
+    <p class="subhead">Which of these sound familiar? Select what applies to you below — each answer points to a specific spiritual law, so your prayer can be targeted rather than general.</p>
+    <p class="disclaimer">This is a devotional tool, not a replacement for pastoral counseling, and not a medical or psychological diagnosis. If you're dealing with symptoms that could have a medical, psychiatric, or emotional cause, please also see a qualified doctor, therapist, or counselor alongside anything here.</p>
 
     <div style="text-align:center; margin-bottom: 10px;">
         <a href="Iyanu_Bible_Study.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">📖 Open the Bible Study Pack (5 sessions)</a>
+        <a href="Iyanu_About.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">👤 About the Creator</a>
+    </div>
+
+    <div style="text-align:center; margin-bottom: 18px;">
+        <button type="button" class="btn-outline-indigo" id="wizardToggleBtn" style="width:auto; display:inline-block; padding:9px 18px;" onclick="toggleWizardMode()">Switch to guided mode (one question at a time)</button>
     </div>
 
     <div id="historySection" style="display:none;">
@@ -486,8 +578,8 @@
     </div>
 
     <form id="diagnosticForm">
-        <div class="ornament"><span>Recurring dreams</span></div>
-        <div class="checkbox-grid">
+        <div class="ornament wizard-hideable"><span>Recurring dreams</span></div>
+        <div class="checkbox-grid wizard-hideable">
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="river"> Swimming in river / water</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="sex"> Sex in dream / spirit spouse</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="eat"> Eating in dream</label></div>
@@ -502,8 +594,8 @@
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="house"> Attack in house / home</label></div>
         </div>
 
-        <div class="ornament"><span>Main life challenges</span></div>
-        <div class="checkbox-grid">
+        <div class="ornament wizard-hideable"><span>Main life challenges</span></div>
+        <div class="checkbox-grid wizard-hideable">
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="stagnation"> Stagnation / no progress</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="poverty"> Poverty pattern / money finishes</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="marriage"> Marriage delay / constant breakup</label></div>
@@ -518,10 +610,12 @@
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="frustration"> Frustration / urge to quit</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="blind"> Spiritual blindness: can't pray</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="nearSuccess"> Near-success syndrome</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="fearAgreement"> Persistent fear or panic after a bad dream / bad news</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="wordCurse"> Negative words spoken over your life by others</label></div>
         </div>
 
-        <div class="ornament"><span>Family background</span></div>
-        <div class="checkbox-grid">
+        <div class="ornament wizard-hideable"><span>Family background</span></div>
+        <div class="checkbox-grid wizard-hideable">
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="shrine"> Ancestral shrine / household witchcraft</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="blood"> Blood sacrifice in family</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="dedication"> Dedicated to idol / river as child</label></div>
@@ -534,6 +628,7 @@
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="occult"> Occult / satanic / charms</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="bitterness"> Bitterness / unforgiveness</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="cult"> Cult / secret society</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="background" value="household"> Family member undermining or monitoring you (household wickedness)</label></div>
         </div>
 
         <div class="ornament"><span>Pastoral counsel contact <span class="optional-tag">— optional</span></span></div>
@@ -557,7 +652,21 @@
             <textarea id="cf-notes"></textarea>
         </div>
 
-        <button type="button" class="btn-primary" onclick="analyzeSpiritualStatus()">Run diagnostics</button>
+        <div id="wizardPanel" style="display:none;">
+            <div class="wizard-progress" id="wizardProgress"></div>
+            <div class="wizard-section-label" id="wizardSectionLabel"></div>
+            <div class="wizard-question" id="wizardQuestion"></div>
+            <div class="wizard-nav">
+                <button type="button" class="btn-outline-wine" onclick="wizardAnswer(false)">No</button>
+                <button type="button" class="btn-primary" onclick="wizardAnswer(true)">Yes</button>
+            </div>
+            <div style="display:flex; gap:8px; margin-top:10px;">
+                <button type="button" class="btn-small" onclick="wizardBack()">Back</button>
+                <button type="button" class="btn-small" onclick="wizardFinish()">Finish early &amp; see results</button>
+            </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="runDiagnosticsBtn" onclick="analyzeSpiritualStatus()">Run diagnostics</button>
     </form>
 
     <div id="result" class="result-box" role="region" aria-live="polite" aria-label="Spiritual Diagnosis Report">
@@ -589,6 +698,7 @@
         </div>
 
         <div class="ornament"><span>Share this report</span></div>
+        <p class="share-prompt">Found this helpful? Share it with someone who might appreciate it.</p>
         <p class="privacy-note">Sharing sends the report only through the method you choose below — nothing is uploaded to us.</p>
         <div class="share-row">
             <button type="button" class="btn-outline-indigo" onclick="sharePDF()">Share PDF (device)</button>
@@ -601,6 +711,58 @@
         <button type="button" class="btn-outline-indigo" id="fullReportBtn" data-active="false" onclick="toggleFullReportSpeech()">Read full report aloud</button>
         <button class="btn-outline-gold" onclick="printCounselorSummary()">Print counselor summary</button>
         <button class="btn-outline-wine" onclick="restartDiagnosis()">Clear &amp; restart</button>
+    </div>
+
+    <div class="ornament"><span>The App Creator's Address</span></div>
+    <div class="creator-section">
+        <div class="creator-photo-slot" aria-hidden="true"><img src="creator-photo.jpg" alt="Utibe John Iniobong, creator of Iyanu Diagnostics" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+        <p><a href="Iyanu_About.html">Read the full story behind Iyanu Diagnostics &rarr;</a></p>
+        <p>Iyanu Diagnostics was created out of a conviction that many people spend years in spiritual and emotional struggle simply because no one ever helped them see clearly which specific pattern they were dealing with. This tool exists to make that first, clarifying step easier — pairing it, always, with the encouragement to seek professional care alongside prayer wherever that's what's actually needed.</p>
+        <div class="creator-audio-slot">
+            <audio controls style="width:100%;">
+                <source src="creator-address.mp3" type="audio/mpeg">
+                Your browser does not support the audio element. Add a file named creator-address.mp3 alongside this page to enable playback.
+            </audio>
+        </div>
+    </div>
+
+    <div class="ornament"><span>Counselling &amp; Support</span></div>
+    <div class="contact-donate-box">
+        <p>For pastoral counselling, or to support this work, you can reach out directly:</p>
+        <ul class="plain-list">
+            <li><strong>Name:</strong> Utibe John Iniobong</li>
+            <li><strong>Phone:</strong> 08069576989</li>
+        </ul>
+        <p class="subhead2-inline">Donations (Nigeria)</p>
+        <ul class="plain-list">
+            <li><strong>Bank:</strong> Opay</li>
+            <li><strong>Account number:</strong> 8069576989</li>
+        </ul>
+        <p class="subhead2-inline">Donations (elsewhere in Africa)</p>
+        <ul class="plain-list">
+            <li><strong>Bank:</strong> MoMo Payment Service Bank</li>
+            <li><strong>Account number:</strong> 8069576989</li>
+        </ul>
+        <p class="privacy-note">A safety note: because impersonator accounts are common in this space (see the ministry-vetting notes above), only trust payment details from this page directly, not from a message or call claiming to be from this ministry. If in doubt, verify before sending anything.</p>
+    </div>
+
+    <div class="ornament"><span>What's Next for Iyanu Diagnostics</span></div>
+    <div class="future-plans-box">
+        <p>This app is the starting point of a larger vision. Plans in progress include:</p>
+        <ul class="plain-list">
+            <li>Online conferences on deliverance and spiritual growth</li>
+            <li>Regular online prayer meetings open to app users</li>
+            <li>Live-taught Bible studies building on this Study Pack</li>
+            <li>Scheduled deliverance services for those seeking prayer support</li>
+        </ul>
+        <p class="privacy-note">Details and sign-up information will be added here as they're finalized.</p>
+    </div>
+
+    <div class="ornament"><span>References</span></div>
+    <p class="privacy-note">Every book, ministry, and Scripture translation referenced in this app and its Bible Study Pack is listed on the <a href="Iyanu_References.html">References page</a>.</p>
+
+    <div class="site-footer">
+        <p>&copy; <span id="copyrightYear"></span> Iyanu Diagnostics. This app and its Bible Study Pack may be freely shared and used at no cost. No part of the content, design, or code may be modified, adapted, or redistributed under a different name without the creator's written consent.</p>
     </div>
 </div>
 
@@ -656,6 +818,10 @@ function motionBehavior() {
     return document.documentElement.getAttribute('data-motion') === 'reduced' ? 'auto' : 'smooth';
 }
 
+function scrollToForm() {
+    document.getElementById('diagnosticForm').scrollIntoView({ behavior: motionBehavior() });
+}
+
 (function initDisplaySettings() {
     try {
         const savedFs = localStorage.getItem('iyanuDiagnostics.fontScaleIndex');
@@ -683,6 +849,8 @@ function motionBehavior() {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('contrastToggle').setAttribute('aria-pressed', String(document.documentElement.getAttribute('data-contrast') === 'high'));
     document.getElementById('motionToggle').setAttribute('aria-pressed', String(document.documentElement.getAttribute('data-motion') === 'reduced'));
+    const yearEl = document.getElementById('copyrightYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
     renderHistoryList();
 });
 
@@ -778,6 +946,126 @@ const lawDB = {
             {roman:"VI", title:"Deliver", text:"Lord, deliver my destiny from every diversion caused through marine oppression. Restore every opportunity, relationship, and season that was delayed, and set my life back on the course You ordained for me."},
             {roman:"VII", title:"Seal", text:"I seal my life with the blood of Jesus Christ, and I declare that no marine spirit, covenant, or altar has any further authority over me. I am free, and I walk forward into the future You have prepared for me."}
         ]
+    },
+    agreement: {
+        name: "Law of Agreement",
+        tags: ['fearAgreement','attack','mental'],
+        scriptureRef: "Matthew 18:19",
+        scripture: "Again I say unto you, That if two of you shall agree on earth as touching any thing that they shall ask, it shall be done for them of my Father which is in heaven.",
+        core: "This law holds that agreement between two or more parties carries real spiritual weight. In this tradition, that principle is applied in reverse as well: when a person responds to fear, a bad dream, or a discouraging report by inwardly dwelling on it and expecting it to happen, that response is treated as a kind of agreement that opens a door. The remedy taught is not to suppress fear through sheer willpower, but to consciously and verbally choose agreement with what God has said instead.",
+        examples: [
+            {title: "Tower of Babel — Genesis 11:4, 6", passage: "And they said, Go to, let us build us a city and a tower, whose top may reach unto heaven; and let us make us a name, lest we be scattered abroad upon the face of the whole earth. ... And the LORD said, Behold, the people is one, and they have all one language; and this they begin to do: and now nothing will be restrained from them, which they have imagined to do."},
+            {title: "Israel's agreement with fear — Numbers 14:1-2", passage: "And all the congregation lifted up their voice, and cried; and the people wept that night. And all the children of Israel murmured against Moses and against Aaron: and the whole congregation said unto them, Would God that we had died in the land of Egypt! or would God we had died in this wilderness!"},
+            {title: "The church prays in one accord — Acts 4:31", passage: "And when they had prayed, the place was shaken where they were assembled together; and they were all filled with the Holy Ghost, and they spake the word of God with boldness."},
+            {title: "Moses, Aaron, and Hur — Exodus 17:12", passage: "But Moses' hands were heavy; and they took a stone, and put it under him, and he sat thereon; and Aaron and Hur stayed up his hands, the one on the one side, and the other on the other side; and his hands were steady until the going down of the sun."},
+            {title: "Job refuses wrong agreement — Job 2:9-10", passage: "Then said his wife unto him, Dost thou still retain thine integrity? curse God, and die. But he said unto her, Thou speakest as one of the foolish women speaketh. What? shall we receive good at the hand of God, and shall we not receive evil? In all this did not Job sin with his lips."}
+        ],
+        realExamples: [
+            {title: "A repeated bad dream", detail: "A man had a recurring dream of losing his job right before a major review at work. Each time he woke up, he told his coworkers about the dream and said he expected to be let go. After learning to replace that spoken expectation with a deliberate, specific prayer of confidence instead, he stopped repeating the fear aloud, and kept his position through several rounds of company changes."},
+            {title: "A family narrative", detail: "A family repeatedly told each other 'something bad always happens to us in December' after two hard years in a row. The third December, they made a deliberate choice to stop repeating that phrase and prayed together instead for a different pattern. They have not experienced a similarly difficult December since."},
+            {title: "A borrowed fear", detail: "A woman heard a frightening secondhand story about a health condition and became convinced she had the same symptoms, repeating her fear to several friends before seeing a doctor. Once she was actually examined and treated for what was really going on, and prayed to release the borrowed fear, her anxiety around it settled considerably."},
+            {title: "A team united in prayer", detail: "A small group of coworkers facing a shared company crisis chose to meet weekly and pray in agreement about a specific, positive outcome rather than trading worst-case scenarios in the break room. Several later described that shared agreement as what got them through the uncertainty with far less anxiety than colleagues who didn't participate."},
+            {title: "Breaking a family script", detail: "A young man grew up hearing relatives say 'the men in this family never finish what they start.' He noticed himself repeating that line about himself before quitting difficult projects. Naming the pattern and deliberately choosing different words to describe himself was, he said, a turning point in finally completing a long-term goal."}
+        ],
+        plan: [
+            {roman:"I", title:"Recognize", text:"Lord, help me recognize any place where fear, panic, or a bad report has caused me to agree with something other than Your word over my life. Show me clearly where this has happened."},
+            {roman:"II", title:"Renounce fear-agreement", text:"I renounce every agreement I have made, knowingly or unknowingly, with fear, panic, or hopeless words spoken over my life. I break every agreement formed against me by envy or malice."},
+            {roman:"III", title:"Realign", text:"I choose today to agree only with what God has said about me. I align my heart and my words with His promises, not with fear or bad news."},
+            {roman:"IV", title:"Guard the mind", text:"Lord, guard my mind against every dream, thought, or report designed to pull me into agreement with defeat. Let my mind be stayed on You."},
+            {roman:"V", title:"Seek corporate prayer", text:"I ask You, Lord, to surround me with people who will agree with me in prayer according to Your word, not people whose words pull me toward fear."},
+            {roman:"VI", title:"Break group agreement against me", text:"Every gathering or network agreeing together for my harm, I declare your agreement broken and your plans scattered."},
+            {roman:"VII", title:"Seal in faith", text:"I seal my life in agreement with Your word alone. Whatever comes against me, I will not step out of agreement with You."}
+        ]
+    },
+    tongue: {
+        name: "Law of the Tongue & Seeds",
+        tags: ['wordCurse','bitterness'],
+        scriptureRef: "Proverbs 18:21",
+        scripture: "Death and life are in the power of the tongue: and they that love it shall eat the fruit thereof.",
+        core: "Drawing on Proverbs 18:21 and Galatians 6:7 ('whatsoever a man soweth, that shall he also reap'), this law treats spoken words as functioning like seeds, carrying real consequence over time for the person speaking and sometimes for those spoken over. Envious or malicious words spoken by others, and self-defeating words spoken by a person over their own life, are both taken seriously here rather than dismissed as 'just talk.' The remedy taught is active: replacing destructive speech with deliberate, faith-filled words, both toward oneself and toward others.",
+        examples: [
+            {title: "God speaks and it is so — Genesis 1:3", passage: "And God said, Let there be light: and there was light."},
+            {title: "Israel's own words returned to them — Numbers 14:28", passage: "Say unto them, As truly as I live, saith the LORD, as ye have spoken in mine ears, so will I do to you."},
+            {title: "Believing what you say — Mark 11:23", passage: "For verily I say unto you, That whosoever shall say unto this mountain, Be thou removed, and be thou cast into the sea; and shall not doubt in his heart, but shall believe that those things which he saith shall come to pass; he shall have whatsoever he saith."},
+            {title: "Blessing and cursing from one mouth — James 3:9-10", passage: "Therewith bless we God, even the Father; and therewith curse we men, which are made after the similitude of God. Out of the same mouth proceedeth blessing and cursing. My brethren, these things ought not so to be."},
+            {title: "A spoken blessing that could not be recalled — Genesis 27:33", passage: "And Isaac trembled very exceedingly, and said, Who? where is he that hath taken venison, and brought it me, and I have eaten of all before thou camest, and have blessed him? yea, and he shall be blessed."}
+        ],
+        realExamples: [
+            {title: "An envious relative", detail: "A woman noticed that every time she shared good news with a particular relative, that relative would respond with a discouraging comment framed as a joke. After she began praying specifically to release those words rather than dwell on them, and gently set a boundary with the relative, she found the discouragement affected her far less."},
+            {title: "A self-talk pattern", detail: "A student had a habit of saying 'I always fail at this' before every exam, even when well prepared. After a mentor pointed out the pattern, the student began deliberately replacing the phrase with a specific, true statement of preparation before each test, and reported feeling calmer and performing more consistently."},
+            {title: "An old sentence", detail: "A man carried a comment his father made decades earlier about him 'never amounting to much' and found it resurfacing in his mind during every setback. Working through it in prayer and counseling, and consciously rejecting that old sentence rather than letting it define him, was part of a broader season of healing."},
+            {title: "A deliberate blessing", detail: "A pastor began the practice of speaking a specific, written blessing over his children every morning before school, rather than only correcting them when something went wrong. Over time, both he and his children described a noticeably warmer tone in the household."},
+            {title: "Not joining the talk", detail: "An employee noticed a coworker regularly predicted failure for a project out loud in meetings. Rather than joining in, she quietly held a different, specific hope for the project in her own private prayers. She couldn't control the outcome, but she found her own attitude and contribution improved once she stopped repeating the negative talk herself."}
+        ],
+        plan: [
+            {roman:"I", title:"Confess wrong words", text:"Lord, forgive me for every negative, faithless, or destructive word I have spoken over my own life, my family, or others. I take responsibility for the seeds I have planted with my tongue."},
+            {roman:"II", title:"Uproot", text:"Every negative word planted into my life by myself or by someone else, I uproot it now in the name of Jesus. I declare it will not bear fruit in my life."},
+            {roman:"III", title:"Refuse spoken curses", text:"Every word spoken against me in anger, envy, or malice, I refuse to let it stand. I declare that no weapon formed against me by the tongue shall prosper."},
+            {roman:"IV", title:"Speak life", text:"I choose today to speak life over my own future, my family, and my calling, following the pattern of God's own creative words."},
+            {roman:"V", title:"Guard my mouth", text:"Lord, set a watch before my mouth and keep the door of my lips, that I would not sin again with my tongue."},
+            {roman:"VI", title:"Bless, not curse", text:"Where I have been tempted to curse those who have hurt me, I choose instead to bless, and I ask You to heal what has been said between us."},
+            {roman:"VII", title:"Seal with a good confession", text:"I declare that my mouth will be filled with words that build up, not tear down, from this day forward, in Jesus' name."}
+        ]
+    },
+    household: {
+        name: "Law of Household Authority",
+        tags: ['household','divorce'],
+        scriptureRef: "Joshua 24:15",
+        scripture: "And if it seem evil unto you to serve the LORD, choose you this day whom ye will serve; whether the gods which your fathers served that were on the other side of the flood, or the gods of the Amorites, in whose land ye dwell: but as for me and my house, we will serve the LORD.",
+        core: "Based on Joshua 24:15 and the broader biblical pattern of household heads carrying responsibility for those under their care, this law holds that close relational access, a parent, spouse, sibling, or other close family member, carries real influence over a household's atmosphere, for better or worse. In deliverance teaching this is sometimes called 'household wickedness': a family member using proximity and trust to undermine or work against someone from the inside, rather than an outside enemy.",
+        examples: [
+            {title: "Household idols hidden — Genesis 31:19, 34", passage: "And Laban went to shear his sheep: and Rachel had stolen the images that were her father's. ... Now Rachel had taken the images, and put them in the camel's furniture, and sat upon them."},
+            {title: "Eli's household — 1 Samuel 3:13", passage: "For I have told him that I will judge his house for ever for the iniquity which he knoweth; because his sons made themselves vile, and he restrained them not."},
+            {title: "Micah's household shrine — Judges 17:5", passage: "And the man Micah had an house of gods, and made an ephod, and teraphim, and consecrated one of his sons, who became his priest."},
+            {title: "A household saved together — Acts 16:31", passage: "And they said, Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house."},
+            {title: "Consequence declared over a house — 2 Samuel 12:10", passage: "Now therefore the sword shall never depart from thine house; because thou hast despised me, and hast taken the wife of Uriah the Hittite to be thy wife."}
+        ],
+        realExamples: [
+            {title: "An undermining relative", detail: "A woman noticed that a family member living in her home would regularly make small comments to other relatives that quietly damaged her reputation. Once she recognized the pattern and set a firm boundary, including limiting what personal information she shared at home, the undermining stopped."},
+            {title: "Restoring healthy leadership", detail: "A father who had been largely absent from decision-making in his home began intentionally leading family prayer and weekly check-ins. Several family members later described the home's overall atmosphere as calmer and more secure."},
+            {title: "Naming a pattern", detail: "A young adult realized that a controlling family member had long framed ordinary independence as spiritual rebellion. With the help of a counselor, she learned to distinguish legitimate family concern from control, and to seek support outside the home where needed."},
+            {title: "A household covenant", detail: "A newly married couple wrote and prayed a simple household covenant together in their first month, naming what they wanted their home to be known for. They returned to it during a difficult year and said it helped them stay oriented toward the same goals."},
+            {title: "Seeking outside help together", detail: "A family recognized that ongoing conflict in their household had become unsafe rather than simply difficult, and sought help from both their church and a licensed family counselor at the same time, rather than trying to resolve it through prayer alone. They later described that combined support as what actually made a lasting difference."}
+        ],
+        plan: [
+            {roman:"I", title:"Discern rightly", text:"Lord, give me discernment to see clearly where authority and influence in my home or family have been misused, without leading me into suspicion or fear of the people I love."},
+            {roman:"II", title:"Establish godly headship", text:"I ask You, Lord, to establish godly, healthy leadership and authority over my household, whatever that household looks like for me today."},
+            {roman:"III", title:"Close inside doors", text:"Any access I have unknowingly given someone close to me to influence my life in harmful ways, I close that door now, while still choosing to love them as You call me to."},
+            {roman:"IV", title:"Break generational patterns", text:"Every harmful pattern of authority passed down in my family line, control, neglect, or abuse disguised as authority, I refuse to carry it forward or receive it as normal."},
+            {roman:"V", title:"Protect the vulnerable", text:"Lord, protect anyone in my household who is vulnerable to being controlled, harmed, or exploited by someone with authority over them. Give courage to seek help where it is needed."},
+            {roman:"VI", title:"Restore right order", text:"I ask You to restore healthy, loving order in my home, built on service and care rather than control or fear."},
+            {roman:"VII", title:"Seal my household", text:"I dedicate my household to You, Lord. Where authority has been misused, I ask for healing; where it has been faithful, I ask for Your continued blessing."}
+        ]
+    },
+    blindness: {
+        name: "Law of Spiritual Blindness",
+        tags: ['blind'],
+        scriptureRef: "2 Corinthians 4:4",
+        scripture: "In whom the god of this world hath blinded the minds of them which believe not, lest the light of the glorious gospel of Christ, who is the image of God, should shine unto them.",
+        core: "Drawn from 2 Corinthians 4:4 and Jesus' repeated call in the Gospels to 'watch and pray,' this law holds that spiritual vigilance is not optional. A person who stops actively paying attention to their spiritual life becomes more vulnerable to deception, manipulation, or simply drifting into harmful patterns unnoticed. More simply, it echoes the ordinary wisdom that neglect of any relationship, including one's relationship with God, tends to leave a person exposed.",
+        examples: [
+            {title: "Eyes opened to see — 2 Kings 6:16-17", passage: "And he answered, Fear not: for they that be with us are more than they that be with them. And Elisha prayed, and said, LORD, I pray thee, open his eyes, that he may see. And the LORD opened the eyes of the young man; and he saw: and, behold, the mountain was full of horses and chariots of fire round about Elisha."},
+            {title: "Unprepared and unwatchful — Matthew 25:8-9", passage: "And the foolish said unto the wise, Give us of your oil; for our lamps are gone out. But the wise answered, saying, Not so; lest there be not enough for us and you: but go ye rather to them that sell, and buy for yourselves."},
+            {title: "Blind and not knowing it — Revelation 3:17-18", passage: "Because thou sayest, I am rich, and increased with goods, and have need of nothing; and knowest not that thou art wretched, and miserable, and poor, and blind, and naked: I counsel thee to buy of me gold tried in the fire, that thou mayest be rich, and white raiment, that thou mayest be clothed... and anoint thine eyes with eyesalve, that thou mayest see."},
+            {title: "Eyes withheld, then opened — Luke 24:15-16, 31", passage: "And it came to pass, that, while they communed together and reasoned, Jesus himself drew near, and went with them. But their eyes were holden that they should not know him. ... And their eyes were opened, and they knew him; and he vanished out of their sight."},
+            {title: "A subtle deceiver — Genesis 3:1", passage: "Now the serpent was more subtil than any beast of the field which the LORD God had made. And he said unto the woman, Yea, hath God said, Ye shall not eat of every tree of the garden?"}
+        ],
+        realExamples: [
+            {title: "Distracted by opportunity", detail: "A businessman was offered an unusually generous, fast-moving investment deal and nearly committed a large sum before a trusted friend asked pointed questions that revealed inconsistencies. He credited his friend's outside perspective, not his own instincts, with helping him see clearly in time."},
+            {title: "A slow drift", detail: "A woman realized she had gradually stopped attending to her own spiritual life over a busy season, without ever deciding to; it had simply drifted. Naming that drift honestly, rather than judging herself harshly for it, was what allowed her to rebuild a simple daily practice."},
+            {title: "Only ever praised", detail: "A young leader noticed that one particular volunteer only ever praised his decisions and never questioned them, and gradually realized he had stopped inviting real feedback from anyone. Deliberately seeking out honest input again, even when uncomfortable, restored his sense of clarity."},
+            {title: "An outside perspective", detail: "A couple going through a difficult season found that regular conversations with an older mentor couple helped them notice unhealthy patterns in their own relationship that they had grown too close to see on their own."},
+            {title: "Returning to basics", detail: "A man in recovery from addiction described losing track of warning signs before a relapse and, afterward, recommitting to simple, consistent practices, prayer, honest accountability conversations, and professional counseling, as what restored his ability to notice danger signs early."}
+        ],
+        plan: [
+            {roman:"I", title:"Wake up", text:"Lord, wherever I have grown spiritually drowsy or complacent, wake me up. Help me see clearly what I have been missing."},
+            {roman:"II", title:"Ask for discernment", text:"I ask for the spirit of wisdom and revelation, that the eyes of my understanding would be enlightened."},
+            {roman:"III", title:"Remove the veil", text:"Every veil over my spiritual understanding, whether from deception, distraction, or unbelief, I ask You to remove it in the name of Jesus."},
+            {roman:"IV", title:"Test what I receive", text:"Lord, give me discernment to test what I hear and see, rather than accepting every voice or opportunity at face value."},
+            {roman:"V", title:"Watch and pray", text:"I commit to watching and praying, not because I am afraid, but because You have called me to stay spiritually alert."},
+            {roman:"VI", title:"Guard against seduction", text:"Protect me from manipulation, flattery, or seduction, spiritual, relational, or financial, designed to keep me distracted from what matters."},
+            {roman:"VII", title:"Walk in the light", text:"I choose to walk in the light as You are in the light, keeping nothing hidden that would keep my eyes dim."}
+        ]
     }
 };
 
@@ -786,14 +1074,15 @@ const bookDB = [
     {tag: ['shrine','occult','leak','blood','dedication'], title: "Deliverance from Household Witchcraft", author: "Timothy Atunnise", focus: "Breaking witchcraft strongholds", prayers: ["Every household altar working against me, catch fire and be dismantled.", "I dismantle every witchcraft operation assigned to my family line.", "Blood of Jesus, wipe off every evil mark placed over my household."]},
     {tag: ['river','sex','eat','snake','barren','marriage'], title: "Deliverance from Spirit Husband/Wife", author: "Dr. D.K. Olukoya", focus: "Breaking marine covenant", prayers: ["Marine spirit assigned to my life, go back to your sender.", "I divorce every spirit spouse in the name of Jesus Christ.", "Every evil meal eaten in a dream, be vomited out now."]},
     {tag: ['illness','sin','accident'], title: "They Shall Expel Demons", author: "Derek Prince", focus: "Biblical deliverance", prayers: ["Every spirit of infirmity assigned to my body, come out now.", "By His stripes I declare that I am healed.", "Let the healing power of God flow through my body now."]},
-    {tag: ['mental','addiction','bitterness','sin','closed','blind'], title: "The Bondage Breaker", author: "Neil T. Anderson", focus: "Renewing the mind and resisting spiritual deception", prayers: ["Lord, I choose truth over every lie I have believed about myself.", "I renounce every stronghold built in my mind by fear or deception.", "I ask You to renew my mind and set my thoughts on what is true."]},
-    {tag: ['attack','frustration','closed','blind','sin'], title: "Pigs in the Parlor: A Practical Guide to Deliverance", author: "Frank Hammond", focus: "A classic, widely used deliverance manual", prayers: ["I take authority over every spirit hindering my walk with God.", "I close every door I opened knowingly or unknowingly.", "I ask for discernment to recognize what is truly opposing me."]},
-    {tag: ['attack','frustration','cult','occult','bitterness'], title: "Prayers That Rout Demons", author: "John Eckhardt", focus: "Targeted prayers for spiritual warfare", prayers: ["I release the fire of God against every demonic assignment over my life.", "Every power of darkness working against my destiny, be scattered now.", "I bind every spirit of confusion and command it to leave."]},
+    {tag: ['mental','addiction','bitterness','sin','closed','blind','fearAgreement'], title: "The Bondage Breaker", author: "Neil T. Anderson", focus: "Renewing the mind and resisting spiritual deception", prayers: ["Lord, I choose truth over every lie I have believed about myself.", "I renounce every stronghold built in my mind by fear or deception.", "I ask You to renew my mind and set my thoughts on what is true."]},
+    {tag: ['attack','frustration','closed','blind','sin','household'], title: "Pigs in the Parlor: A Practical Guide to Deliverance", author: "Frank Hammond", focus: "A classic, widely used deliverance manual", prayers: ["I take authority over every spirit hindering my walk with God.", "I close every door I opened knowingly or unknowingly.", "I ask for discernment to recognize what is truly opposing me."]},
+    {tag: ['attack','frustration','cult','occult','bitterness','wordCurse','fearAgreement'], title: "Prayers That Rout Demons", author: "John Eckhardt", focus: "Targeted prayers for spiritual warfare", prayers: ["I release the fire of God against every demonic assignment over my life.", "Every power of darkness working against my destiny, be scattered now.", "I bind every spirit of confusion and command it to leave."]},
     {tag: ['shrine','occult','graveyard','death','dedication'], title: "Delivered from the Powers of Darkness", author: "Emmanuel Eni", focus: "First-hand testimony often used as an introduction to deliverance themes", prayers: ["Lord, expose anything hidden in darkness over my life.", "I renounce every past involvement with occult practices, knowingly or unknowingly.", "I receive the light of Christ over every area once hidden."]},
     {tag: ['shrine','occult','graveyard','blood','cult'], title: "He Came to Set the Captives Free", author: "Rebecca Brown", focus: "A widely circulated testimony-based account of deliverance from occult involvement", disputed: true, prayers: ["Lord, expose every hidden work of darkness assigned against me.", "I renounce any occult involvement in my life or family line, knowingly or unknowingly entered into.", "I receive the authority of Christ over every power that once had a claim on me."]},
     {tag: ['shrine','occult','house','graveyard','death'], title: "Territorial Spirits", author: "C. Peter Wagner (editor)", focus: "A foundational, if debated, text on the idea of geographically-assigned spirits", prayers: ["Lord, expose every power assigned against this territory or household.", "I take authority over this place in the name of Jesus Christ.", "I dedicate this ground to You and no other."]},
     {tag: ['closed','frustration','stagnation','shrine','occult'], title: "Authority to Tread", author: "Dr. Rebecca Greenwood", focus: "A practical guide to strategic-level intercession and spiritual warfare", prayers: ["Lord, give me discernment for the battle in front of me.", "I stand in the authority given to me through Christ.", "I ask for wisdom to intercede well for myself and my household."]},
-    {tag: ['poverty','stagnation','closed','frustration','leak'], title: "Prayer Rain", author: "Dr. D.K. Olukoya", focus: "A widely used collection of targeted prayer points for breakthrough", prayers: ["Every rain of blessing due to me, fall now in Jesus' name.", "I refuse to be stranded on the way to my breakthrough.", "Every satanic delay assigned to my life, be terminated now."]}
+    {tag: ['poverty','stagnation','closed','frustration','leak'], title: "Prayer Rain", author: "Dr. D.K. Olukoya", focus: "A widely used collection of targeted prayer points for breakthrough", prayers: ["Every rain of blessing due to me, fall now in Jesus' name.", "I refuse to be stranded on the way to my breakthrough.", "Every satanic delay assigned to my life, be terminated now."]},
+    {tag: ['attack','graveyard','naked','mental','blind'], title: "Demons and How to Deal With Them", author: "Dag Heward-Mills", focus: "A widely read introduction to demonic activity, using the account of the Gadarene demoniac as its anchor", prayers: ["Every demonic influence operating in my life, I command you to leave now.", "I take back any ground given to the enemy through fear or deception.", "Lord, clothe me again in my right mind, as You did the man of Gadara."]}
 ];
 
 // Online / media resources by ministry or teacher. Each entry links to
@@ -848,6 +1137,81 @@ function escapeHTML(str) {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+}
+
+function slugify(str) {
+    return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+// ---------- Guided "wizard" mode: one question at a time ----------
+let wizardMode = false;
+let wizardItems = [];
+let wizardIndex = 0;
+
+function buildWizardItems() {
+    wizardItems = [];
+    document.querySelectorAll('#diagnosticForm .wizard-hideable.checkbox-grid').forEach(grid => {
+        let sectionName = '';
+        const prev = grid.previousElementSibling;
+        if (prev && prev.classList.contains('ornament')) {
+            const span = prev.querySelector('span');
+            if (span) sectionName = span.textContent;
+        }
+        grid.querySelectorAll('.checkbox-item input[type=checkbox]').forEach(input => {
+            const label = input.closest('label');
+            const text = label ? label.textContent.trim() : '';
+            wizardItems.push({ input, text, sectionName });
+        });
+    });
+}
+
+function toggleWizardMode() {
+    wizardMode = !wizardMode;
+    const btn = document.getElementById('wizardToggleBtn');
+    const hideEls = document.querySelectorAll('#diagnosticForm .wizard-hideable');
+    const wizardPanel = document.getElementById('wizardPanel');
+    const runBtn = document.getElementById('runDiagnosticsBtn');
+    if (wizardMode) {
+        buildWizardItems();
+        wizardIndex = 0;
+        hideEls.forEach(el => { el.style.display = 'none'; });
+        wizardPanel.style.display = 'block';
+        btn.textContent = 'Switch to all-at-once mode';
+        if (runBtn) runBtn.style.display = 'none';
+        renderWizardStep();
+    } else {
+        hideEls.forEach(el => { el.style.display = ''; });
+        wizardPanel.style.display = 'none';
+        btn.textContent = 'Switch to guided mode (one question at a time)';
+        if (runBtn) runBtn.style.display = '';
+    }
+}
+
+function renderWizardStep() {
+    if (wizardIndex >= wizardItems.length) { wizardFinish(); return; }
+    const item = wizardItems[wizardIndex];
+    document.getElementById('wizardProgress').textContent = `Question ${wizardIndex + 1} of ${wizardItems.length}`;
+    document.getElementById('wizardSectionLabel').textContent = item.sectionName;
+    document.getElementById('wizardQuestion').textContent = item.text;
+}
+
+function wizardAnswer(yes) {
+    if (wizardIndex >= wizardItems.length) return;
+    wizardItems[wizardIndex].input.checked = yes;
+    wizardIndex++;
+    renderWizardStep();
+}
+
+function wizardBack() {
+    if (wizardIndex > 0) {
+        wizardIndex--;
+        renderWizardStep();
+    }
+}
+
+function wizardFinish() {
+    toggleWizardMode();
+    analyzeSpiritualStatus();
 }
 
 function matchLaws(allTags) {
@@ -973,13 +1337,38 @@ function renderReport(report, contact) {
 
     let planHTML = `<div class="prayer-plan"><div class="ornament"><span>Seven-day targeted prayer plan</span></div>`;
     report.laws.forEach(law => {
-        planHTML += `<div class="plan-focus">${escapeHTML(law.name)}</div>`;
-        law.plan.forEach(day => {
-            planHTML += `<div class="day-box"><div class="day-badge">${day.roman}</div><div><div class="day-title">${escapeHTML(day.title)}</div><div class="day-text">${escapeHTML(day.text)}</div></div></div>`;
-        });
+        const lawSlug = slugify(law.name);
+        let completedCount = 0;
+        const dayBoxes = law.plan.map(day => {
+            const key = `iyanuDiagnostics.planProgress:${lawSlug}:${day.roman}`;
+            let checked = false;
+            try { checked = localStorage.getItem(key) === 'true'; } catch (e) { /* ignore */ }
+            if (checked) completedCount++;
+            return `<div class="day-box${checked ? ' day-complete' : ''}" data-day-box data-progress-key="${key}"><label class="day-checkbox"><input type="checkbox" data-progress-key="${key}" ${checked ? 'checked' : ''} aria-label="Mark day ${day.roman} complete"></label><div class="day-badge">${day.roman}</div><div><div class="day-title">${escapeHTML(day.title)}</div><div class="day-text">${escapeHTML(day.text)}</div></div></div>`;
+        }).join('');
+        planHTML += `<div class="plan-focus">${escapeHTML(law.name)} <span class="plan-progress" data-progress-label="${lawSlug}">(${completedCount} of 7 complete)</span></div>${dayBoxes}`;
     });
     planHTML += `</div>`;
     document.getElementById('prayerPlanSection').innerHTML = planHTML;
+
+    // Wire up progress checkboxes: persist locally and update the
+    // "X of 7 complete" label for that law without re-rendering the
+    // whole report.
+    document.querySelectorAll('#prayerPlanSection input[data-progress-key]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const key = cb.dataset.progressKey;
+            try { localStorage.setItem(key, cb.checked ? 'true' : 'false'); } catch (e) { /* ignore */ }
+            const dayBox = cb.closest('[data-day-box]');
+            if (dayBox) dayBox.classList.toggle('day-complete', cb.checked);
+            const lawSlug = key.split(':')[1];
+            const label = document.querySelector(`[data-progress-label="${lawSlug}"]`);
+            if (label) {
+                const total = document.querySelectorAll(`#prayerPlanSection input[data-progress-key^="iyanuDiagnostics.planProgress:${lawSlug}:"]`).length;
+                const done = document.querySelectorAll(`#prayerPlanSection input[data-progress-key^="iyanuDiagnostics.planProgress:${lawSlug}:"]:checked`).length;
+                label.textContent = `(${done} of ${total} complete)`;
+            }
+        });
+    });
 
     // Build book cards without inline onclick/JSON-in-HTML-attribute
     // strings -- prayers are attached as real event listeners after

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>References — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --parchment: #EFE9D6; --paper: #FBF8EF; --ink: #23233A;
+        --indigo: #2B2E63; --indigo-deep: #1D2050;
+        --gold: #A67C2E; --gold-soft: #C79A4B;
+        --wine: #7A2331; --forest: #2F5233;
+        --hairline: #CBBE96; --hairline-soft: #DED3AE;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Work Sans', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(166,124,46,0.10), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(43,46,99,0.10), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container { max-width: 780px; margin: 0 auto; background: var(--paper); padding: 56px 52px 48px; border: 1px solid var(--hairline); position: relative; }
+    .container::before { content:""; position:absolute; inset:10px; border:1px solid var(--hairline-soft); pointer-events:none; }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} .container::before{inset:6px;} }
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: 13.5px; color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:13px; letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; color:var(--indigo-deep); text-align:center; font-size:36px; margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#5b5a72; font-size:15px; max-width:540px; margin:0 auto 30px; }
+    .ornament { display:flex; align-items:center; gap:14px; margin: 36px 0 16px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:18px; color:var(--indigo); white-space:nowrap; }
+    p { font-size: 14.5px; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th { text-align:left; font-size:12.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.03em; padding:6px 10px 6px 0; border-bottom:1px solid var(--hairline); }
+    td { font-size:14px; padding:10px 10px 10px 0; border-bottom:1px solid var(--hairline-soft); vertical-align:top; }
+    td.note { color:#6b6a80; font-size:13px; }
+    a { color: var(--indigo); }
+    .disputed-tag { color: var(--wine); font-weight:600; font-size:12px; }
+    .caution-box { background:#EFF1F8; border:1px solid #C7CCE6; border-left:4px solid var(--indigo); padding:16px 20px; margin:18px 0; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="Iyanu_Diagnostics.html">&larr; Back to Iyanu Diagnostics</a>
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>References</h1>
+    <p class="subhead">Every scripture translation, book, and ministry referenced across the diagnostic app and the Bible Study Pack, listed in one place.</p>
+
+    <div class="caution-box">
+        A note on how this list was built: every source below is a real, identifiable book, ministry, or translation. Where a specific claim about an author or ministry is disputed or debated, that is noted directly. This app does not attribute invented quotes, case studies, or citations to real people — if you see a claim attributed to a named author elsewhere online or in other study materials that isn't sourced here, treat it with caution.
+    </div>
+
+    <div class="ornament"><span>Scripture</span></div>
+    <table>
+        <tr><th>Source</th><th>Use</th></tr>
+        <tr><td>The Holy Bible, King James Version (KJV)</td><td class="note">Public domain. Used for every Scripture quotation in the app and Bible Study Pack, quoted in full rather than paraphrased or excerpted.</td></tr>
+    </table>
+
+    <div class="ornament"><span>Books referenced</span></div>
+    <table>
+        <tr><th>Title</th><th>Author</th><th>Note</th></tr>
+        <tr><td>Overcoming Spiritual Attack</td><td>Ryan LeStrange</td><td class="note"></td></tr>
+        <tr><td>Deliverance from Household Witchcraft</td><td>Timothy Atunnise</td><td class="note"></td></tr>
+        <tr><td>Deliverance from Spirit Husband/Wife</td><td>Dr. D.K. Olukoya</td><td class="note"></td></tr>
+        <tr><td>Prayer Rain</td><td>Dr. D.K. Olukoya</td><td class="note"></td></tr>
+        <tr><td>They Shall Expel Demons</td><td>Derek Prince</td><td class="note"></td></tr>
+        <tr><td>The Bondage Breaker</td><td>Neil T. Anderson</td><td class="note"></td></tr>
+        <tr><td>Pigs in the Parlor: A Practical Guide to Deliverance</td><td>Frank Hammond</td><td class="note"></td></tr>
+        <tr><td>Prayers That Rout Demons</td><td>John Eckhardt</td><td class="note"></td></tr>
+        <tr><td>Delivered from the Powers of Darkness</td><td>Emmanuel Eni</td><td class="note"></td></tr>
+        <tr><td>Territorial Spirits (editor)</td><td>C. Peter Wagner</td><td class="note">The foundational text behind the "territorial spirits" concept discussed in the Bible Study Pack's balance notes; the idea is debated even within charismatic circles.</td></tr>
+        <tr><td>Authority to Tread</td><td>Dr. Rebecca Greenwood</td><td class="note"></td></tr>
+        <tr><td>Demons and How to Deal With Them</td><td>Dag Heward-Mills</td><td class="note"></td></tr>
+        <tr><td>He Came to Set the Captives Free</td><td>Rebecca Brown</td><td class="note"><span class="disputed-tag">Disputed:</span> Personal Freedom Outreach, a Christian counter-cult research organization, found inconsistencies in the central testimony and reported that the author lost her medical license; included here at the requester's request, flagged in-app.</td></tr>
+    </table>
+
+    <div class="ornament"><span>Ministries &amp; online resources</span></div>
+    <table>
+        <tr><th>Ministry</th><th>Link</th><th>Note</th></tr>
+        <tr><td>Derek Prince Ministries</td><td><a href="https://www.derekprince.com" target="_blank" rel="noopener noreferrer">derekprince.com</a></td><td class="note"></td></tr>
+        <tr><td>Mountain of Fire and Miracles Ministries (MFM)</td><td><a href="https://www.mountainoffire.org" target="_blank" rel="noopener noreferrer">mountainoffire.org</a></td><td class="note">This ministry's own site has publicly warned about impersonator accounts online — use this official link rather than a social search.</td></tr>
+        <tr><td>Freedom in Christ Ministries</td><td><a href="https://freedominchrist.org" target="_blank" rel="noopener noreferrer">freedominchrist.org</a></td><td class="note"></td></tr>
+        <tr><td>Crusaders Ministries / Impact Network (John Eckhardt)</td><td><a href="https://impactnetwork.global" target="_blank" rel="noopener noreferrer">impactnetwork.global</a></td><td class="note"></td></tr>
+    </table>
+
+    <div class="ornament"><span>Theological background &amp; balance notes</span></div>
+    <p>The Bible Study Pack's "balance box" notes — on territorial spirits, "positive confession"/Word of Faith theology, and generational curses — reflect widely documented positions within mainstream evangelical and charismatic theological discussion rather than a single cited source. Readers wanting to go deeper on any of these debates are encouraged to consult a range of authors across the traditions represented above, rather than relying on any single ministry's framing, including this app's.</p>
+
+    <div class="ornament"><span>Sources deliberately not used</span></div>
+    <p>Two sources were considered and excluded from the underlying research for this app:</p>
+    <ul>
+        <li><strong>TB Joshua / Synagogue, Church of All Nations (SCOAN)</strong> — excluded following a January 2024 BBC Africa Eye investigation documenting serious abuse allegations from more than 25 former members.</li>
+        <li>A set of six user-supplied documents describing additional "spiritual laws" and case studies attributed to named real authors — these were not used as source material, since their citation lists resolved to generic homepages (e.g. facebook.com, youtube.com) rather than to any identifiable article or book passage, a pattern consistent with fabricated attribution.</li>
+    </ul>
+
+</div>
+</body>
+</html>
