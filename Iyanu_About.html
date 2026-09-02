@@ -5,26 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Iyanu Diagnostics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
         --fs: 1;
-        --parchment: #EFE9D6; --paper: #FBF8EF; --ink: #23233A;
-        --indigo: #2B2E63; --indigo-deep: #1D2050;
-        --gold: #A67C2E; --gold-soft: #C79A4B;
-        --wine: #7A2331; --forest: #2F5233;
-        --hairline: #CBBE96; --hairline-soft: #DED3AE;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
     }
     * { box-sizing: border-box; }
     body {
-        font-family: 'Work Sans', sans-serif; color: var(--ink);
-        background: radial-gradient(circle at 15% 8%, rgba(166,124,46,0.10), transparent 45%),
-                    radial-gradient(circle at 90% 85%, rgba(43,46,99,0.10), transparent 40%),
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
                     var(--parchment);
         margin: 0; padding: 48px 20px; line-height: 1.6;
     }
-    .container { max-width: 720px; margin: 0 auto; background: var(--paper); padding: 56px 52px 48px; border: 1px solid var(--hairline); position: relative; }
-    .container::before { content:""; position:absolute; inset:10px; border:1px solid var(--hairline-soft); pointer-events:none; }
+    .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--paper);
+            padding: 56px 52px 48px;
+            border: 1px solid var(--hairline);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+            position: relative;
+        }
+    .container::before { content: none; }
     @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:34px 20px 28px;} .container::before{inset:6px;} }
 
     .back-link { display:inline-block; margin-bottom: 20px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
@@ -37,44 +46,44 @@
         box-shadow: 0 6px 18px rgba(29,32,80,0.15);
     }
 
-    h1 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; color:var(--indigo-deep); text-align:center; font-size:calc(38px * var(--fs)); margin:0 0 4px; line-height:1.15; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; color:var(--indigo-deep); text-align:center; font-size:calc(38px * var(--fs)); margin:0 0 4px; line-height:1.15; }
     .role { text-align:center; color:var(--gold); font-size:calc(14px * var(--fs)); font-weight:500; margin-bottom: 30px; }
 
     .tagline {
-        font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+        font-family:'Fraunces',serif; font-style:italic; font-weight:600;
         text-align:center; font-size:calc(23px * var(--fs)); color: var(--ink);
         max-width: 480px; margin: 0 auto 34px; line-height:1.4;
     }
 
     .ornament { display:flex; align-items:center; gap:14px; margin: 34px 0 16px; }
     .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
-    .ornament span { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:calc(18px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:calc(18px * var(--fs)); color:var(--indigo); white-space:nowrap; }
 
     p { font-size: calc(15px * var(--fs)); margin: 0 0 14px; }
 
     .pull-quote {
-        font-family:'Cormorant Garamond',serif; font-style:italic; font-size:calc(19px * var(--fs));
+        font-family:'Fraunces',serif; font-style:italic; font-size:calc(19px * var(--fs));
         color: var(--indigo-deep); border-left: 3px solid var(--gold);
         padding: 4px 0 4px 18px; margin: 20px 0;
     }
 
     .edit-note {
-        background:#EFF1F8; border:1px solid #C7CCE6; border-left:4px solid var(--indigo);
-        padding:14px 18px; margin: 18px 0; font-size: calc(13px * var(--fs)); color:#3b3a52;
+        background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--indigo);
+        padding:14px 18px; margin: 18px 0; font-size: calc(13px * var(--fs)); color:#52525b;
     }
 
     .stat-row { display:flex; gap: 14px; flex-wrap: wrap; justify-content:center; margin: 20px 0 6px; }
     .stat-chip {
         border: 1px solid var(--hairline); padding: 10px 16px; text-align:center; min-width: 130px;
-        font-size: calc(12.5px * var(--fs)); color: #6b6a80;
+        font-size: calc(12.5px * var(--fs)); color: #71717a;
     }
-    .stat-chip b { display:block; font-family:'Cormorant Garamond',serif; font-size:calc(22px * var(--fs)); color: var(--indigo-deep); font-style:italic; }
+    .stat-chip b { display:block; font-family:'Fraunces',serif; font-size:calc(22px * var(--fs)); color: var(--indigo-deep); font-style: normal; }
 
     .contact-donate-box, .future-plans-box { font-size: calc(14.5px * var(--fs)); }
     .plain-list { padding-left: 20px; margin: 8px 0 14px; }
     .plain-list li { margin-bottom: 6px; }
-    .subhead2-inline { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; font-size:calc(16px * var(--fs)); color:var(--indigo); margin: 14px 0 4px; }
-    .privacy-note { font-size: calc(12.5px * var(--fs)); color:#6b6a80; }
+    .subhead2-inline { font-family:'Fraunces',serif; font-weight:600; font-style: normal; font-size:calc(16px * var(--fs)); color:var(--indigo); margin: 14px 0 4px; }
+    .privacy-note { font-size: calc(12.5px * var(--fs)); color:#71717a; }
 
     .site-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 30px; }
     .site-nav a {
@@ -88,7 +97,8 @@
 </head>
 <body>
 <div class="container">
-    <a class="back-link" href="index.html">&larr; Back to Iyanu Diagnostics</a>
+    <a class="back-link" href="index.html">&larr; Home</a>
+    <a class="back-link" href="Iyanu_Diagnostics.html" style="margin-left:14px;">Diagnostic Tool</a>
     <div class="kicker">Iyanu Diagnostics</div>
 
     <div class="portrait-wrap">
@@ -98,7 +108,7 @@
     <h1>Utibe John Iniobong</h1>
     <p class="role">Creator, Iyanu Diagnostics</p>
 
-    <p class="tagline">"Find the law. Break the exploitation. Walk into your testimony."</p>
+    <p class="tagline">"Find the law, break the exploitation, walk into your testimony."</p>
 
     <div class="edit-note">
         Everything below this note is a starting draft, built from what's been shared in conversation so far — your own words, your own story, and any details you'd like added or removed are welcome. Nothing here should be taken as a finished biography until you've reviewed it.
@@ -140,9 +150,11 @@
     </div>
 
     <div class="site-nav">
-        <a href="index.html">Diagnostic Tool</a>
+        <a href="index.html">🏠 Home</a>
+        <a href="Iyanu_Diagnostics.html">Diagnostic Tool</a>
         <a href="Iyanu_Bible_Study.html">Bible Study Pack</a>
         <a href="Iyanu_References.html">References</a>
+        <a href="Iyanu_FAQ.html">FAQs</a>
     </div>
 </div>
 </body>

@@ -5,46 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>References — Iyanu Diagnostics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --parchment: #EFE9D6; --paper: #FBF8EF; --ink: #23233A;
-        --indigo: #2B2E63; --indigo-deep: #1D2050;
-        --gold: #A67C2E; --gold-soft: #C79A4B;
-        --wine: #7A2331; --forest: #2F5233;
-        --hairline: #CBBE96; --hairline-soft: #DED3AE;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
     }
     * { box-sizing: border-box; }
     body {
-        font-family: 'Work Sans', sans-serif; color: var(--ink);
-        background: radial-gradient(circle at 15% 8%, rgba(166,124,46,0.10), transparent 45%),
-                    radial-gradient(circle at 90% 85%, rgba(43,46,99,0.10), transparent 40%),
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
                     var(--parchment);
         margin: 0; padding: 48px 20px; line-height: 1.6;
     }
-    .container { max-width: 780px; margin: 0 auto; background: var(--paper); padding: 56px 52px 48px; border: 1px solid var(--hairline); position: relative; }
-    .container::before { content:""; position:absolute; inset:10px; border:1px solid var(--hairline-soft); pointer-events:none; }
+    .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--paper);
+            padding: 56px 52px 48px;
+            border: 1px solid var(--hairline);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+            position: relative;
+        }
+    .container::before { content: none; }
     @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} .container::before{inset:6px;} }
     .back-link { display:inline-block; margin-bottom: 18px; font-size: 13.5px; color: var(--indigo); text-decoration: underline; }
     .kicker { text-align:center; font-size:13px; letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
-    h1 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; color:var(--indigo-deep); text-align:center; font-size:36px; margin:0 0 6px; line-height:1.15; }
-    .subhead { text-align:center; color:#5b5a72; font-size:15px; max-width:540px; margin:0 auto 30px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; color:var(--indigo-deep); text-align:center; font-size:36px; margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#52525b; font-size:15px; max-width:540px; margin:0 auto 30px; }
     .ornament { display:flex; align-items:center; gap:14px; margin: 36px 0 16px; }
     .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
-    .ornament span { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:18px; color:var(--indigo); white-space:nowrap; }
+    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:18px; color:var(--indigo); white-space:nowrap; }
     p { font-size: 14.5px; }
     table { width:100%; border-collapse: collapse; margin-top: 10px; }
     th { text-align:left; font-size:12.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.03em; padding:6px 10px 6px 0; border-bottom:1px solid var(--hairline); }
     td { font-size:14px; padding:10px 10px 10px 0; border-bottom:1px solid var(--hairline-soft); vertical-align:top; }
-    td.note { color:#6b6a80; font-size:13px; }
+    td.note { color:#71717a; font-size:13px; }
     a { color: var(--indigo); }
     .disputed-tag { color: var(--wine); font-weight:600; font-size:12px; }
-    .caution-box { background:#EFF1F8; border:1px solid #C7CCE6; border-left:4px solid var(--indigo); padding:16px 20px; margin:18px 0; font-size:14px; }
+    .caution-box { background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--indigo); padding:16px 20px; margin:18px 0; font-size:14px; }
 </style>
 </head>
 <body>
 <div class="container">
-    <a class="back-link" href="index.html">&larr; Back to Iyanu Diagnostics</a>
+    <a class="back-link" href="index.html">&larr; Home</a>
+    <a class="back-link" href="Iyanu_Diagnostics.html" style="margin-left:14px;">Diagnostic Tool</a>
+    <a class="back-link" href="Iyanu_FAQ.html" style="margin-left:14px;">FAQs &rarr;</a>
     <div class="kicker">Iyanu Diagnostics</div>
     <h1>References</h1>
     <p class="subhead">Every scripture translation, book, and ministry referenced across the diagnostic app and the Bible Study Pack, listed in one place.</p>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fs: 1;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container {
+        max-width: 780px; margin: 0 auto; background: var(--paper);
+        padding: 56px 52px 48px; border: 1px solid var(--hairline);
+        border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+        position: relative;
+    }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} }
+
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:calc(13px * var(--fs)); letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Fraunces',serif; font-weight:400; font-style: normal; color:var(--indigo-deep); text-align:center; font-size:calc(38px * var(--fs)); margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#52525b; font-size:calc(15px * var(--fs)); max-width:520px; margin:0 auto 30px; }
+
+    .ornament { display:flex; align-items:center; gap:14px; margin: 38px 0 16px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-size:calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+
+    details {
+        border: 1px solid var(--hairline-soft);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin-bottom: 10px;
+        background: var(--parchment);
+    }
+    summary {
+        font-weight: 600;
+        font-size: calc(15px * var(--fs));
+        cursor: pointer;
+        list-style: none;
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+        content: "+";
+        font-family: 'Fraunces', serif;
+        font-size: calc(22px * var(--fs));
+        color: var(--gold);
+        flex-shrink: 0;
+        transition: transform 0.15s ease;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { font-size: calc(14.5px * var(--fs)); color: #3f3f46; margin: 10px 0 2px; }
+
+    .site-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 34px; }
+    .site-nav a {
+        font-size: calc(13px * var(--fs)); color: var(--indigo); text-decoration:none;
+        border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 8px;
+    }
+    .site-nav a:hover { background: var(--parchment); }
+
+    @media print { .back-link, .site-nav { display:none; } details { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="index.html">&larr; Home</a>
+    <a class="back-link" href="Iyanu_Diagnostics.html" style="margin-left:14px;">Diagnostic Tool</a>
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>Frequently Asked Questions</h1>
+    <p class="subhead">The reasoning behind this app, and the practical questions worth answering before you use it.</p>
+
+    <div class="ornament"><span>Vision</span></div>
+
+    <details open>
+        <summary>Why was Iyanu Diagnostics created?</summary>
+        <p>Because a lot of Christians who are genuinely saved are still living under oppression — often because they've never had a clear, specific picture of which spiritual law is being exploited against them. General prayer tends to produce general, or no, results. This tool exists to bring precision to that process.</p>
+    </details>
+
+    <details>
+        <summary>Why the name "Iyanu Diagnostics"?</summary>
+        <p><em>Iyanu</em> is Yoruba for "wonder" or "miracle." Paired with "Diagnostics," the name reflects the app's approach: a miracle is still something you can walk toward with clarity, not just wait for by accident.</p>
+    </details>
+
+    <div class="ornament"><span>Theological rationale</span></div>
+
+    <details>
+        <summary>Why build this around "spiritual laws" specifically?</summary>
+        <p>Scripture describes the devil as an accuser (Revelation 12:10) and legalistic in nature — operating through open ground and technicalities rather than acting arbitrarily. This app treats identifying that specific ground as the necessary first step before targeted prayer, since anyone working against you can, in this framework, attempt to exploit the same laws.</p>
+    </details>
+
+    <details>
+        <summary>Isn't "deliverance" a debated topic among Christians?</summary>
+        <p>Yes, genuinely. This app reflects one tradition's framework within Christian teaching, not the only faithful Christian position on these questions. Where a specific claim is more contested than settled — territorial spirits and generational curses among them — the Bible Study Pack says so directly, in its own "balance box" notes, rather than presenting every claim as unanimous.</p>
+    </details>
+
+    <details>
+        <summary>If Jesus already won the victory, why do I need to do anything?</summary>
+        <p>Because Scripture describes both a completed victory (Colossians 2:15) and an ongoing walk. Jesus is our advocate (1 John 2:1), who continually makes intercession for the saints (Hebrews 7:25) and is touched with the feeling of our infirmities, in all points tempted like as we are (Hebrews 4:15). This tool is about walking out a victory that is already secured, not earning one that isn't.</p>
+    </details>
+
+    <details>
+        <summary>Why does matching symptoms to a small set of laws actually work?</summary>
+        <p>Because individual situations look different on the surface but tend to trace back to a smaller number of underlying patterns — every case is unique in its details, but agrees on the same set of universal spiritual laws underneath. This has scriptural grounding in passages like Deuteronomy 28:14-15, where blessing and its opposite are tied to a consistent, knowable pattern rather than pure unpredictability.</p>
+    </details>
+
+    <details>
+        <summary>Why the checklist, logical approach instead of just praying generally?</summary>
+        <p>Because laws, by definition, operate consistently — so identifying which one applies benefits from a structured process, the same way a doctor diagnoses before treating rather than prescribing at random.</p>
+    </details>
+
+    <div class="ornament"><span>Practical &amp; trust</span></div>
+
+    <details>
+        <summary>Is this a substitute for medical or psychological care?</summary>
+        <p>No. If you're dealing with symptoms that could have a medical, psychiatric, or emotional cause, please also see a qualified doctor, therapist, or counselor alongside anything here. If you are having thoughts of suicide or self-harm, please reach out right now to a crisis line in your area (in the US: call or text 988) or go to your nearest emergency room.</p>
+    </details>
+
+    <details>
+        <summary>Is my information private?</summary>
+        <p>Yes. Iyanu Diagnostics runs entirely in your browser. There is no server and no account — your selections, contact details, and history are stored only on your own device, and nothing is transmitted anywhere unless you personally choose to share or email a report.</p>
+    </details>
+
+    <details>
+        <summary>Can a pastor or counselor use this during a session with someone else?</summary>
+        <p>Yes — that's one of its intended uses. The Interview Questionnaire, downloadable from the Bible Study Pack, mirrors the app's checklist exactly, so an interviewer can fill it in by hand during a conversation and enter the ticked items into the app afterward.</p>
+    </details>
+
+    <details>
+        <summary>How accurate is the "diagnosis," really?</summary>
+        <p>It's a structured starting point, not an infallible reading. It matches your selected symptoms against a defined framework of spiritual laws — it doesn't replace pastoral discernment, and it deliberately flags where the underlying teaching is more contested than settled rather than presenting everything with equal certainty.</p>
+    </details>
+
+    <details>
+        <summary>Where do the referenced books and ministries come from, and can they be trusted?</summary>
+        <p>Every book and ministry cited is a real, identifiable source — the References page lists all of them, including a note on any whose specific claims have been publicly disputed, and a separate list of sources that were deliberately excluded and why.</p>
+    </details>
+
+    <details>
+        <summary>What if I'm in crisis right now?</summary>
+        <p>If you are having thoughts of suicide or self-harm, please reach out right now to a crisis line in your area (in the US: call or text 988) or go to your nearest emergency room. This app is not designed or able to respond to an acute crisis.</p>
+    </details>
+
+    <details>
+        <summary>Who created this, and how do I reach them?</summary>
+        <p>Utibe John Iniobong. Full contact details, and the story behind why this was built, are on the About page.</p>
+    </details>
+
+    <div class="site-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="Iyanu_Diagnostics.html">Diagnostic Tool</a>
+        <a href="Iyanu_Bible_Study.html">Bible Study Pack</a>
+        <a href="Iyanu_About.html">About the Creator</a>
+        <a href="Iyanu_References.html">References</a>
+    </div>
+</div>
+</body>
+</html>

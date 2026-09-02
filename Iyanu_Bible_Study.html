@@ -5,26 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bible Study Pack — Iyanu Diagnostics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
         --fs: 1;
-        --parchment: #EFE9D6; --paper: #FBF8EF; --ink: #23233A;
-        --indigo: #2B2E63; --indigo-deep: #1D2050;
-        --gold: #A67C2E; --gold-soft: #C79A4B;
-        --wine: #7A2331; --forest: #2F5233;
-        --hairline: #CBBE96; --hairline-soft: #DED3AE;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
     }
     * { box-sizing: border-box; }
     body {
-        font-family: 'Work Sans', sans-serif; color: var(--ink);
-        background: radial-gradient(circle at 15% 8%, rgba(166,124,46,0.10), transparent 45%),
-                    radial-gradient(circle at 90% 85%, rgba(43,46,99,0.10), transparent 40%),
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
                     var(--parchment);
         margin: 0; padding: 48px 20px; line-height: 1.6;
     }
-    .container { max-width: 780px; margin: 0 auto; background: var(--paper); padding: 56px 52px 48px; border: 1px solid var(--hairline); position: relative; }
-    .container::before { content:""; position:absolute; inset:10px; border:1px solid var(--hairline-soft); pointer-events:none; }
+    .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--paper);
+            padding: 56px 52px 48px;
+            border: 1px solid var(--hairline);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+            position: relative;
+        }
+    .container::before { content: none; }
     @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} .container::before{inset:6px;} }
 
     .back-link { display:inline-block; margin-bottom: 18px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
@@ -32,16 +41,16 @@
     .settings-bar { display:flex; align-items:center; justify-content:center; gap: 10px; flex-wrap: wrap; margin: 0 auto 22px; }
     .fs-btn { width:auto; padding:6px 13px; font-size:13.5px; font-weight:600; background:transparent; color:var(--indigo); border:1px solid var(--hairline); cursor:pointer; }
     .fs-btn:hover { background: var(--parchment); }
-    .fs-btn.fs-reset { color:#6b6a80; font-size:12px; }
-    .settings-bar span { font-size:12.5px; color:#6b6a80; }
+    .fs-btn.fs-reset { color:#71717a; font-size:12px; }
+    .settings-bar span { font-size:12.5px; color:#71717a; }
 
     .kicker { text-align:center; font-size:calc(13px * var(--fs)); letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
-    h1 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; color:var(--indigo-deep); text-align:center; font-size:calc(38px * var(--fs)); margin:0 0 6px; line-height:1.15; }
-    .subhead { text-align:center; color:#5b5a72; font-size:calc(15px * var(--fs)); max-width:520px; margin:0 auto 26px; }
-    .disclaimer { font-size:calc(12.5px * var(--fs)); color:#6b6a80; text-align:center; max-width:540px; margin:0 auto 20px; border-top:1px solid var(--hairline-soft); padding-top:14px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; color:var(--indigo-deep); text-align:center; font-size:calc(38px * var(--fs)); margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#52525b; font-size:calc(15px * var(--fs)); max-width:520px; margin:0 auto 26px; }
+    .disclaimer { font-size:calc(12.5px * var(--fs)); color:#71717a; text-align:center; max-width:540px; margin:0 auto 20px; border-top:1px solid var(--hairline-soft); padding-top:14px; }
 
     .toc { background:var(--paper); border:1px solid var(--hairline); padding:20px 24px; margin: 26px 0 10px; position: sticky; top: 16px; z-index: 5; }
-    .toc-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:calc(19px * var(--fs)); color:var(--indigo); margin-bottom:10px; }
+    .toc-title { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:calc(19px * var(--fs)); color:var(--indigo); margin-bottom:10px; }
     .toc a { display:block; font-size:calc(14px * var(--fs)); color:var(--ink); text-decoration:none; padding:4px 0; border-bottom:1px dashed var(--hairline-soft); }
     .toc a:hover { color: var(--indigo); }
     .toc-toggle { display:none; }
@@ -51,60 +60,70 @@
 
     .journal-tools { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin: 18px 0 8px; }
     .journal-tools button { width:auto; padding:8px 16px; font-size:calc(13px * var(--fs)); font-weight:600; border:1.5px solid var(--indigo); background:transparent; color:var(--indigo); cursor:pointer; }
-    .journal-tools button:hover { background: rgba(43,46,99,0.08); }
-    .journal-tools .btn-fill { background: var(--indigo-deep); color:#F6F2E4; border-color: var(--indigo-deep); }
+    .journal-tools button:hover { background: rgba(4,120,87,0.08); }
+    .journal-tools .btn-fill { background: var(--indigo-deep); color:#FFFFFF; border-color: var(--indigo-deep); }
     .journal-tools .btn-fill:hover { background: var(--indigo); }
 
     .ornament { display:flex; align-items:center; gap:14px; margin: 44px 0 18px; scroll-margin-top: 90px; }
     .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
-    .ornament span { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
 
     .session { margin-top: 20px; }
     .session-num { font-size:calc(12.5px * var(--fs)); color:var(--wine); letter-spacing:0.05em; margin-bottom:4px; }
-    .session-title { font-family:'Cormorant Garamond',serif; font-weight:700; font-style:italic; color:var(--ink); font-size:calc(28px * var(--fs)); margin:0 0 14px; }
-    .anchor-verse { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); border-left:3px solid var(--gold); padding:4px 0 4px 16px; margin:0 0 18px; }
+    .session-title { font-family:'Fraunces',serif; font-weight:700; font-style: normal; color:var(--ink); font-size:calc(28px * var(--fs)); margin:0 0 14px; }
+    .anchor-verse { font-family:'Fraunces',serif; font-style:italic; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); border-left:3px solid var(--gold); padding:4px 0 4px 16px; margin:0 0 18px; }
 
-    .subhead2 { font-family:'Cormorant Garamond',serif; font-weight:600; font-style:italic; font-size:calc(19px * var(--fs)); color:var(--indigo); margin:24px 0 10px; }
+    .portrait-feature { text-align: center; margin: 22px 0 26px; }
+    .portrait-feature img {
+        max-width: 320px; width: 100%; border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .portrait-feature-caption {
+        font-family:'Fraunces',serif; font-style:italic; font-size:calc(16px * var(--fs));
+        color: var(--indigo-deep); max-width: 420px; margin: 12px auto 0;
+    }
+
+    .subhead2 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; font-size:calc(19px * var(--fs)); color:var(--indigo); margin:24px 0 10px; }
     p { font-size:calc(15px * var(--fs)); margin:0 0 12px; }
-    .verse-block { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:calc(16px * var(--fs)); color:#3b3a52; background:#FDFBF3; border:1px solid var(--hairline-soft); padding:14px 16px; margin:10px 0 16px; }
-    .verse-ref { font-family:'Work Sans',sans-serif; font-style:normal; font-weight:600; font-size:calc(12.5px * var(--fs)); color:var(--gold); display:block; margin-bottom:6px; }
+    .verse-block { font-family:'Fraunces',serif; font-style:italic; font-size:calc(16px * var(--fs)); color:#52525b; background:#fafafa; border:1px solid var(--hairline-soft); padding:14px 16px; margin:10px 0 16px; }
+    .verse-ref { font-family:'Inter',sans-serif; font-style:normal; font-weight:600; font-size:calc(12.5px * var(--fs)); color:var(--gold); display:block; margin-bottom:6px; }
 
     ol.discussion, ul.plain { padding-left: 22px; margin: 0 0 14px; }
     ol.discussion li, ul.plain li { font-size:calc(15px * var(--fs)); margin-bottom:10px; }
 
     .balance-box {
-        background:#EFF1F8; border:1px solid #C7CCE6; border-left:4px solid var(--indigo);
+        background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--indigo);
         padding:16px 20px; margin:20px 0; font-size:calc(14.5px * var(--fs));
     }
-    .balance-box .balance-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); display:block; margin-bottom:6px; }
+    .balance-box .balance-title { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); display:block; margin-bottom:6px; }
 
     .declaration-box {
-        background:#fffaf0; border:2px solid var(--gold); padding:18px 20px; margin:18px 0; font-size:calc(15px * var(--fs));
+        background:#ecfdf5; border:2px solid var(--gold); padding:18px 20px; margin:18px 0; font-size:calc(15px * var(--fs));
     }
-    .declaration-box .decl-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); display:block; margin-bottom:8px; }
+    .declaration-box .decl-title { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:calc(17px * var(--fs)); color:var(--indigo-deep); display:block; margin-bottom:8px; }
 
     .reflection-box textarea {
-        width:100%; min-height:110px; font-family:'Work Sans',sans-serif; font-size:calc(14.5px * var(--fs));
-        color:var(--ink); background:#FDFBF3; border:1px solid var(--hairline-soft); padding:12px 14px; resize:vertical;
+        width:100%; min-height:110px; font-family:'Inter',sans-serif; font-size:calc(14.5px * var(--fs));
+        color:var(--ink); background:#fafafa; border:1px solid var(--hairline-soft); padding:12px 14px; resize:vertical;
         margin-top: 8px;
     }
     .reflection-saved-note { font-size:calc(11.5px * var(--fs)); color:var(--forest); margin-top:4px; min-height: 14px; }
 
     .media-slot {
-        border: 1px dashed var(--hairline); padding: 16px 18px; margin: 16px 0; font-size: calc(13px * var(--fs)); color: #6b6a80;
+        border: 1px dashed var(--hairline); padding: 16px 18px; margin: 16px 0; font-size: calc(13px * var(--fs)); color: #71717a;
     }
     .media-slot audio, .media-slot video { width: 100%; margin-top: 8px; }
 
-    .care-note { background:#FBF0F1; border-left:4px solid var(--wine); padding:14px 18px; margin:20px 0; font-size:calc(14px * var(--fs)); color:#3b3a52; }
+    .care-note { background:#fff1f2; border-left:4px solid var(--wine); padding:14px 18px; margin:20px 0; font-size:calc(14px * var(--fs)); color:#52525b; }
 
     .back-to-top { display:inline-block; margin-top: 18px; font-size: calc(12.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
 
-    .site-footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--hairline-soft); font-size: calc(11.5px * var(--fs)); color: #6b6a80; text-align: center; }
-    .privacy-note { font-size: calc(12.5px * var(--fs)); color: #6b6a80; }
+    .site-footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--hairline-soft); font-size: calc(11.5px * var(--fs)); color: #71717a; text-align: center; }
+    .privacy-note { font-size: calc(12.5px * var(--fs)); color: #71717a; }
     .share-row { display:flex; gap:8px; flex-wrap:wrap; margin: 12px 0; justify-content:center; }
     .share-row button { width:auto; padding:9px 16px; font-size:calc(13px * var(--fs)); font-weight:600; border:1.5px solid var(--gold); background:transparent; color:var(--gold); cursor:pointer; }
-    .share-row button:hover { background: rgba(166,124,46,0.08); }
-    .print-btn { width:auto; padding:9px 16px; font-size:calc(13px * var(--fs)); font-weight:600; border:1.5px solid var(--indigo); background:var(--indigo-deep); color:#F6F2E4; cursor:pointer; display:block; margin: 16px auto; }
+    .share-row button:hover { background: rgba(16,185,129,0.10); }
+    .print-btn { width:auto; padding:9px 16px; font-size:calc(13px * var(--fs)); font-weight:600; border:1.5px solid var(--indigo); background:var(--indigo-deep); color:#FFFFFF; cursor:pointer; display:block; margin: 16px auto; }
 
     @media print {
         .settings-bar, .journal-tools, .share-row, .print-btn, .back-link, .back-to-top { display: none !important; }
@@ -117,7 +136,9 @@
 </head>
 <body>
 <div class="container">
-    <a class="back-link" href="index.html">&larr; Back to Iyanu Diagnostics</a>
+    <a class="back-link" href="index.html">&larr; Home</a>
+    <a class="back-link" href="Iyanu_Diagnostics.html" style="margin-left:14px;">Diagnostic Tool</a>
+    <a class="back-link" href="Iyanu_FAQ.html" style="margin-left:14px;">FAQs &rarr;</a>
 
     <div class="settings-bar" role="group" aria-label="Text size">
         <span>Text size</span>
@@ -163,6 +184,11 @@
         <div class="session-num">Foundation</div>
         <div class="session-title">Identity and Authority in Christ</div>
         <div class="anchor-verse">"Behold, I give unto you power to tread on serpents and scorpions, and over all the power of the enemy: and nothing shall by any means hurt you." — Luke 10:19, KJV</div>
+
+        <div class="portrait-feature">
+            <img src="jesus-portrait.jpg" alt="Portrait of Jesus Christ, crowned with thorns">
+            <p class="portrait-feature-caption">"Surely he hath borne our griefs, and carried our sorrows... and with his stripes we are healed." — Isaiah 53:4-5, KJV</p>
+        </div>
 
         <div class="subhead2">Why start here</div>
         <p>Every session that follows deals with a specific way the enemy is believed to operate. But none of that teaching is safe to build on without first being clear about one thing: who you are in Christ, and what authority has already been given to you. This session exists to put the foundation in the right place before anything else is built on it.</p>
@@ -544,7 +570,7 @@
         <div class="care-note">If working through this study brings up thoughts of suicide or self-harm, please reach out right now to a crisis line in your area (in the US: call or text 988) or go to your nearest emergency room. If it surfaces mental health or medical symptoms, please also see a qualified professional alongside anything here.</div>
 
         <div class="subhead2" style="margin-top:30px;">Counselling &amp; Support</div>
-        <p>For pastoral counselling related to this study, or to support this work: Utibe John Iniobong, 08069576989. Full donation details are on the <a href="index.html">main app page</a>.</p>
+        <p>For pastoral counselling related to this study, or to support this work: Utibe John Iniobong, 08069576989. Full donation details are on the <a href="Iyanu_Diagnostics.html">main app page</a>.</p>
 
         <div class="subhead2">What's Next</div>
         <p>Future plans for this project include online conferences, prayer meetings, live Bible studies building on this pack, and scheduled deliverance services. See the main app for updates as they're finalized.</p>
