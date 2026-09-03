@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Symptoms Checker — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fs: 1;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container {
+        max-width: 780px; margin: 0 auto; background: var(--paper);
+        padding: 56px 52px 48px; border: 1px solid var(--hairline);
+        border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+        position: relative;
+    }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} }
+
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:calc(13px * var(--fs)); letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style:normal; color:var(--indigo-deep); text-align:center; font-size:calc(36px * var(--fs)); margin:0 0 6px; line-height:1.2; }
+    .subhead { text-align:center; color:#52525b; font-size:calc(15px * var(--fs)); max-width:560px; margin:0 auto 24px; }
+
+    .ornament { display:flex; align-items:center; gap:14px; margin: 36px 0 16px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Fraunces',serif; font-style:italic; font-size:calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+
+    p { font-size: calc(15px * var(--fs)); }
+    .lede { font-size: calc(16px * var(--fs)); color: #27272a; }
+
+    .step-card {
+        border: 1px solid var(--hairline-soft); border-radius: 12px;
+        padding: 20px 22px; margin-bottom: 14px; background: var(--parchment);
+    }
+    .step-num {
+        display:inline-flex; align-items:center; justify-content:center;
+        width: 28px; height: 28px; border-radius: 50%; background: var(--indigo-deep); color:#fff;
+        font-family:'Fraunces',serif; font-size: 14px; margin-right: 10px; flex-shrink:0;
+    }
+    .step-title { font-weight: 600; font-size: calc(15.5px * var(--fs)); display:flex; align-items:center; margin-bottom: 8px; }
+    .step-body { font-size: calc(14.5px * var(--fs)); color: #3f3f46; margin-left: 38px; }
+
+    .life-domains { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 6px; }
+    @media (max-width: 640px) { .life-domains { grid-template-columns: 1fr; } }
+    .domain-card {
+        border: 1px solid var(--hairline-soft); border-radius: 10px; padding: 14px 16px; background: var(--parchment);
+    }
+    .domain-card .domain-title { font-weight: 600; font-size: calc(14px * var(--fs)); margin-bottom: 4px; }
+    .domain-card .domain-q { font-size: calc(13px * var(--fs)); color: #52525b; }
+
+    table.compare { width: 100%; border-collapse: collapse; margin: 14px 0 8px; }
+    table.compare th {
+        text-align:left; font-size: calc(12px * var(--fs)); text-transform: uppercase; letter-spacing: 0.03em;
+        padding: 8px 10px; border-bottom: 2px solid var(--hairline);
+    }
+    table.compare th.expected { color: var(--indigo); }
+    table.compare th.persistent { color: var(--wine); }
+    table.compare td { font-size: calc(13.5px * var(--fs)); padding: 10px; border-bottom: 1px solid var(--hairline-soft); vertical-align: top; }
+    table.compare td.expected-cell { color: #065f46; }
+    table.compare td.persistent-cell { color: #881337; }
+
+    .reflect-box {
+        background: #eff1f8; border: 1px solid #c7cce6; border-left: 4px solid var(--indigo);
+        padding: 16px 20px; margin: 18px 0; font-size: calc(14px * var(--fs));
+    }
+    .reflect-box .reflect-title { font-family:'Fraunces',serif; font-style:italic; font-size: calc(17px * var(--fs)); color: var(--indigo-deep); display:block; margin-bottom: 6px; }
+
+    .cta-block { text-align:center; margin: 40px 0 8px; }
+    .btn-cta {
+        display:inline-block; background: var(--indigo-deep); color: #fff; text-decoration:none;
+        font-weight: 600; font-size: calc(15.5px * var(--fs)); padding: 15px 30px; border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(6,78,59,0.25);
+    }
+    .btn-cta:hover { background: var(--indigo); }
+    .cta-note { font-size: calc(13px * var(--fs)); color: #71717a; margin-top: 10px; }
+
+    .site-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 34px; }
+    .site-nav a { font-size: calc(13px * var(--fs)); color: var(--indigo); text-decoration:none; border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { background: var(--parchment); }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="index.html">&larr; Home</a>
+
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>Symptoms Checker</h1>
+    <p class="subhead">Before the full diagnostic, a shorter question: do you actually know what you're looking for? Most people don't, at first — and that's the point of this page.</p>
+
+    <div class="ornament"><span>1. How to know your symptoms</span></div>
+    <p class="lede">In this framework, a "symptom" isn't necessarily a medical one. It's a pattern — something that keeps happening, keeps blocking you, or keeps costing you, without an ordinary explanation that fully accounts for it.</p>
+
+    <div class="step-card">
+        <div class="step-title"><span class="step-num">1</span>It repeats despite your effort</div>
+        <div class="step-body">A single bad year is life. The same specific kind of setback showing up again and again, no matter how hard you work or how carefully you plan, is a pattern worth naming.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-title"><span class="step-num">2</span>It doesn't fully add up</div>
+        <div class="step-body">Ordinary explanations exist for most hardship — the economy, timing, other people's choices. A true symptom is the piece that's left over after you've honestly accounted for all of that, and it still doesn't add up.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-title"><span class="step-num">3</span>It has a shape in your family, not just your life</div>
+        <div class="step-body">If a specific kind of struggle shows up in your parents, grandparents, or siblings too, not identically but recognizably, that's worth paying attention to as its own category, separate from what's just happening to you personally.</div>
+    </div>
+    <div class="step-card">
+        <div class="step-title"><span class="step-num">4</span>It shows up in your sleep</div>
+        <div class="step-body">A recurring dream, especially one that leaves a specific unsettled feeling behind it, is treated in this tradition as data, not noise. The full checklist and the <a href="Iyanu_Other_Dreams.html">Other Relevant Dreams</a> page both take this seriously.</div>
+    </div>
+
+    <div class="ornament"><span>2. You might not know you need this</span></div>
+    <p>This app exists partly because its own creator didn't recognize his own need for deliverance for years, even while actively growing in faith. It's a common blind spot, not a personal failing: it is much easier to see a pattern in someone else's life than to name it honestly in your own. If nothing on this page feels urgent yet, that isn't proof there's nothing there — it may just mean you haven't looked at your own life the way you'd look at someone else's.</p>
+
+    <div class="reflect-box">
+        <span class="reflect-title">A question worth sitting with</span>
+        If a close friend described your life to you exactly as it is, struggle for struggle, would you recognize a pattern in it that they couldn't see themselves? Now ask the same question about your own life.
+    </div>
+
+    <div class="ornament"><span>3. Look at what persists, not just what happened</span></div>
+    <p>Rather than trying to remember every hard thing that's ever happened, work through these areas of life and ask what has followed you, specifically, for years.</p>
+
+    <div class="life-domains">
+        <div class="domain-card"><div class="domain-title">Work &amp; finances</div><div class="domain-q">What keeps stalling right before it should succeed?</div></div>
+        <div class="domain-card"><div class="domain-title">Relationships &amp; marriage</div><div class="domain-q">What pattern keeps repeating with different people?</div></div>
+        <div class="domain-card"><div class="domain-title">Health</div><div class="domain-q">What has no clear medical explanation, or keeps recurring after treatment?</div></div>
+        <div class="domain-card"><div class="domain-title">Family &amp; household</div><div class="domain-q">What has your family always just accepted as "how things are"?</div></div>
+        <div class="domain-card"><div class="domain-title">Spiritual life</div><div class="domain-q">What makes it hard to pray, focus, or feel close to God?</div></div>
+        <div class="domain-card"><div class="domain-title">Sleep &amp; dreams</div><div class="domain-q">What dream or sleep pattern keeps returning?</div></div>
+    </div>
+
+    <div class="ornament"><span>4. Compare what you're experiencing to what's expected</span></div>
+    <p>Deuteronomy 28 describes what a life walking in blessing is expected to look like in broad strokes. Laying that description next to your actual, ongoing experience is often the fastest way to see a pattern clearly.</p>
+
+    <table class="compare">
+        <tr><th class="expected">Scripture's expected pattern</th><th class="persistent">A persistent pattern worth naming</th></tr>
+        <tr><td class="expected-cell">Fruitfulness — "blessed shall be the fruit of thy body" (Deut. 28:4, KJV)</td><td class="persistent-cell">Barrenness, miscarriage, or repeated marriage delay</td></tr>
+        <tr><td class="expected-cell">Provision and increase — "blessed shall be thy basket and thy store" (Deut. 28:5, KJV)</td><td class="persistent-cell">A poverty pattern, or money that consistently "finishes" without explanation</td></tr>
+        <tr><td class="expected-cell">Safety in ordinary life — "blessed when thou goest out, and blessed when thou comest in" (Deut. 28:6, KJV)</td><td class="persistent-cell">Recurring accidents, near-misses, or a sense of attack while asleep</td></tr>
+        <tr><td class="expected-cell">Success over opposition — "the LORD shall cause thine enemies... to be smitten before thy face" (Deut. 28:7, KJV)</td><td class="persistent-cell">Closed doors, or success that keeps dissolving right before it arrives</td></tr>
+        <tr><td class="expected-cell">Being the head, not the tail — "above only, and not beneath" (Deut. 28:13, KJV)</td><td class="persistent-cell">Chronic stagnation, or a pattern of settling for less than what was worked for</td></tr>
+    </table>
+    <p style="font-size: calc(13px * var(--fs)); color:#71717a;">This comparison is a lens for reflection, not a diagnosis on its own — hardship has many causes, and not every setback in this list means something spiritual is at work. It's meant to help you notice, not to alarm you.</p>
+
+    <div class="cta-block">
+        <a class="btn-cta" href="Iyanu_Diagnostics.html">Ready? Take the Full Diagnostic &rarr;</a>
+        <p class="cta-note">Takes about five minutes. Nothing you enter leaves your device unless you choose to share it.</p>
+    </div>
+
+    <div class="site-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="Iyanu_Diagnostics.html">Diagnostic Tool</a>
+        <a href="Iyanu_Bible_Study.html">Bible Study Pack</a>
+        <a href="Iyanu_Other_Dreams.html">Other Dreams</a>
+        <a href="Iyanu_FAQ.html">FAQs</a>
+    </div>
+</div>
+</body>
+</html>

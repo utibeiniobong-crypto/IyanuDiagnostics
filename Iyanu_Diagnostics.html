@@ -343,6 +343,12 @@
             font-size: calc(12.5px * var(--fs)); color: var(--wine); letter-spacing: 0.04em;
             margin-bottom: 4px;
         }
+        .triggered-by {
+            font-size: calc(13px * var(--fs)); color: #52525b;
+            background: var(--parchment); border: 1px solid var(--hairline-soft);
+            border-radius: 8px; padding: 8px 12px; margin: 4px 0 14px;
+        }
+        .triggered-by strong { color: var(--indigo-deep); }
         .law-title {
             font-family: 'Fraunces', serif;
             font-weight: 700; font-style: normal;
@@ -567,6 +573,7 @@
 
     <div style="text-align:center; margin-bottom: 10px;">
         <a href="index.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">🏠 Home</a>
+        <a href="Iyanu_Symptoms_Checker.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">🔍 Symptoms Checker</a>
         <a href="Iyanu_Bible_Study.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">📖 Open the Bible Study Pack (5 sessions)</a>
         <a href="Iyanu_About.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">👤 About the Creator</a>
         <a href="Iyanu_FAQ.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">❓ FAQs</a>
@@ -585,6 +592,7 @@
 
     <form id="diagnosticForm">
         <div class="ornament wizard-hideable"><span>Recurring dreams</span></div>
+        <p class="privacy-note wizard-hideable">Not seeing your dream here? Check the <a href="Iyanu_Other_Dreams.html" target="_blank" rel="noopener noreferrer">Other Relevant Dreams to Deliverance</a> page for more.</p>
         <div class="checkbox-grid wizard-hideable">
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="river"> Swimming in river / water</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="sex"> Sex in dream / spirit spouse</label></div>
@@ -598,6 +606,12 @@
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="naked"> Naked in public / shame</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="money"> Money lost / wallet stolen</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="house"> Attack in house / home</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="market"> Buying or selling in a dream market</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="surgery"> Undergoing surgery or an operation</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="teeth"> Teeth falling out</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="noControl"> Driving or traveling with no control</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="trapped"> Unable to move, speak, or call for help</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="dreams" value="climbing"> Climbing without ever reaching the top</label></div>
         </div>
 
         <div class="ornament wizard-hideable"><span>Main life challenges</span></div>
@@ -618,6 +632,8 @@
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="nearSuccess"> Near-success syndrome</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="fearAgreement"> Persistent fear or panic after a bad dream / bad news</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="wordCurse"> Negative words spoken over your life by others</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="rashVow"> Unkept vow or promise weighing on you</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="challenges" value="stumblingBlock"> Repeatedly tempted by the same person, gift, or opportunity</label></div>
         </div>
 
         <div class="ornament wizard-hideable"><span>Family background</span></div>
@@ -635,6 +651,8 @@
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="bitterness"> Bitterness / unforgiveness</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="cult"> Cult / secret society</label></div>
             <div class="checkbox-item"><label><input type="checkbox" name="background" value="household"> Family member undermining or monitoring you (household wickedness)</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="background" value="ancestralVillage"> Returning to a childhood home or ancestral village in dreams</label></div>
+            <div class="checkbox-item"><label><input type="checkbox" name="background" value="deadFeeding"> Being given food by a deceased relative in a dream</label></div>
         </div>
 
         <div class="ornament"><span>Pastoral counsel contact <span class="optional-tag">— optional</span></span></div>
@@ -712,6 +730,10 @@
             <button type="button" class="btn-outline-gold" onclick="shareViaEmail()">Email</button>
         </div>
 
+        <div class="ornament"><span>Had a breakthrough?</span></div>
+        <p class="share-prompt">If working through this has led to a testimony, we'd love to hear it — and it may encourage someone else walking through the same law.</p>
+        <button type="button" class="btn-outline-indigo" onclick="shareTestimony()">📝 Share Your Testimony</button>
+
         <button class="btn-outline-gold" onclick="window.print()">Print / save as PDF</button>
         <button class="btn-primary" onclick="downloadPDF()">Download PDF report</button>
         <button type="button" class="btn-outline-indigo" id="fullReportBtn" data-active="false" onclick="toggleFullReportSpeech()">Read full report aloud</button>
@@ -737,7 +759,10 @@
         <p>For pastoral counselling, or to support this work, you can reach out directly:</p>
         <ul class="plain-list">
             <li><strong>Name:</strong> Utibe John Iniobong</li>
-            <li><strong>Phone:</strong> 08069576989</li>
+            <li><strong>Phone:</strong> <a href="tel:+2348069576989">+234 806 957 6989</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/2348069576989" target="_blank" rel="noopener noreferrer">+234 806 957 6989</a></li>
+            <li><strong>Email:</strong> <a href="mailto:utibe.iniobong@gmail.com">utibe.iniobong@gmail.com</a></li>
+            <li><strong>Email (ministry):</strong> <a href="mailto:iyanudiagnostics@gmail.com">iyanudiagnostics@gmail.com</a></li>
         </ul>
         <p class="subhead2-inline">Donations (Nigeria)</p>
         <ul class="plain-list">
@@ -748,6 +773,10 @@
         <ul class="plain-list">
             <li><strong>Bank:</strong> MoMo Payment Service Bank</li>
             <li><strong>Account number:</strong> 8069576989</li>
+        </ul>
+        <p class="subhead2-inline">Donations (international / PayPal)</p>
+        <ul class="plain-list">
+            <li><strong>PayPal email:</strong> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_send-money&amp;recipient=utibe.iniobong%40gmail.com" target="_blank" rel="noopener noreferrer">utibe.iniobong@gmail.com</a></li>
         </ul>
         <p class="privacy-note">A safety note: because impersonator accounts are common in this space (see the ministry-vetting notes above), only trust payment details from this page directly, not from a message or call claiming to be from this ministry. If in doubt, verify before sending anything.</p>
     </div>
@@ -865,7 +894,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const lawDB = {
     legal: {
         name: "Law of Legal Rights",
-        tags: ['sin','bitterness','leak','cult','addiction','mental','poverty','marriage','barren','povertyCov','divorce','madness'],
+        tags: ['sin','bitterness','leak','cult','addiction','mental','poverty','marriage','barren','povertyCov','divorce','madness','teeth','surgery','deadFeeding','illness','money','curse'],
         scriptureRef: "Ephesians 4:27",
         scripture: "Neither give place to the devil.",
         core: "This law states that when we engage in sin, unforgiveness, bitterness, or keep accursed or stolen items, we literally give the devil a legal right to attack our lives. Just like a court, demons need 'legal ground' to operate. The enemy is a legalist — he cannot touch you without a reason. Until that ground is removed through repentance, restitution, and the blood of Jesus, the attacks will continue no matter how much you pray or fast.",
@@ -895,7 +924,7 @@ const lawDB = {
     },
     altar: {
         name: "Law of Altars & Territorial Spirits",
-        tags: ['shrine','occult','graveyard','house','burial','chased','blood','dedication','death','naked','flying'],
+        tags: ['shrine','occult','graveyard','house','burial','chased','blood','dedication','death','naked','flying','surgery','ancestralVillage','deadFeeding','trapped','climbing','noControl','stagnation','nearSuccess','accident','market'],
         scriptureRef: "Judges 6:25",
         scripture: "Throw down the altar of Baal that thy father hath, and cut down the grove that is by it.",
         core: "This law reveals that physical altars, idols, shrines, and blood sacrifices create spiritual gateways in a territory or family. These altars invite territorial spirits that enforce patterns of poverty, death, and failure. The spirit has a legal address to return to. Until the altar is physically destroyed and a new altar of worship to God is raised, deliverance will be temporary and the problem will return.",
@@ -1045,7 +1074,7 @@ const lawDB = {
     },
     blindness: {
         name: "Law of Spiritual Blindness",
-        tags: ['blind'],
+        tags: ['blind','lost','frustration'],
         scriptureRef: "2 Corinthians 4:4",
         scripture: "In whom the god of this world hath blinded the minds of them which believe not, lest the light of the glorious gospel of Christ, who is the image of God, should shine unto them.",
         core: "Drawn from 2 Corinthians 4:4 and Jesus' repeated call in the Gospels to 'watch and pray,' this law holds that spiritual vigilance is not optional. A person who stops actively paying attention to their spiritual life becomes more vulnerable to deception, manipulation, or simply drifting into harmful patterns unnoticed. More simply, it echoes the ordinary wisdom that neglect of any relationship, including one's relationship with God, tends to leave a person exposed.",
@@ -1072,6 +1101,66 @@ const lawDB = {
             {roman:"VI", title:"Guard against seduction", text:"Protect me from manipulation, flattery, or seduction, spiritual, relational, or financial, designed to keep me distracted from what matters."},
             {roman:"VII", title:"Walk in the light", text:"I choose to walk in the light as You are in the light, keeping nothing hidden that would keep my eyes dim."}
         ]
+    },
+    vow: {
+        name: "Law of the Vow and the Mouth",
+        tags: ['rashVow','sin','bitterness'],
+        scriptureRef: "Deuteronomy 23:21, 23",
+        scripture: "When thou shalt vow a vow unto the LORD thy God, thou shalt not slack to pay it... That which is gone out of thy lips thou shalt keep and perform.",
+        core: "This law holds that a vow or oath spoken to God, or invoking God's name, carries binding weight regardless of whether it was made wisely. Scripture treats a vow as something that must be kept once spoken, and repeatedly warns against making one rashly. In this tradition, an adversary who can provoke, trick, or pressure a person into a rash vow or self-curse gains a foothold, not because the enemy made the vow, but because the person's own words, once spoken, now stand as a commitment that has to be addressed rather than quietly ignored.",
+        examples: [
+            {title: "Jephthah's vow — Judges 11:30-31, 34-35", passage: "And Jephthah vowed a vow unto the LORD, and said, If thou shalt without fail deliver the children of Ammon into mine hands, Then it shall be, that whatsoever cometh forth of the doors of my house to meet me, when I return in peace from the children of Ammon, shall surely be the LORD's, and I will offer it up for a burnt offering. ... And Jephthah came to Mizpeh unto his house, and, behold, his daughter came out to meet him with timbrels and with dances: and she was his only child. And it came to pass, when he saw her, that he rent his clothes, and said, Alas, my daughter! thou hast brought me very low... for I have opened my mouth unto the LORD, and I cannot go back."},
+            {title: "Herod's oath — Matthew 14:6-9", passage: "But when Herod's birthday was kept, the daughter of Herodias danced before them, and pleased Herod. Whereupon he promised with an oath to give her whatsoever she would ask. And she, being before instructed of her mother, said, Give me here John Baptist's head in a charger. And the king was sorry: nevertheless for the oath's sake, and them which sat with him at meat, he commanded it to be given her."},
+            {title: "The binding nature of a vow — Numbers 30:2", passage: "If a man vow a vow unto the LORD, or swear an oath to bind his soul with a bond; he shall not break his word, he shall do according to all that proceedeth out of his mouth."},
+            {title: "A warning against rash vows — Ecclesiastes 5:4-5", passage: "When thou vowest a vow unto God, defer not to pay it; for he hath no pleasure in fools: pay that which thou hast vowed. Better is it that thou shouldest not vow, than that thou shouldest vow and not pay."},
+            {title: "Peter's oath of denial — Matthew 26:72, 74-75", passage: "And again he denied with an oath, I do not know the man. ... Then began he to curse and to swear, saying, I know not the man. And immediately the cock crew. And Peter remembered the word of Jesus... And he went out, and wept bitterly."}
+        ],
+        realExamples: [
+            {title: "A promise made in crisis", detail: "A woman facing a frightening medical diagnosis prayed a desperate, specific vow — that if she recovered, she would give up something she cared about deeply, without thinking through what she was promising. She recovered, but spent years feeling guilty and spiritually unsettled because she never followed through. Once she was led to formally release herself from that specific vow in prayer, acknowledging both the promise and her failure to keep it, she described a noticeable lifting of the guilt she had carried."},
+            {title: "A promise made under pressure", detail: "A young man, embarrassed in front of friends, swore an oath he had no intention of keeping just to save face in the moment. The specific commitment came back to haunt him years later when circumstances made him confront the gap between what he'd sworn and how he'd actually lived. Naming the rash oath honestly and asking forgiveness for it, rather than continuing to ignore it, was described as a turning point in a broader season of integrity."},
+            {title: "A vow inherited, not chosen", detail: "A family had a longstanding habit of dramatic, half-serious oaths made during arguments — statements like swearing never to speak to someone again. One family member recognized a pattern of broken relationships that traced back to these habitually spoken, rarely examined vows. Choosing to specifically renounce the pattern and speak reconciliation instead, rather than another vow, was reported as a meaningful shift in the family's relationships."},
+            {title: "A business oath", detail: "A businessman made an extravagant, half-serious promise to a business partner during a celebration — a specific commitment he later realized he could not honor without serious cost to his family. Rather than quietly ignoring it, he went back to the partner, explained honestly, and formally released himself from the specific wording of what he'd promised. He described the direct, uncomfortable conversation as more effective than years of vague unease about it."},
+            {title: "Freed from a childhood promise", detail: "An adult recalled a solemn childhood promise made to a friend, half in play, that had somehow continued to feel spiritually binding decades later, quietly shaping unrelated life decisions. In prayer, he specifically renounced the vow by name, thanked God for the friendship it came from, and reported a distinct sense of release from an obligation he had never consciously chosen to carry."}
+        ],
+        plan: [
+            {roman:"I", title:"Remember", text:"Lord, bring to my memory any vow, oath, or solemn promise I have made — to You, to another person, or even to myself — that I have not kept or that I made rashly, without thinking it through."},
+            {roman:"II", title:"Confess", text:"I confess that I have been careless with my words and my promises. Forgive me, Lord, for every vow spoken in haste, fear, pride, or pressure that I did not intend to keep."},
+            {roman:"III", title:"Name it specifically", text:"Lord, help me name this vow specifically rather than vaguely — what I said, to whom, and under what circumstance — so that I can address it honestly rather than let it remain unspoken."},
+            {roman:"IV", title:"Release or fulfill", text:"Where this vow can still be honorably kept, give me the courage to keep it. Where it cannot or should not be kept, I ask You to release me from its binding weight in the name of Jesus Christ."},
+            {roman:"V", title:"Renounce rash speech", text:"I renounce the pattern of speaking rashly under pressure, fear, or embarrassment. Help me become a person whose yes is yes and whose no is no."},
+            {roman:"VI", title:"Break inherited vow patterns", text:"Any pattern of rash, unexamined vows passed down in my family, I renounce it today. I choose to build a different pattern for those who come after me."},
+            {roman:"VII", title:"Seal", text:"I seal my mouth and my promises under Your authority, Lord. Let my words be few, my commitments be honest, and my yes be trustworthy from this day forward."}
+        ]
+    },
+    stumblingBlockLaw: {
+        name: "Law of the Stumbling Block",
+        tags: ['stumblingBlock','addiction','closed'],
+        scriptureRef: "Revelation 2:14",
+        scripture: "Thou hast there them that hold the doctrine of Balaam, who taught Balac to cast a stumblingblock before the children of Israel, to eat things sacrificed unto idols, and to commit fornication.",
+        core: "This law describes a specific strategy rather than a general spiritual mechanism: rather than attacking someone directly, an adversary places something enticing or deceptive in a person's path, hoping they will trip over it by their own choice. Scripture treats this as a real, named strategy — the 'doctrine of Balaam' — and holds the person who causes another to stumble responsible for that scheme, while still holding the person who stumbles responsible for their own choice to fall. In this tradition, recognizing a stumbling block for what it is, before stepping on it, is treated as a matter of discernment, not just willpower.",
+        examples: [
+            {title: "Balaam's strategy succeeds — Numbers 25:1-3", passage: "And Israel abode in Shittim, and the people began to commit whoredom with the daughters of Moab. And they called the people unto the sacrifices of their gods: and the people did eat, and bowed down to their gods. And Israel joined himself unto Baalpeor: and the anger of the LORD was kindled against Israel."},
+            {title: "A warning about causing others to fall — Matthew 18:7", passage: "Woe unto the world because of offences! for it must needs be that offences come; but woe to that man by whom the offence cometh!"},
+            {title: "Do not place a stumbling block — Romans 14:13", passage: "Let us not therefore judge one another any more: but judge this rather, that no man put a stumblingblock or an occasion to fall in his brother's way."},
+            {title: "The serpent's enticement — Genesis 3:4-6", passage: "And the serpent said unto the woman, Ye shall not surely die: For God doth know that in the day ye eat thereof, then your eyes shall be opened, and ye shall be as gods, knowing good and evil. And when the woman saw that the tree was good for food, and that it was pleasant to the eyes, and a tree to be desired to make one wise, she took of the fruit thereof, and did eat, and gave also unto her husband with her; and he did eat."},
+            {title: "David provoked into sin — 1 Chronicles 21:1", passage: "And Satan stood up against Israel, and provoked David to number Israel."}
+        ],
+        realExamples: [
+            {title: "An enticing shortcut", detail: "A young professional was offered an unusually generous, fast-moving business opportunity by a new acquaintance, structured in a way that required bypassing his usual due diligence. Something about the pressure to decide quickly felt off, and after stepping back and consulting a trusted mentor, he discovered the arrangement would have compromised both his finances and his integrity. Recognizing the enticement for what it was, before stepping into it, spared him significant loss."},
+            {title: "A tempting reunion", detail: "A woman working through the early stages of healing from a difficult relationship found herself repeatedly contacted by the same former partner, always at moments she felt most vulnerable and lonely. She recognized the pattern as a recurring stumbling block rather than a coincidence, and chose to block contact entirely during that season rather than test her own resolve against it."},
+            {title: "A doorway disguised as a gift", detail: "A teenager was given an unusual gift by a new friend, one with an exciting, mysterious story attached rather than an alarming one. When strange behavior and nightmares followed in the home, the family traced it back to the object and removed it, recognizing in hindsight how an appealing gift had served as an entry point they hadn't questioned closely enough at the time."},
+            {title: "Provoked into overreach", detail: "A ministry leader, flattered by unusually persistent encouragement from a new donor, found himself making bigger and riskier financial commitments than he normally would have on his own judgment. When a colleague asked pointed questions about the donor's background, inconsistencies surfaced that revealed the flattery itself had been the trap. Slowing down and inviting outside scrutiny before committing further prevented a larger loss."},
+            {title: "Recognizing a repeating pattern", detail: "A man realized that his periods of relapse into an old addiction consistently followed contact with one particular acquaintance who always seemed to appear at his most vulnerable moments with exactly the temptation he was trying to avoid. Naming that specific relationship as a stumbling block, rather than only blaming his own willpower each time, allowed him to make a boundary decision that finally broke the cycle."}
+        ],
+        plan: [
+            {roman:"I", title:"Discernment", text:"Lord, give me discernment to recognize a stumbling block for what it is before I step on it, whether it comes disguised as an opportunity, a relationship, a gift, or a shortcut."},
+            {roman:"II", title:"Expose the pattern", text:"Reveal to me any pattern in my life where the same kind of enticement keeps appearing at my most vulnerable moments. Help me see it clearly rather than treating each instance as unrelated."},
+            {roman:"III", title:"Take responsibility", text:"Lord, where I have already stumbled, I take responsibility for my own choice to fall, even where someone else set the trap. I ask for Your forgiveness and Your help to walk differently."},
+            {roman:"IV", title:"Set a boundary", text:"Give me the courage to set a clear boundary around whatever or whoever has repeatedly functioned as a stumbling block in my life, even when it is disguised as something appealing."},
+            {roman:"V", title:"Refuse the trade", text:"I refuse every offer that asks me to trade my integrity, my safety, or my walk with You for something that looks good in the moment. I choose the harder right over the easier wrong."},
+            {roman:"VI", title:"Release judgment", text:"Lord, You said woe to the one by whom the offence comes. I release judgment of anyone who has set a trap for me into Your hands, trusting You to deal with them in Your justice and mercy."},
+            {roman:"VII", title:"Seal", text:"I seal my path today against every stumbling block the enemy would place before me. Let my eyes be open, my steps be steady, and my choices be Yours, in Jesus' name."}
+        ]
     }
 };
 
@@ -1084,11 +1173,16 @@ const bookDB = [
     {tag: ['attack','frustration','closed','blind','sin','household'], title: "Pigs in the Parlor: A Practical Guide to Deliverance", author: "Frank Hammond", focus: "A classic, widely used deliverance manual", prayers: ["I take authority over every spirit hindering my walk with God.", "I close every door I opened knowingly or unknowingly.", "I ask for discernment to recognize what is truly opposing me."]},
     {tag: ['attack','frustration','cult','occult','bitterness','wordCurse','fearAgreement'], title: "Prayers That Rout Demons", author: "John Eckhardt", focus: "Targeted prayers for spiritual warfare", prayers: ["I release the fire of God against every demonic assignment over my life.", "Every power of darkness working against my destiny, be scattered now.", "I bind every spirit of confusion and command it to leave."]},
     {tag: ['shrine','occult','graveyard','death','dedication'], title: "Delivered from the Powers of Darkness", author: "Emmanuel Eni", focus: "First-hand testimony often used as an introduction to deliverance themes", prayers: ["Lord, expose anything hidden in darkness over my life.", "I renounce every past involvement with occult practices, knowingly or unknowingly.", "I receive the light of Christ over every area once hidden."]},
-    {tag: ['shrine','occult','graveyard','blood','cult'], title: "He Came to Set the Captives Free", author: "Rebecca Brown", focus: "A widely circulated testimony-based account of deliverance from occult involvement", disputed: true, prayers: ["Lord, expose every hidden work of darkness assigned against me.", "I renounce any occult involvement in my life or family line, knowingly or unknowingly entered into.", "I receive the authority of Christ over every power that once had a claim on me."]},
+    {tag: ['shrine','occult','graveyard','blood','cult'], title: "He Came to Set the Captives Free", author: "Rebecca Brown", focus: "A widely circulated testimony-based account of deliverance from occult involvement", flagNote: "Personal Freedom Outreach, a Christian counter-cult research organization, found inconsistencies in the book's central testimony and reported that the author lost her medical license. Worth reading alongside outside perspectives rather than at face value.", prayers: ["Lord, expose every hidden work of darkness assigned against me.", "I renounce any occult involvement in my life or family line, knowingly or unknowingly entered into.", "I receive the authority of Christ over every power that once had a claim on me."]},
     {tag: ['shrine','occult','house','graveyard','death'], title: "Territorial Spirits", author: "C. Peter Wagner (editor)", focus: "A foundational, if debated, text on the idea of geographically-assigned spirits", prayers: ["Lord, expose every power assigned against this territory or household.", "I take authority over this place in the name of Jesus Christ.", "I dedicate this ground to You and no other."]},
     {tag: ['closed','frustration','stagnation','shrine','occult'], title: "Authority to Tread", author: "Dr. Rebecca Greenwood", focus: "A practical guide to strategic-level intercession and spiritual warfare", prayers: ["Lord, give me discernment for the battle in front of me.", "I stand in the authority given to me through Christ.", "I ask for wisdom to intercede well for myself and my household."]},
     {tag: ['poverty','stagnation','closed','frustration','leak'], title: "Prayer Rain", author: "Dr. D.K. Olukoya", focus: "A widely used collection of targeted prayer points for breakthrough", prayers: ["Every rain of blessing due to me, fall now in Jesus' name.", "I refuse to be stranded on the way to my breakthrough.", "Every satanic delay assigned to my life, be terminated now."]},
-    {tag: ['attack','graveyard','naked','mental','blind'], title: "Demons and How to Deal With Them", author: "Dag Heward-Mills", focus: "A widely read introduction to demonic activity, using the account of the Gadarene demoniac as its anchor", prayers: ["Every demonic influence operating in my life, I command you to leave now.", "I take back any ground given to the enemy through fear or deception.", "Lord, clothe me again in my right mind, as You did the man of Gadara."]}
+    {tag: ['attack','graveyard','naked','mental','blind'], title: "Demons and How to Deal With Them", author: "Dag Heward-Mills", focus: "A widely read introduction to demonic activity, using the account of the Gadarene demoniac as its anchor", prayers: ["Every demonic influence operating in my life, I command you to leave now.", "I take back any ground given to the enemy through fear or deception.", "Lord, clothe me again in my right mind, as You did the man of Gadara."]},
+    {tag: ['blind','closed','frustration','poverty','stagnation'], title: "The Believer's Authority", author: "Kenneth E. Hagin", focus: "A foundational Word of Faith teaching on the authority given to believers in Christ", flagNote: "Hagin founded the Word of Faith movement. His broader teaching on faith and positive confession is theologically contested — many evangelical theologians consider parts of it to go beyond Scripture. Included here for its teaching on believer's authority specifically, not as an endorsement of the wider movement.", prayers: ["I exercise the authority given to me in the name of Jesus Christ.", "I take my place as a believer seated with Christ, not under circumstances but over them.", "Every power that has taken advantage of my ignorance of this authority, your time is up."]},
+    {tag: ['attack','graveyard','shrine','occult','mental'], title: "How to Cast Out Devils", author: "Norvel Hayes", focus: "A practical, first-hand account of deliverance ministry from a longtime Pentecostal teacher", prayers: ["Every devil operating in my body, mind, or circumstances, come out in Jesus' name.", "I take authority over every spirit that does not belong to me.", "Lord, give me discernment to recognize what I am truly dealing with."]},
+    {tag: ['shrine','occult','cult','household','death'], title: "Mysterious Secrets of the Dark Kingdom", author: "J.P. Timmons", focus: "A detailed account of occult structure and strategy from a Christian perspective", flagNote: "The author describes this book as based on personal interviews with current and former occult members in West Africa. That claim, like similar first-hand testimony books in this genre, is self-reported and not independently verifiable — read the specific claims with that in mind, even though no broader credibility issue has been found with the author.", prayers: ["Every strategy of the dark kingdom assigned against my life, be exposed and dismantled.", "I stand against every organized assignment of darkness in the name of Jesus Christ.", "Lord, give me wisdom to recognize the enemy's methods without fear."]},
+    {tag: ['stagnation','frustration','closed','attack'], title: "Run to the Battle", author: "Roberts Liardon", focus: "A call to spiritual engagement and perseverance rather than passivity", flagNote: "In 2001, Liardon publicly disclosed a relationship with a subordinate youth pastor at his church and stepped back from ministry for a period of restoration before returning. It was self-disclosed rather than uncovered by accusers, with no allegations of coercion, but the power dynamic involved is worth being aware of.", prayers: ["Lord, give me the courage to run toward the battle rather than away from it.", "I refuse passivity in the face of what is trying to hold me back.", "I press forward into what You have called me to, regardless of the resistance."]},
+    {tag: ['household','shrine','occult','death','madness','povertyCov','curse'], title: "Purging Your House, Pruning Your Family Tree", author: "Perry Stone", focus: "Removing demonic influence and generational patterns from home and family", flagNote: "The author has faced multiple, corroborated allegations of sexual misconduct from former ministry employees, including leaked audio in which he admitted to acting inappropriately, and a federal investigation was reported. A grand jury did not find sufficient grounds for criminal charges — that is not the same as a finding of innocence. Worth knowing before relying on his ministry or materials.", prayers: ["Lord, purge my house of anything that does not belong there.", "I prune every negative pattern from my family tree, in Jesus' name.", "I dedicate my home and my household to You alone."]}
 ];
 
 // Online / media resources by ministry or teacher. Each entry links to
@@ -1136,6 +1230,37 @@ const resourceDB = [
 // symptoms, or pregnancy loss also see a path to professional care,
 // since ignoring that path could itself prolong someone's suffering.
 const careResourceTags = ['mental', 'illness', 'madness', 'barren', 'accident'];
+
+// Maps every checkbox value to its human-readable label, so the
+// diagnosis report can show exactly which selections triggered each
+// matched law, not just the law itself.
+const TAG_LABELS = {
+    river: "Swimming in river / water", sex: "Sex in dream / spirit spouse", eat: "Eating in dream",
+    chased: "Chased by dogs / masquerade", graveyard: "Graveyard / dead people", burial: "Burial / coffin / your funeral",
+    snake: "Snake / python spirit", flying: "Flying / falling from height", lost: "Lost / exam failure",
+    naked: "Naked in public / shame", money: "Money lost / wallet stolen", house: "Attack in house / home",
+    market: "Buying or selling in a dream market", surgery: "Undergoing surgery or an operation",
+    teeth: "Teeth falling out", noControl: "Driving or traveling with no control",
+    trapped: "Unable to move, speak, or call for help", climbing: "Climbing without ever reaching the top",
+    stagnation: "Stagnation / no progress", poverty: "Poverty pattern / money finishes",
+    marriage: "Marriage delay / constant breakup", barren: "Barrenness / miscarriage",
+    leak: "Financial leak / witchcraft", addiction: "Addiction: porn / anger / alcohol",
+    illness: "Pattern of sickness", mental: "Mental torment: fear / suicide", accident: "Accidents / near death",
+    attack: "Spiritual attacks in sleep", closed: "Closed doors / rejection", frustration: "Frustration / urge to quit",
+    blind: "Spiritual blindness: can't pray", nearSuccess: "Near-success syndrome",
+    fearAgreement: "Persistent fear or panic after a bad dream / bad news",
+    wordCurse: "Negative words spoken over your life by others",
+    rashVow: "Unkept vow or promise weighing on you",
+    stumblingBlock: "Repeatedly tempted by the same person, gift, or opportunity",
+    shrine: "Ancestral shrine / household witchcraft", blood: "Blood sacrifice in family",
+    dedication: "Dedicated to idol / river as child", death: "Pattern of untimely death",
+    divorce: "Generational divorce / polygamy", povertyCov: "Poverty covenant: \"no one gets rich\"",
+    madness: "Mental illness / madness in family", curse: "Family curse / generational",
+    sin: "Unconfessed sin", occult: "Occult / satanic / charms", bitterness: "Bitterness / unforgiveness",
+    cult: "Cult / secret society", household: "Family member undermining or monitoring you (household wickedness)",
+    ancestralVillage: "Returning to a childhood home or ancestral village in dreams",
+    deadFeeding: "Being given food by a deceased relative in a dream"
+};
 
 function getSelected(cat) { return Array.from(document.querySelectorAll(`input[name="${cat}"]:checked`)).map(cb => cb.value); }
 
@@ -1328,9 +1453,15 @@ function renderReport(report, contact) {
     let lawHTML = report.laws.map(law => {
         let bibleHTML = law.examples.map(ex => `<div class="example-item"><div class="example-title">${escapeHTML(ex.title)}</div><div class="bible-passage">${escapeHTML(ex.passage)}</div></div>`).join('');
         let realHTML = law.realExamples.map(ex => `<div class="example-item"><div class="example-title">${escapeHTML(ex.title)}</div><div class="real-detail">${escapeHTML(ex.detail)}</div></div>`).join('');
+        const matchedTags = allTags.filter(t => law.tags.includes(t));
+        const matchedLabels = matchedTags.map(t => TAG_LABELS[t] || t);
+        const triggerHTML = matchedLabels.length
+            ? `<div class="triggered-by"><strong>Triggered by your selections:</strong> ${matchedLabels.map(l => escapeHTML(l)).join(' · ')}</div>`
+            : '';
         return `<div class="law-box">
             <div class="law-eyebrow">Spiritual law exploited</div>
             <div class="law-title">${escapeHTML(law.name)}</div>
+            ${triggerHTML}
             <div class="scripture-block">"${escapeHTML(law.scripture)}"<br>— ${escapeHTML(law.scriptureRef)}, KJV</div>
             <div class="law-core">${escapeHTML(law.core)}</div>
             <div class="subsection-label">Biblical examples</div>
@@ -1388,7 +1519,7 @@ function renderReport(report, contact) {
 
         const prayerListHTML = book.prayers.map(p => `<li>${escapeHTML(p)}</li>`).join('');
         const btnId = `voiceBtn${i}`;
-        const disputedNote = book.disputed ? `<div class="book-disputed">Some of the claims in this book have been publicly disputed by other Christian researchers. Worth reading alongside outside perspectives rather than at face value — see the note below.</div>` : '';
+        const disputedNote = book.flagNote ? `<div class="book-disputed">${escapeHTML(book.flagNote)}</div>` : (book.disputed ? `<div class="book-disputed">Some of the claims in this book have been publicly disputed by other Christian researchers. Worth reading alongside outside perspectives rather than at face value — see the note below.</div>` : '');
         card.innerHTML = `<div class="book-title">${escapeHTML(book.title)}</div><div class="book-author">${escapeHTML(book.author)}</div><div class="book-focus">${escapeHTML(book.focus)}</div>${disputedNote}<div class="prayers"><b>Targeted prayer points</b><ul>${prayerListHTML}</ul><button type="button" class="btn-voice" id="${btnId}" data-active="false">Pray aloud</button></div>`;
 
         bookRecEl.appendChild(card);
@@ -1576,7 +1707,7 @@ function buildPDFDoc() {
     lastReport.books.forEach(book => {
         addText(`${book.title} — ${book.author}`, 11, true, gold);
         addText(`Focus: ${book.focus}`, 10);
-        if (book.disputed) addText(`Note: some claims in this book have been publicly disputed by other Christian researchers.`, 8);
+        if (book.flagNote) { addText(`Note: ${book.flagNote}`, 8); } else if (book.disputed) { addText(`Note: some claims in this book have been publicly disputed by other Christian researchers.`, 8); }
         addText(`Targeted prayer points:`, 10, true);
         book.prayers.forEach(p => { addText(`- ${p}`, 9); });
         y += 3;
@@ -1660,6 +1791,27 @@ function shareViaEmail() {
     const text = buildShareText(lastReport, lastContact);
     const subject = encodeURIComponent("Iyanu Diagnostics — Spiritual Diagnosis Summary");
     window.location.href = "mailto:?subject=" + subject + "&body=" + encodeURIComponent(text);
+}
+
+function shareTestimony() {
+    const subject = encodeURIComponent("My Iyanu Diagnostics Testimony");
+    const bodyLines = [
+        "Share your testimony below. Feel free to include as much or as little detail as you're comfortable with.",
+        "",
+        "What law or laws did the diagnostic point to?",
+        "",
+        "",
+        "What did the prayer plan / process look like for you?",
+        "",
+        "",
+        "What changed?",
+        "",
+        "",
+        "May we share an anonymized version of this testimony publicly? (yes/no)",
+        ""
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = "mailto:iyanudiagnostics@gmail.com?cc=utibe.iniobong@gmail.com&subject=" + subject + "&body=" + body;
 }
 
 function printCounselorSummary() {

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prayer Points — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fs: 1;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container {
+        max-width: 780px; margin: 0 auto; background: var(--paper);
+        padding: 56px 52px 48px; border: 1px solid var(--hairline);
+        border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+        position: relative;
+    }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} }
+
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:calc(13px * var(--fs)); letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style:normal; color:var(--indigo-deep); text-align:center; font-size:calc(36px * var(--fs)); margin:0 0 6px; line-height:1.2; }
+    .subhead { text-align:center; color:#52525b; font-size:calc(15px * var(--fs)); max-width:560px; margin:0 auto 20px; }
+    .disclaimer { font-size: calc(12.5px * var(--fs)); color:#71717a; text-align:center; max-width:560px; margin:0 auto 24px; border-top:1px solid var(--hairline-soft); padding-top:14px; }
+
+    .toolbar { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom: 8px; }
+    .toolbar button {
+        width:auto; font-size: 13px; font-weight:600; padding: 8px 16px;
+        border: 1px solid var(--hairline); background: transparent; color: var(--indigo);
+        border-radius: 8px; cursor: pointer;
+    }
+    .toolbar button:hover { background: var(--parchment); }
+    .progress-note { text-align:center; font-size: 12.5px; color:#71717a; margin: 6px 0 20px; }
+
+    .ornament { display:flex; align-items:center; gap:14px; margin: 34px 0 14px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Fraunces',serif; font-style:italic; font-size:calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+    .category-intro { font-size: calc(14px * var(--fs)); color:#52525b; margin-bottom: 14px; }
+
+    .prayer-item {
+        display: flex; align-items: flex-start; gap: 12px;
+        border: 1px solid var(--hairline-soft); border-radius: 10px;
+        padding: 14px 16px; margin-bottom: 10px; background: var(--parchment);
+        transition: background 0.15s ease, opacity 0.15s ease;
+    }
+    .prayer-item input[type="checkbox"] { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--indigo); flex-shrink: 0; }
+    .prayer-item label { font-size: calc(14.5px * var(--fs)); line-height: 1.55; cursor: pointer; }
+    .prayer-item.checked { background: #ecfdf5; opacity: 0.75; }
+    .prayer-item.checked label { text-decoration: line-through; text-decoration-color: var(--gold-soft); }
+
+    .site-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 34px; }
+    .site-nav a { font-size: calc(13px * var(--fs)); color: var(--indigo); text-decoration:none; border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { background: var(--parchment); }
+
+    @media print { .back-link, .toolbar, .site-nav { display:none; } .prayer-item { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="index.html">&larr; Home</a>
+    <a class="back-link" href="Iyanu_Bible_Study.html" style="margin-left:14px;">Bible Study Pack</a>
+
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>Prayer Points</h1>
+    <p class="subhead">Twenty-five foundational prayer points, in five movements. Pray these before or alongside any specific spiritual law from the diagnostic or Bible Study Pack.</p>
+    <p class="disclaimer">Check a point off as you pray through it — your progress is saved on this device only. This page is a starting point for prayer, not a substitute for your own words before God.</p>
+
+    <div class="toolbar">
+        <button type="button" onclick="window.print()">🖨️ Print this page</button>
+        <button type="button" onclick="resetPrayerProgress()">↺ Reset checkmarks</button>
+    </div>
+    <p class="progress-note" id="progressNote"></p>
+
+    <div class="ornament"><span>I. Revelation — Exposing the Exploitation</span></div>
+    <p class="category-intro">Before anything can be broken, it has to be seen clearly.</p>
+    <div class="prayer-item"><input type="checkbox" id="p1"><label for="p1">Father, in the name of Jesus, I ask that You reveal to me every way and form the enemy has exploited Your laws against me.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p2"><label for="p2">Lord, show me clearly, not vaguely, exactly where I have given ground, whether through my own sin or through what has been done to me.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p3"><label for="p3">Expose every hidden work of darkness working over my life, my family, and my destiny, in Jesus' name.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p4"><label for="p4">Father, let nothing that needs to be seen remain hidden any longer. Bring every buried thing to light.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p5"><label for="p5">Holy Spirit, search me and know my heart; try me and know my thoughts, and show me any wicked way in me.</label></div>
+
+    <div class="ornament"><span>II. Strategy — Breaking the Exploitation</span></div>
+    <p class="category-intro">Revelation without a clear next step tends to stall. This section asks for the specific way forward.</p>
+    <div class="prayer-item"><input type="checkbox" id="p6"><label for="p6">Father, in the name of Jesus, I ask for specific details as to how I can break this list of exploitations over my life and destiny.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p7"><label for="p7">Lord, give me a clear, step-by-step way forward for each specific law that has been exploited against me, not a vague sense of what to do, but real direction.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p8"><label for="p8">Every legal ground the enemy has used against me, I revoke it now by the blood of Jesus Christ.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p9"><label for="p9">I break every agreement, covenant, and vow that has given the enemy access to my life, in the name of Jesus.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p10"><label for="p10">Father, close every door that has been left open, and seal it with the blood of the everlasting covenant.</label></div>
+
+    <div class="ornament"><span>III. Discernment — Opening Spiritual Eyes</span></div>
+    <p class="category-intro">So that what was just broken does not need to be broken again the same way.</p>
+    <div class="prayer-item"><input type="checkbox" id="p11"><label for="p11">Father, in the name of Jesus, open my spiritual eyes. Remove every veil that is blocking my access to heavenly secrets. Wash my eyes with eyesalve.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p12"><label for="p12">Lord, give me the spirit of wisdom and revelation in the knowledge of You, that the eyes of my understanding would be enlightened.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p13"><label for="p13">I refuse to be spiritually asleep any longer. Holy Spirit, keep me watchful and alert.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p14"><label for="p14">Father, help me test what I see and hear rather than accepting every voice at face value.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p15"><label for="p15">Let discernment, not fear, guide how I recognize what is truly at work around me.</label></div>
+
+    <div class="ornament"><span>IV. Restoration — Recovering What Was Stolen</span></div>
+    <p class="category-intro">Deliverance that only removes something, without restoring what was lost, is incomplete.</p>
+    <div class="prayer-item"><input type="checkbox" id="p16"><label for="p16">Father, in the name of Jesus, help me recover my glory and every gift and goodness that has been stolen from me. Protect my glory from further attacks by the enemy.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p17"><label for="p17">Lord, restore to me the years the locust and the cankerworm have eaten.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p18"><label for="p18">Every opportunity, relationship, or season that was delayed or diverted, I ask You to restore it according to Your purpose for my life.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p19"><label for="p19">Father, rebuild what has been broken down in my life, my family, and my calling.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p20"><label for="p20">I receive back, in Jesus' name, everything that rightfully belongs to me according to Your Word.</label></div>
+
+    <div class="ornament"><span>V. Relationship — Drawing Closer to God</span></div>
+    <p class="category-intro">The point of all of this was never the battle. It was always Him.</p>
+    <div class="prayer-item"><input type="checkbox" id="p21"><label for="p21">Father, in the name of Jesus, help me to love You more. Let me have a closer relationship with You going forward.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p22"><label for="p22">Lord, let this process be about knowing You more, not just about winning a battle.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p23"><label for="p23">Draw me nearer to You than I have ever been, and let my freedom become worship, not just relief.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p24"><label for="p24">Father, let my daily walk with You be the thing that actually keeps every door closed, not just the memory of this prayer.</label></div>
+    <div class="prayer-item"><input type="checkbox" id="p25"><label for="p25">I ask for a heart that seeks You for who You are, not only for what You do for me.</label></div>
+
+    <div class="site-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="Iyanu_Diagnostics.html">Diagnostic Tool</a>
+        <a href="Iyanu_Symptoms_Checker.html">🔍 Symptoms Checker</a>
+        <a href="Iyanu_Bible_Study.html">Bible Study Pack</a>
+        <a href="Iyanu_FAQ.html">FAQs</a>
+        <a href="Iyanu_References.html">References</a>
+    </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'iyanuDiagnostics.prayerPointsProgress';
+
+function loadProgress() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
+}
+function saveProgress(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+}
+function updateProgressNote() {
+    const total = document.querySelectorAll('.prayer-item input[type="checkbox"]').length;
+    const checked = document.querySelectorAll('.prayer-item input[type="checkbox"]:checked').length;
+    document.getElementById('progressNote').textContent = checked + ' of ' + total + ' prayed through';
+}
+function resetPrayerProgress() {
+    if (!confirm('Clear all checkmarks on this page?')) return;
+    saveProgress({});
+    document.querySelectorAll('.prayer-item input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        cb.closest('.prayer-item').classList.remove('checked');
+    });
+    updateProgressNote();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const state = loadProgress();
+    document.querySelectorAll('.prayer-item input[type="checkbox"]').forEach(cb => {
+        if (state[cb.id]) {
+            cb.checked = true;
+            cb.closest('.prayer-item').classList.add('checked');
+        }
+        cb.addEventListener('change', () => {
+            const s = loadProgress();
+            s[cb.id] = cb.checked;
+            saveProgress(s);
+            cb.closest('.prayer-item').classList.toggle('checked', cb.checked);
+            updateProgressNote();
+        });
+    });
+    updateProgressNote();
+});
+</script>
+</body>
+</html>
