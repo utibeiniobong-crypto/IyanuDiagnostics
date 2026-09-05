@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
+        --fs: 1;
         --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
         --indigo: #047857; --indigo-deep: #064e3b;
         --gold: #10b981; --gold-soft: #6ee7b7;
@@ -34,21 +35,27 @@
         }
     .container::before { content: none; }
     @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} .container::before{inset:6px;} }
-    .back-link { display:inline-block; margin-bottom: 18px; font-size: 13.5px; color: var(--indigo); text-decoration: underline; }
-    .kicker { text-align:center; font-size:13px; letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
-    h1 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; color:var(--indigo-deep); text-align:center; font-size:36px; margin:0 0 6px; line-height:1.15; }
-    .subhead { text-align:center; color:#52525b; font-size:15px; max-width:540px; margin:0 auto 30px; }
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: calc(13.5px * var(--fs)); color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size: calc(13px * var(--fs)); letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; font-style: normal; color:var(--indigo-deep); text-align:center; font-size: calc(36px * var(--fs)); margin:0 0 6px; line-height:1.15; }
+    .subhead { text-align:center; color:#52525b; font-size: calc(15px * var(--fs)); max-width:540px; margin:0 auto 30px; }
     .ornament { display:flex; align-items:center; gap:14px; margin: 36px 0 16px; }
     .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
-    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size:18px; color:var(--indigo); white-space:nowrap; }
-    p { font-size: 14.5px; }
+    .ornament span { font-family:'Fraunces',serif; font-style: normal; font-weight:600; font-size: calc(18px * var(--fs)); color:var(--indigo); white-space:nowrap; }
+    p { font-size: calc(14.5px * var(--fs)); }
     table { width:100%; border-collapse: collapse; margin-top: 10px; }
-    th { text-align:left; font-size:12.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.03em; padding:6px 10px 6px 0; border-bottom:1px solid var(--hairline); }
-    td { font-size:14px; padding:10px 10px 10px 0; border-bottom:1px solid var(--hairline-soft); vertical-align:top; }
-    td.note { color:#71717a; font-size:13px; }
+    th { text-align:left; font-size: calc(12.5px * var(--fs)); color:var(--gold); text-transform:uppercase; letter-spacing:0.03em; padding:6px 10px 6px 0; border-bottom:1px solid var(--hairline); }
+    td { font-size: calc(14px * var(--fs)); padding:10px 10px 10px 0; border-bottom:1px solid var(--hairline-soft); vertical-align:top; }
+    td.note { color:#71717a; font-size: calc(13px * var(--fs)); }
     a { color: var(--indigo); }
-    .disputed-tag { color: var(--wine); font-weight:600; font-size:12px; }
-    .caution-box { background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--indigo); padding:16px 20px; margin:18px 0; font-size:14px; }
+    .disputed-tag { color: var(--wine); font-weight:600; font-size: calc(12px * var(--fs)); }
+    .caution-box { background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--indigo); padding:16px 20px; margin:18px 0; font-size: calc(14px * var(--fs)); }
+
+    .settings-bar { display:flex; align-items:center; justify-content:center; gap: 10px; flex-wrap: wrap; margin: 0 auto 22px; }
+    .fs-btn { width:auto; padding:6px 13px; font-size:13.5px; font-weight:600; background:transparent; color:var(--indigo); border:1px solid var(--hairline); cursor:pointer; border-radius:6px; }
+    .fs-btn:hover { background: var(--parchment); }
+    .fs-btn.fs-reset { color:#71717a; font-size:12px; }
+    .settings-bar span { font-size:12.5px; color:#71717a; }
 </style>
 </head>
 <body>
@@ -56,6 +63,13 @@
     <a class="back-link" href="index.html">&larr; Home</a>
     <a class="back-link" href="Iyanu_Diagnostics.html" style="margin-left:14px;">Diagnostic Tool</a>
     <a class="back-link" href="Iyanu_FAQ.html" style="margin-left:14px;">FAQs &rarr;</a>
+
+    <div class="settings-bar" role="group" aria-label="Text size">
+        <span>Text size</span>
+        <button type="button" class="fs-btn" onclick="changeFontSize(-1)" aria-label="Decrease text size">A−</button>
+        <button type="button" class="fs-btn fs-reset" onclick="changeFontSize(0)" aria-label="Reset text size">Reset</button>
+        <button type="button" class="fs-btn" onclick="changeFontSize(1)" aria-label="Increase text size">A+</button>
+    </div>
     <div class="kicker">Iyanu Diagnostics</div>
     <h1>References</h1>
     <p class="subhead">Every scripture translation, book, and ministry referenced across the diagnostic app and the Bible Study Pack, listed in one place.</p>
@@ -91,6 +105,9 @@
         <tr><td>How to Cast Out Devils</td><td>Norvel Hayes</td><td class="note"></td></tr>
         <tr><td>The Believer's Authority</td><td>Kenneth E. Hagin</td><td class="note">Hagin founded the Word of Faith movement. Its broader "positive confession" theology is theologically contested; included here for its teaching on believer's authority specifically.</td></tr>
         <tr><td>Purging Your House, Pruning Your Family Tree</td><td>Perry Stone</td><td class="note"><span class="disputed-tag">Flagged:</span> the author has faced multiple, corroborated allegations of sexual misconduct from former ministry employees, including leaked audio in which he admitted to acting inappropriately, and a reported federal investigation. A grand jury did not find sufficient grounds for criminal charges — that is not the same as a finding of innocence.</td></tr>
+        <tr><td>Deliverance From Demonic Covenants and Curses</td><td>James A. Solomon</td><td class="note"></td></tr>
+        <tr><td>The Spiritual Battle</td><td>Lucretia Shaw Cargill</td><td class="note">A short, self-published title.</td></tr>
+        <tr><td>What to Do When Your Battle Is from Home</td><td>Pastor Olusegun Festus Remilekun</td><td class="note">The author is a real, prolific writer in this genre (44+ published titles), but this specific title could not be independently verified in available catalogs.</td></tr>
     </table>
 
     <div class="ornament"><span>Spiritual laws &amp; their scripture anchors</span></div>
@@ -115,6 +132,8 @@
         <tr><td>Mountain of Fire and Miracles Ministries (MFM)</td><td><a href="https://www.mountainoffire.org" target="_blank" rel="noopener noreferrer">mountainoffire.org</a></td><td class="note">This ministry's own site has publicly warned about impersonator accounts online — use this official link rather than a social search.</td></tr>
         <tr><td>Freedom in Christ Ministries</td><td><a href="https://freedominchrist.org" target="_blank" rel="noopener noreferrer">freedominchrist.org</a></td><td class="note"></td></tr>
         <tr><td>Crusaders Ministries / Impact Network (John Eckhardt)</td><td><a href="https://impactnetwork.global" target="_blank" rel="noopener noreferrer">impactnetwork.global</a></td><td class="note"></td></tr>
+        <tr><td>Koinonia Global (Apostle Joshua Selman)</td><td><a href="https://www.koinoniaglobal.world" target="_blank" rel="noopener noreferrer">koinoniaglobal.world</a></td><td class="note"></td></tr>
+        <tr><td>HungryGen Church (Pastor Vlad Savchuk)</td><td><a href="https://hungrygen.com" target="_blank" rel="noopener noreferrer">hungrygen.com</a></td><td class="note">This ministry's teaching that born-again believers can be repeatedly demon-possessed and need ongoing deliverance sessions is contested by Reformed theologians as going beyond Scripture. Listed as a resource, not an endorsement of every position taught here.</td></tr>
     </table>
 
     <div class="ornament"><span>Theological background &amp; balance notes</span></div>
@@ -125,7 +144,9 @@
     <ul>
         <li><strong>TB Joshua / Synagogue, Church of All Nations (SCOAN)</strong> — excluded following a January 2024 BBC Africa Eye investigation documenting serious abuse allegations from more than 25 former members.</li>
         <li>A set of six user-supplied documents describing additional "spiritual laws" and case studies attributed to named real authors — not used as source material, since their citation lists resolved to generic homepages (e.g. facebook.com, youtube.com) rather than to any identifiable article or book passage, a pattern consistent with fabricated attribution.</li>
-        <li>"Spirituals," a narrative drama film series by The Winlos, and teaching content from Apostle Joshua Selman, Pastor Vlad Savchuk, and Daniel Adams — reviewed via a user-supplied summary document, but not incorporated as formal book/resource recommendations. "Spirituals" is fiction, not testimony, and the named teachers have not yet been through the same credibility review given to the authors listed above.</li>
+        <li>"Spirituals," a narrative drama film series by The Winlos — reviewed via a user-supplied summary document, but not incorporated as source material. "Spirituals" is fiction, not testimony.</li>
+        <li><strong>Daniel Adams (The Supernatural Life)</strong> — excluded following multiple independent investigations (Protestia, The Apostasy Files) documenting staged deliverance demonstrations using recurring actors across supposedly unrelated sessions, a YouTube sanction for purchased views, a $500/hour paid deliverance-consultation model, and close working ties to TB Joshua and other already-excluded or contested figures in this space.</li>
+        <li><strong>"Overcoming Spiritual Attacks from Home" (attributed to "Pastor Rich Living-Proof Anyiam")</strong> — a user-supplied summary described this as a real, catalogued 2010 book, but no trace of it exists in any library catalog, bookseller, or publisher record. The summary document itself contained an impossible anachronism (describing a 2010 book as mapping to this app's 2026 checkboxes), consistent with fabricated source material.</li>
     </ul>
 
     <div class="site-nav" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 34px;">
@@ -140,5 +161,33 @@
     </div>
 
 </div>
+
+<script>
+    // ---------- Text size (shared preference across the whole site) ----------
+    const FONT_SCALE_STEPS = [0.85, 1, 1.15, 1.3, 1.45, 1.6];
+    let fontScaleIndex = 1;
+
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--fs', FONT_SCALE_STEPS[fontScaleIndex]);
+        try { localStorage.setItem('iyanuDiagnostics.fontScaleIndex', String(fontScaleIndex)); } catch (e) { /* ignore */ }
+    }
+    function changeFontSize(direction) {
+        if (direction === 0) { fontScaleIndex = 1; }
+        else {
+            const next = fontScaleIndex + direction;
+            if (next < 0 || next >= FONT_SCALE_STEPS.length) return;
+            fontScaleIndex = next;
+        }
+        applyFontScale();
+    }
+    (function initFontScale() {
+        try {
+            const saved = localStorage.getItem('iyanuDiagnostics.fontScaleIndex');
+            if (saved !== null && FONT_SCALE_STEPS[Number(saved)] !== undefined) fontScaleIndex = Number(saved);
+        } catch (e) { /* ignore */ }
+        applyFontScale();
+    })();
+</script>
+
 </body>
 </html>

@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spiritual Law Diagnostic — Iyanu Diagnostics</title>
+<meta name="description" content="Answer a guided checklist and get a targeted, scripture-based prayer plan pointing to the specific spiritual law at work in your situation. Free, private, no sign-up.">
+<link rel="canonical" href="https://iyanudiagnostics.netlify.app/Iyanu_Diagnostics.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spiritual Law Diagnostic — Iyanu Diagnostics">
+<meta property="og:description" content="Answer a guided checklist and get a targeted, scripture-based prayer plan pointing to the specific spiritual law at work in your situation. Free, private, no sign-up.">
+<meta property="og:url" content="https://iyanudiagnostics.netlify.app/Iyanu_Diagnostics.html">
+<meta property="og:image" content="https://iyanudiagnostics.netlify.app/iyanu-logo.png">
+<meta property="og:site_name" content="Iyanu Diagnostics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spiritual Law Diagnostic — Iyanu Diagnostics">
+<meta name="twitter:description" content="Answer a guided checklist and get a targeted, scripture-based prayer plan pointing to the specific spiritual law at work in your situation. Free, private, no sign-up.">
+<meta name="twitter:image" content="https://iyanudiagnostics.netlify.app/iyanu-logo.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -521,11 +533,19 @@
             button, .btn-voice { display:none!important; }
             .result-box { display:block!important; }
         }
-    </style>
+    
+    .translate-widget { text-align:center; margin: 0 auto 14px; font-size: 13px; }
+    .translate-widget .goog-te-gadget { font-family: 'Inter', sans-serif !important; font-size: 12px !important; color: #71717a !important; }
+    .translate-widget select.goog-te-combo { font-family: 'Inter', sans-serif; padding: 4px 8px; border: 1px solid var(--hairline); border-radius: 6px; }
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
+</style>
 </head>
 <body>
 <div class="container">
-    <div class="settings-bar" role="group" aria-label="Display settings">
+        <div id="google_translate_element" class="translate-widget"></div>
+
+<div class="settings-bar" role="group" aria-label="Display settings">
         <div class="settings-group">
             <span>Text size</span>
             <button type="button" class="fs-btn" onclick="changeFontSize(-1)" aria-label="Decrease text size">A−</button>
@@ -574,7 +594,7 @@
     <div style="text-align:center; margin-bottom: 10px;">
         <a href="index.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">🏠 Home</a>
         <a href="Iyanu_Symptoms_Checker.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">🔍 Symptoms Checker</a>
-        <a href="Iyanu_Bible_Study.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">📖 Open the Bible Study Pack (5 sessions)</a>
+        <a href="Iyanu_Bible_Study.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">📖 Open the Bible Study Pack (11 sessions)</a>
         <a href="Iyanu_About.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">👤 About the Creator</a>
         <a href="Iyanu_FAQ.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">❓ FAQs</a>
         <a href="Iyanu_References.html" style="display:inline-block; font-size:13.5px; color:var(--indigo); border:1px solid var(--hairline); padding:8px 16px; text-decoration:none;">📚 References</a>
@@ -1182,7 +1202,10 @@ const bookDB = [
     {tag: ['attack','graveyard','shrine','occult','mental'], title: "How to Cast Out Devils", author: "Norvel Hayes", focus: "A practical, first-hand account of deliverance ministry from a longtime Pentecostal teacher", prayers: ["Every devil operating in my body, mind, or circumstances, come out in Jesus' name.", "I take authority over every spirit that does not belong to me.", "Lord, give me discernment to recognize what I am truly dealing with."]},
     {tag: ['shrine','occult','cult','household','death'], title: "Mysterious Secrets of the Dark Kingdom", author: "J.P. Timmons", focus: "A detailed account of occult structure and strategy from a Christian perspective", flagNote: "The author describes this book as based on personal interviews with current and former occult members in West Africa. That claim, like similar first-hand testimony books in this genre, is self-reported and not independently verifiable — read the specific claims with that in mind, even though no broader credibility issue has been found with the author.", prayers: ["Every strategy of the dark kingdom assigned against my life, be exposed and dismantled.", "I stand against every organized assignment of darkness in the name of Jesus Christ.", "Lord, give me wisdom to recognize the enemy's methods without fear."]},
     {tag: ['stagnation','frustration','closed','attack'], title: "Run to the Battle", author: "Roberts Liardon", focus: "A call to spiritual engagement and perseverance rather than passivity", flagNote: "In 2001, Liardon publicly disclosed a relationship with a subordinate youth pastor at his church and stepped back from ministry for a period of restoration before returning. It was self-disclosed rather than uncovered by accusers, with no allegations of coercion, but the power dynamic involved is worth being aware of.", prayers: ["Lord, give me the courage to run toward the battle rather than away from it.", "I refuse passivity in the face of what is trying to hold me back.", "I press forward into what You have called me to, regardless of the resistance."]},
-    {tag: ['household','shrine','occult','death','madness','povertyCov','curse'], title: "Purging Your House, Pruning Your Family Tree", author: "Perry Stone", focus: "Removing demonic influence and generational patterns from home and family", flagNote: "The author has faced multiple, corroborated allegations of sexual misconduct from former ministry employees, including leaked audio in which he admitted to acting inappropriately, and a federal investigation was reported. A grand jury did not find sufficient grounds for criminal charges — that is not the same as a finding of innocence. Worth knowing before relying on his ministry or materials.", prayers: ["Lord, purge my house of anything that does not belong there.", "I prune every negative pattern from my family tree, in Jesus' name.", "I dedicate my home and my household to You alone."]}
+    {tag: ['household','shrine','occult','death','madness','povertyCov','curse'], title: "Purging Your House, Pruning Your Family Tree", author: "Perry Stone", focus: "Removing demonic influence and generational patterns from home and family", flagNote: "The author has faced multiple, corroborated allegations of sexual misconduct from former ministry employees, including leaked audio in which he admitted to acting inappropriately, and a federal investigation was reported. A grand jury did not find sufficient grounds for criminal charges — that is not the same as a finding of innocence. Worth knowing before relying on his ministry or materials.", prayers: ["Lord, purge my house of anything that does not belong there.", "I prune every negative pattern from my family tree, in Jesus' name.", "I dedicate my home and my household to You alone."]},
+    {tag: ['household','curse','madness','povertyCov','shrine'], title: "Deliverance From Demonic Covenants And Curses", author: "James A. Solomon", focus: "Breaking generational curses and demonic covenants, including those made unknowingly", prayers: ["Every demonic covenant made on my behalf, knowingly or unknowingly, I renounce it now in Jesus' name.", "I break every generational curse operating in my bloodline.", "Lord, expose any covenant still holding legal ground over my life."]},
+    {tag: ['attack','frustration','closed'], title: "The Spiritual Battle", author: "Lucretia Shaw Cargill", focus: "A short, accessible guide to recognizing and facing spiritual opposition", prayers: ["Lord, help me face this opposition head-on rather than avoiding it.", "I refuse to give up, give in, or lose hope in this battle.", "Strengthen me to stand firm until the breakthrough comes."]},
+    {tag: ['household','shrine','ancestralVillage'], title: "What to Do When Your Battle Is from Home", author: "Pastor Olusegun Festus Remilekun", focus: "Recognizing and responding to household-based spiritual attack", flagNote: "The author is a real, prolific writer in this exact genre (44+ published titles), but this specific title could not be independently verified in available catalogs. Treat as likely genuine but unconfirmed.", prayers: ["Lord, expose every household-based attack assigned against my life.", "I take authority over every internal enemy operating from within my own family.", "Establish peace and protection over my home in Jesus' name."]}
 ];
 
 // Online / media resources by ministry or teacher. Each entry links to
@@ -1220,6 +1243,20 @@ const resourceDB = [
         type: "Website & teaching resources",
         url: "https://impactnetwork.global",
         note: "Apostolic and deliverance-focused teaching from John Eckhardt's ministry network."
+    },
+    {
+        tag: ['sin','bitterness','blind','closed','frustration'],
+        name: "Koinonia Global (Apostle Joshua Selman)",
+        type: "Website & teaching resources",
+        url: "https://www.koinoniaglobal.world",
+        note: "Teaching on prayer, spiritual intimacy, and purpose from a widely followed Nigerian ministry."
+    },
+    {
+        tag: ['attack','mental','addiction','blind'],
+        name: "HungryGen Church (Pastor Vlad Savchuk)",
+        type: "Website & teaching resources",
+        url: "https://hungrygen.com",
+        note: "Deliverance and spiritual warfare teaching. Worth knowing: this ministry's approach, including the view that born-again believers can be repeatedly demon-possessed and need ongoing deliverance sessions, is contested by Reformed theologians as going beyond what Scripture teaches. Included as a resource, not an endorsement of every position taught here."
     }
 ];
 
@@ -1851,5 +1888,12 @@ function printCounselorSummary() {
     win.onload = () => { win.focus(); win.print(); };
 }
 </script>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

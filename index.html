@@ -4,10 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iyanu Diagnostics — Find the Law, Walk Into Your Testimony</title>
+<meta name="google-site-verification" content="XnxdNP3nEUAcrQ7DSgdupYkbI7ywkQS9c7daM7hG27U" />
+<meta name="description" content="Find the spiritual law behind stagnation, delay, or unexplained attacks. A free, private, Bible-based diagnostic tool and 11-session study that runs entirely in your browser.">
+<link rel="canonical" href="https://iyanudiagnostics.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Iyanu Diagnostics — Find the Law, Walk Into Your Testimony">
+<meta property="og:description" content="Find the spiritual law behind stagnation, delay, or unexplained attacks. A free, private, Bible-based diagnostic tool and 11-session study that runs entirely in your browser.">
+<meta property="og:url" content="https://iyanudiagnostics.netlify.app/">
+<meta property="og:image" content="https://iyanudiagnostics.netlify.app/iyanu-logo.png">
+<meta property="og:site_name" content="Iyanu Diagnostics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Iyanu Diagnostics — Find the Law, Walk Into Your Testimony">
+<meta name="twitter:description" content="Find the spiritual law behind stagnation, delay, or unexplained attacks. A free, private, Bible-based diagnostic tool and 11-session study that runs entirely in your browser.">
+<meta name="twitter:image" content="https://iyanudiagnostics.netlify.app/iyanu-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
+        --fs: 1;
         --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
         --indigo: #047857; --indigo-deep: #064e3b;
         --gold: #10b981; --gold-soft: #6ee7b7;
@@ -26,29 +40,29 @@
     @media (max-width: 640px) { .wrap { padding: 40px 16px 60px; } }
 
     /* ---------- Hero ---------- */
-    .kicker { text-align:center; font-size:13px; letter-spacing:0.08em; color:var(--gold); font-weight:600; text-transform:uppercase; margin-bottom:14px; }
+    .kicker { text-align:center; font-size: calc(13px * var(--fs)); letter-spacing:0.08em; color:var(--gold); font-weight:600; text-transform:uppercase; margin-bottom:14px; }
     .site-logo { text-align:center; margin: 8px 0 14px; }
     .site-logo img { width: 108px; height: 108px; object-fit: contain; }
     @media (max-width: 640px) { .site-logo img { width: 84px; height: 84px; } }
     .hero-title {
         font-family:'Fraunces',serif; font-weight:600; font-style:normal;
-        color:var(--indigo-deep); text-align:center; font-size:46px; line-height:1.15;
+        color:var(--indigo-deep); text-align:center; font-size: calc(46px * var(--fs)); line-height:1.15;
         margin: 0 auto 20px; max-width: 720px;
     }
-    @media (max-width: 640px) { .hero-title { font-size: 32px; } }
+    @media (max-width: 640px) { .hero-title { font-size: calc(32px * var(--fs)); } }
     .hero-sub {
-        text-align:center; color:#3f3f46; font-size:17px; max-width:560px; margin:0 auto 36px;
+        text-align:center; color:#3f3f46; font-size: calc(17px * var(--fs)); max-width:560px; margin:0 auto 36px;
     }
     .hero-cta { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom: 10px; }
     .btn-hero-primary {
         background: var(--indigo-deep); color: #fff; text-decoration:none;
-        font-weight:600; font-size:15.5px; padding:15px 30px; border-radius:10px;
+        font-weight:600; font-size: calc(15.5px * var(--fs)); padding:15px 30px; border-radius:10px;
         box-shadow: 0 4px 14px rgba(6,78,59,0.25);
     }
     .btn-hero-primary:hover { background: var(--indigo); }
     .btn-hero-secondary {
         background: transparent; color: var(--indigo-deep); text-decoration:none;
-        font-weight:600; font-size:15.5px; padding:15px 26px; border-radius:10px;
+        font-weight:600; font-size: calc(15.5px * var(--fs)); padding:15px 26px; border-radius:10px;
         border: 1.5px solid var(--hairline);
     }
     .btn-hero-secondary:hover { background: var(--hairline-soft); }
@@ -62,28 +76,28 @@
     }
     @media (max-width: 640px) { .founder-block { flex-direction: column; align-items:center; text-align:center; padding: 26px 22px; } }
     .founder-block img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
-    .founder-quote { font-family:'Fraunces',serif; font-style:italic; font-size:18px; color:var(--ink); margin: 0 0 10px; line-height:1.5; }
-    .founder-name { font-weight:600; font-size:14px; color: var(--indigo-deep); }
-    .founder-role { font-size:13px; color:#71717a; }
-    .founder-link { font-size: 13px; margin-top: 6px; }
+    .founder-quote { font-family:'Fraunces',serif; font-style:italic; font-size: calc(18px * var(--fs)); color:var(--ink); margin: 0 0 10px; line-height:1.5; }
+    .founder-name { font-weight:600; font-size: calc(14px * var(--fs)); color: var(--indigo-deep); }
+    .founder-role { font-size: calc(13px * var(--fs)); color:#71717a; }
+    .founder-link { font-size: calc(13px * var(--fs)); margin-top: 6px; }
     .founder-link a { color: var(--indigo); }
 
     /* ---------- Explainer: physical law vs spiritual law ---------- */
     .ornament { display:flex; align-items:center; gap:14px; margin: 8px 0 22px; }
     .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
-    .ornament span { font-family:'Fraunces',serif; font-style:italic; font-size:19px; color:var(--indigo); white-space:nowrap; }
+    .ornament span { font-family:'Fraunces',serif; font-style:italic; font-size: calc(19px * var(--fs)); color:var(--indigo); white-space:nowrap; }
 
     .law-compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom: 56px; }
     @media (max-width: 640px) { .law-compare { grid-template-columns:1fr; } }
     .law-card { background: var(--paper); border:1px solid var(--hairline); border-radius:14px; padding:24px 24px; }
-    .law-card h3 { font-family:'Fraunces',serif; font-weight:600; font-size:19px; color:var(--indigo-deep); margin:0 0 10px; }
-    .law-card p { font-size:14.5px; color:#3f3f46; margin:0; }
+    .law-card h3 { font-family:'Fraunces',serif; font-weight:600; font-size: calc(19px * var(--fs)); color:var(--indigo-deep); margin:0 0 10px; }
+    .law-card p { font-size: calc(14.5px * var(--fs)); color:#3f3f46; margin:0; }
     .law-card.spiritual { background: linear-gradient(180deg, #ecfdf5, var(--paper)); border-color: var(--gold-soft); }
 
     /* ---------- Story strip ---------- */
     .story-strip { margin-bottom: 56px; }
-    .story-strip p { font-size: 15px; color: #3f3f46; margin: 0 0 14px; }
-    .story-strip .lede { font-family:'Fraunces',serif; font-size: 20px; font-style: italic; color: var(--indigo-deep); margin-bottom: 18px; }
+    .story-strip p { font-size: calc(15px * var(--fs)); color: #3f3f46; margin: 0 0 14px; }
+    .story-strip .lede { font-family:'Fraunces',serif; font-size: calc(20px * var(--fs)); font-style: italic; color: var(--indigo-deep); margin-bottom: 18px; }
 
     /* ---------- Nav cards ---------- */
     .card-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -94,19 +108,50 @@
         padding: 22px 22px; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
     .nav-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: var(--gold-soft); }
-    .nav-card .icon { font-size: 26px; margin-bottom: 10px; display:block; }
-    .nav-card h4 { font-family:'Fraunces',serif; font-weight:600; font-size: 18px; color: var(--indigo-deep); margin: 0 0 6px; }
-    .nav-card p { font-size: 13.5px; color: #52525b; margin: 0; }
+    .nav-card .icon { font-size: calc(26px * var(--fs)); margin-bottom: 10px; display:block; }
+    .nav-card h4 { font-family:'Fraunces',serif; font-weight:600; font-size: calc(18px * var(--fs)); color: var(--indigo-deep); margin: 0 0 6px; }
+    .nav-card p { font-size: calc(13.5px * var(--fs)); color: #52525b; margin: 0; }
     .nav-card.primary { background: var(--indigo-deep); border-color: var(--indigo-deep); }
     .nav-card.primary h4, .nav-card.primary p { color: #ecfdf5; }
     .nav-card.primary:hover { border-color: var(--gold); }
 
-    footer { text-align:center; margin-top: 60px; font-size: 12.5px; color: #a1a1aa; }
+    footer { text-align:center; margin-top: 60px; font-size: calc(12.5px * var(--fs)); color: #a1a1aa; }
     footer a { color: #71717a; }
+
+    .settings-bar { display:flex; align-items:center; justify-content:center; gap: 10px; flex-wrap: wrap; margin: 0 auto 22px; }
+    .fs-btn { width:auto; padding:6px 13px; font-size:13.5px; font-weight:600; background:transparent; color:var(--indigo); border:1px solid var(--hairline); cursor:pointer; border-radius:6px; }
+    .fs-btn:hover { background: var(--parchment); }
+    .fs-btn.fs-reset { color:#71717a; font-size:12px; }
+    .settings-bar span { font-size:12.5px; color:#71717a; }
+
+    .translate-widget { text-align:center; margin: 0 auto 14px; font-size: 13px; }
+    .translate-widget .goog-te-gadget { font-family: 'Inter', sans-serif !important; font-size: 12px !important; color: #71717a !important; }
+    .translate-widget select.goog-te-combo { font-family: 'Inter', sans-serif; padding: 4px 8px; border: 1px solid var(--hairline); border-radius: 6px; }
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Iyanu Diagnostics",
+  "url": "https://iyanudiagnostics.netlify.app/",
+  "description": "A free, private, Bible-based diagnostic tool that helps identify the spiritual law behind stagnation, delay, or unexplained attacks, paired with an eleven-session Bible study.",
+  "inLanguage": "en"
+}
+</script>
 </head>
 <body>
 <div class="wrap">
+
+        <div id="google_translate_element" class="translate-widget"></div>
+
+<div class="settings-bar" role="group" aria-label="Text size">
+        <span>Text size</span>
+        <button type="button" class="fs-btn" onclick="changeFontSize(-1)" aria-label="Decrease text size">A−</button>
+        <button type="button" class="fs-btn fs-reset" onclick="changeFontSize(0)" aria-label="Reset text size">Reset</button>
+        <button type="button" class="fs-btn" onclick="changeFontSize(1)" aria-label="Increase text size">A+</button>
+    </div>
 
     <div class="site-logo">
         <img src="iyanu-logo.png" alt="Iyanu Diagnostics logo">
@@ -200,5 +245,40 @@
         &middot; <a href="Iyanu_FAQ.html">FAQs</a>
     </footer>
 </div>
+
+<script>
+    // ---------- Text size (shared preference across the whole site) ----------
+    const FONT_SCALE_STEPS = [0.85, 1, 1.15, 1.3, 1.45, 1.6];
+    let fontScaleIndex = 1;
+
+    function applyFontScale() {
+        document.documentElement.style.setProperty('--fs', FONT_SCALE_STEPS[fontScaleIndex]);
+        try { localStorage.setItem('iyanuDiagnostics.fontScaleIndex', String(fontScaleIndex)); } catch (e) { /* ignore */ }
+    }
+    function changeFontSize(direction) {
+        if (direction === 0) { fontScaleIndex = 1; }
+        else {
+            const next = fontScaleIndex + direction;
+            if (next < 0 || next >= FONT_SCALE_STEPS.length) return;
+            fontScaleIndex = next;
+        }
+        applyFontScale();
+    }
+    (function initFontScale() {
+        try {
+            const saved = localStorage.getItem('iyanuDiagnostics.fontScaleIndex');
+            if (saved !== null && FONT_SCALE_STEPS[Number(saved)] !== undefined) fontScaleIndex = Number(saved);
+        } catch (e) { /* ignore */ }
+        applyFontScale();
+    })();
+</script>
+
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
