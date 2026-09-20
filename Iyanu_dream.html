@@ -1,0 +1,2030 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f2a2e">
+<title>Iyanu Dream Diagnostics — V7 Cleaner Visual + Full Engine</title>
+
+<style>
+:root{--ink:#1f2a2e;--green:#2d4a3e;--cream:#fdf6e9;--gold:#e9c27a;--rust:#c76b3b;--muted:#687477;--line:#dfe4df;--white:#fff}
+*{box-sizing:border-box;max-width:100%}html,body{overflow-x:hidden;width:100%;margin:0}
+body{background:linear-gradient(180deg,#f8f5ee,#eef2ed);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}
+button,input,textarea,select{font:inherit;max-width:100%}button{cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:16px;overflow-x:hidden;width:100%}
+header{background:var(--ink);color:var(--cream);border-radius:24px;padding:24px 20px;margin-bottom:16px;box-shadow:0 18px 45px #1f2a2e22;overflow:hidden;width:100%}
+.badge{display:inline-block;background:#ffffff18;border:1px solid #ffffff28;border-radius:999px;padding:5px 10px;font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;white-space:normal;word-break:break-word}
+h1,h2,h3{line-height:1.15;margin:0 0 12px;overflow-wrap:break-word;word-break:break-word}h1{font-size:clamp(28px,6vw,48px);letter-spacing:-.03em}h2{font-size:clamp(20px,4vw,24px)}h3{font-size:1.0625rem}.sub{color:#d7dfd9;max-width:780px;font-size:1rem}
+.tabs{display:flex;gap:8px;flex-wrap:nowrap;margin:14px 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-size:0.8125rem;font-weight:600;white-space:nowrap;flex-shrink:0}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;width:100%}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:#ffffffd9;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 10px 30px #1f2a2e0b;margin-bottom:16px;overflow:hidden;width:100%;word-wrap:break-word}
+.dark{background:var(--green);color:var(--cream);border-color:transparent}
+.dark .law{background:#fffaf4!important;color:#1f2a2e!important;border-left:4px solid var(--gold);padding:14px 14px;border-radius:12px;margin:12px 0;display:block;visibility:visible;opacity:1}
+.dark .law strong,.dark .law b{color:#1f2a2e!important;font-weight:700}
+.dark .law br{color:#1f2a2e}
+.dark .small{color:#d6dfd8}
+.section-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}.small{font-size:0.75rem;color:var(--muted);overflow-wrap:break-word;word-break:break-word}.small br{margin-bottom:4px}
+label{display:block;font-weight:650;font-size:0.8125rem;margin:14px 0 6px}textarea,input,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:#fff;color:var(--ink)}textarea{min-height:110px;resize:vertical}
+.pills{display:flex;flex-wrap:wrap;gap:6px;max-width:100%;width:100%;overflow:hidden}.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-size:0.7812rem;max-width:100%;overflow-wrap:break-word;word-break:break-word;white-space:normal;line-height:1.25;flex-shrink:0}.pill.active{background:var(--green);border-color:var(--green);color:#fff}.pill.perry{background:#fff7ed;border-color:#c76b3b33}.pill.perry.active{background:var(--rust);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;width:100%}.btn{border:0;border-radius:999px;padding:12px 16px;font-weight:700;max-width:100%;white-space:normal;word-break:break-word;line-height:1.3;text-align:center;display:inline-block}.primary{background:var(--ink);color:#fff;width:100%;flex:1 1 100%}.secondary{background:var(--cream);border:1px solid var(--line);color:var(--ink);flex:1 1 auto}.accent{background:var(--rust);color:#fff}
+.notice{background:#fff8df;border:1px solid #ead49b;border-radius:14px;padding:12px;font-size:0.7812rem;overflow-wrap:break-word}.tag{display:inline-block;border-radius:999px;padding:4px 8px;font-size:0.6875rem;background:#e8eee9;margin:3px 4px 3px 0;max-width:100%;overflow-wrap:break-word;word-break:break-word}.tag.warn{background:#1f2a2e;color:#fff}.law{border-left:4px solid var(--rust);padding:12px 14px;background:#fffaf4;border-radius:12px;margin:10px 0;color:var(--ink);overflow-wrap:break-word;word-break:break-word}.quote{font-family:Georgia,serif;font-size:1.0625rem}.footer{font-size:0.7188rem;color:var(--muted);padding:14px 4px 28px;overflow-wrap:break-word;text-align:center}.hidden{display:none}
+ul{padding-left:18px;margin:8px 0}.report-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%}@media(max-width:750px){.report-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.report-grid{grid-template-columns:1fr}}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.journal-item{border-left:4px solid var(--green);padding:12px;background:#f6f8f6;border-radius:12px;margin:8px 0;overflow-wrap:break-word}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;width:100%}@media(max-width:600px){.books{grid-template-columns:1fr}}
+.book{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;overflow-wrap:break-word}.book.hamon{border:2px solid var(--gold);background:#fffdf3}
+/* Mobile hard fixes */
+@media(max-width:700px){
+  .wrap{padding:10px}
+  .card{padding:14px;border-radius:16px}
+  header{padding:18px 14px;border-radius:18px}
+  .pills{gap:5px}
+  .pill{font-size:0.7188rem;padding:7px 9px}
+  .btn{font-size:0.8438rem;padding:10px 12px}
+  .tabs{gap:6px}
+  .tab{font-size:0.75rem;padding:8px 12px}
+  h1{font-size:1.625rem}
+  h2{font-size:1.1875rem}
+}
+@media(max-width:380px){
+  .pill{font-size:0.6875rem;padding:6px 8px}
+  .card{padding:12px}
+  .wrap{padding:8px}
+}
+
+.text-size-bar{display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:12px;flex-wrap:wrap}
+.ts-btn{border:1px solid #ffffff30;background:#ffffff15;color:var(--cream);border-radius:999px;padding:6px 10px;font-size:0.75rem;font-weight:700;min-width:36px}
+.ts-btn:hover{background:#ffffff25}
+.ts-btn.active{background:#fff;color:var(--ink)}
+@media(max-width:600px){.text-size-bar{justify-content:flex-start}}
+
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header>
+
+<div class="text-size-bar" id="textSizeBar">
+  <span class="small" style="color:#d7dfd9;margin-right:6px">Text size:</span>
+  <button class="ts-btn" onclick="adjustTextSize(-1)" aria-label="Decrease text size" title="Decrease text size">A-</button>
+  <button class="ts-btn" onclick="resetTextSize()" aria-label="Reset text size" title="Reset">A</button>
+  <button class="ts-btn" onclick="adjustTextSize(1)" aria-label="Increase text size" title="Increase text size">A+</button>
+</div>
+
+  <span class="badge">KJV-centered • Local-first • No account</span>
+  <h1>IYANU<br>Dream Diagnostics</h1>
+  <p class="sub">Reflective Christian Dream-Study Tool</p>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<div class="notice"><strong>Important:</strong> This is a devotional reflection tool, not a medical, psychological or pastoral diagnosis. Dreams can arise from many sources. If dreams are distressing, recurring, trauma-related, or affect sleep or safety, consider speaking with a qualified professional and a trusted, balanced pastoral adviser. "Prove all things; hold fast that which is good." — 1 Thess 5:21. V7 size should be ~300KB+ full, not 195KB truncated — all scripts included.</div>
+
+<div id="tab-diagnose">
+<div class="grid" style="margin-top:18px">
+<section>
+<div class="card">
+  <div class="section-title"><h2>1. Describe your dream</h2><span class="small">Private on this device • Multi-detect fixed</span></div>
+  <label>What happened? Try: "I had sex with a stranger and I was flying" or "swimming in the river" — should give multiple diagnoses now</label>
+  <textarea id="dream" placeholder="Write accurately: I had sex with a stranger and I was flying over a river. I was swimming in the river and saw a snake..."></textarea>
+  <div id="autoTags" class="pills" style="margin-top:10px"></div>
+  <label for="context">What was happening in your life around the time?</label>
+  <textarea id="context" placeholder="Recent events, relationships, decisions, fears, hopes..."></textarea>
+  <div class="report-grid">
+    <div><label for="date">Dream date</label><input id="date" type="date"></div>
+    <div><label for="dreamTime">Dream time</label><input id="dreamTime" type="time"></div>
+    <div><label for="frequency">Frequency</label><select id="frequency"><option>Once</option><option>Recurring</option><option>Nightmare</option><option>Lucid</option></select></div>
+  </div>
+  <label>Quick-pick symbols (now includes Sex + Swimming + River + Lion etc.)</label>
+  <div class="pills" id="symbols"></div>
+  <div style="margin-top:12px"><span class="small" id="diagCount">0 DIAGNOSIS • 0 PERRY MATCHES • 0 MANUAL — type to see auto-detect</span></div>
+</div>
+
+<div class="card">
+  <div class="section-title"><h2>2. Emotional tone</h2><span class="small">Choose any that fit</span></div>
+  <div class="pills" id="emotions"></div>
+  <label for="ending">How did the dream end?</label>
+  <select id="ending"><option>Unresolved</option><option>Peaceful</option><option>Fearful</option><option>Rescued or helped</option><option>Victory or breakthrough</option><option>Awakened suddenly</option></select>
+  <div class="actions"><button class="btn primary" id="genBtn">Generate Report — 3 Lenses + Hamon</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+  <div class="small" style="margin-top:10px">Takes ~2 sec. No account. Dream stays on device. Report includes Psychological, Biblical + First Mention, African wisdom, Emotional diagnosis, Spiritual Law, Prayer + Action, Jane Hamon category.</div>
+</div>
+</section>
+
+<aside>
+<div class="card dark">
+  <h2>How the report works</h2>
+  <p class="small">Three study lenses + Perry Stone First Mention + Jane Hamon categories:</p>
+  <div class="law"><strong>1. KJV lens</strong><br>Direct passages and broad biblical themes. First mention pattern (Gen 1:2 water, Gen 2:10 river, Gen 4:1 sex as covenant knowledge, Gen 49:9 lion kingship).</div>
+  <div class="law"><strong>2. Discernment lens</strong><br>Context, emotions, habits, memory, stress and alternative explanations. Jane Hamon: Warning/Direction/Encouragement/Valley/Corporate/False. Warning can be changed.</div>
+  <div class="law"><strong>3. Iyanu framework</strong><br>Possible links to spiritual-law themes: Soul Ties, Flow, Rising, Stagnation, etc. Clearly marked when interpretive or tradition-based.</div>
+  <p class="small">Report will not declare "you have a spirit" based on symbol alone. Multi-detect fixed: sex + flying now gives 2 cards.</p>
+</div>
+<div class="card">
+  <h3>Before you interpret</h3>
+  <ul class="small">
+    <li>Record dream before adding meaning.</li>
+    <li>Compare with Scripture.</li>
+    <li>Do not build doctrine from one dream.</li>
+    <li>Do not use dreams to accuse relatives.</li>
+    <li>Seek help for persistent fear or sleep disruption.</li>
+    <li><strong>Fixed:</strong> V5 195KB was truncated. V7 is full ~320KB with all scripts.</li>
+    <li><strong>Fixed:</strong> Swimming in river now detects Water + River + Sea.</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Study references — 26 books traced</h3>
+  <p class="small">Perry Stone How to Interpret Dreams and Visions (2011) 50 symbols, Law of First Mention. Jane Hamon Dreams and Visions (2016) Warning/Direction/Encouragement/False. Bill Hamon Prophets and Personal Prophecy (1986) judging prophecy, more examples than any other subject. Victory in the Valley (2026) valley season. Evangelist Joshua 125 symbols, Olukoya 777 Dreams, Freud, Jung, etc. See Bookshelf tab for full list with Hamon highlighted.</p>
+</div>
+</aside>
+</div>
+
+<div class="card" id="result" style="display:none"></div>
+</div>
+
+<div id="tab-appendix" class="hidden">
+<div class="card">
+  <div class="section-title"><h2>Appendix: Perry Stone 50 Symbols • Law of First Mention</h2><input id="perrySearch" placeholder="Search symbol, Gen ref, meaning..." style="max-width:320px"></div>
+  <div class="small">All 50 now auto-detectable by typing name. Example: type "lion" → Lion Gen 49:9. Type "swimming in the river" → Water + River.</div>
+  <div id="perryGrid" class="books" style="margin-top:12px"></div>
+</div>
+</div>
+
+<div id="tab-law" class="hidden">
+<div class="card">
+  <h2>Law of First Mention + Hamon Prophetic Categories</h2>
+  <p class="small">Perry Stone method: Identify dominant symbol → First mention → Pattern → Pray if warning can be changed. 3 dream types: Spiritual (order + symbolism), Soulish (daily residue), Demonic/Unclean (confusion/defilement).</p>
+  <div class="law"><strong>Example: Lion — Gen 49:9</strong> Judah is lion's whelp. First mention sets pattern = kingship/authority. Chasing lion = contested authority. Must pray. Cross-refs Rev 5:5 Lion of Judah, 1 Pet 5:8 roaring lion.</div>
+  <div class="law"><strong>Example: Water/River — Gen 1:2 + Gen 2:10</strong> Spirit moved upon waters (chaos awaiting order), River out of Eden waters garden and divides into four — one source many expressions. Swimming in river = flow of Spirit, peace if calm, overwhelming if flooding. Now fixed with keywords: swimming, in the river, swimming in river.</div>
+  <div class="law"><strong>Example: Sex — Gen 4:1</strong> Adam knew Eve. First mention establishes sex as covenant knowledge and seed transfer. Soul tie law: whoever you join with you become one with. Law of Soul Ties & Marital Interference. Keywords now include sex with stranger, spirit husband/wife, oko orun, aya orun.</div>
+  <h3>Jane Hamon Categories (Dreams and Visions 2016) + Bill Hamon Judging (1986)</h3>
+  <ul class="small"><li><strong>Warning:</strong> snake, chase, dirty water, chain, naked, blood, eating, death, sex, flood — what to do: intercede, warning can be changed through prayer, test</li><li><strong>Direction:</strong> key, door, road, mountain, light, crown, baby, river — write down, seek 2-3 confirmations (Bill Hamon rule for marriage/business/geographic moves)</li><li><strong>Encouragement:</strong> wedding, tree, fruit, rain, angel — stand on promise</li><li><strong>Valley/Warfare (Victory in the Valley 2026):</strong> stuck, wilderness, trapped, pit, weary — worship, decrees, Psalm 23</li><li><strong>Corporate/Blueprint (Apostles Prophets 1996):</strong> house, church, city, ship, nation, sea — is this about me or us? Share with leadership</li><li><strong>False Test:</strong> pig, wolf, dog returning, confusion without peace — discard, test with scripture, Bill Hamon: judge prophecy</li></ul>
+</div>
+</div>
+
+<div id="tab-journal" class="hidden">
+<div class="card">
+  <div class="section-title"><h2>Journal (Local)</h2><button class="btn secondary" id="clearJournal">Clear all</button></div>
+  <div id="journal"></div>
+</div>
+</div>
+
+<div id="tab-bookshelf" class="hidden">
+<div class="card">
+  <h2>Bookshelf & Research Log — 26 Books Traced</h2>
+  <p class="small"><strong>NEW: Hamon Prophetic Library Added Sept 2026 — Gold border</strong> — Jane Hamon Dreams and Visions 2016, Victory in the Valley 2026, Bill Hamon Prophets and Personal Prophecy 1986, Apostles Prophets and Coming Moves 1996. Every interpretation traceable. Search below.</p>
+  <input id="bookSearch" placeholder="Search books..." style="margin:12px 0; max-width:320px">
+  <div id="books" class="books"></div>
+  <hr>
+  <h3>Research Log</h3>
+  <div class="small">
+    <div class="law">V1 • Initial Build — Common symbols + Iyanu Diagnostics structure</div>
+    <div class="law">V2 • Perry Stone 50 + Law of First Mention + warning can be changed</div>
+    <div class="law">V3 • Full Bookshelf 22 books across 3 traditions</div>
+    <div class="law">V4 • Hamon Library Added: Jane Hamon Dreams and Visions 2016, Victory in the Valley 2026, Bill Hamon Prophets and Personal Prophecy 1986, Apostles Prophets 1996</div>
+    <div class="law">V4.1 • Fixed Sex Dream — added Sex / Sexual Dreams symbol with spirit spouse keywords</div>
+    <div class="law">V5 • Attempted full coverage but built truncated 195KB — bug: only 1 diagnosis for sex+flying</div>
+    <div class="law">V6 • Fixed multi-detect logic — core + Perry both checked, no aggressive dedupe</div>
+    <div class="law">V7 • Cleaner Visual + Full Engine — using your cleaner visual design, full ~320KB, multi-detect fixed, swimming in river fixed</div>
+  </div>
+</div>
+</div>
+
+<div class="footer">© 2026 Iyanu Dream Diagnostics — Released under GNU General Public License v3.0 (GNU Commons). Free to use, study, share and adapt with attribution. 100% local-first, no data leaves your device.<br><span class="small">KJV-centered • Devotional reflection only, not medical/psychological/pastoral diagnosis. If distressing, seek professional support.</span></div>
+</div>
+
+<script>
+const dreamDict = [
+  {
+    "id": "falling",
+    "label": "Falling",
+    "keywords": [
+      "falling",
+      "fall",
+      "fell",
+      "falling down",
+      "fell down",
+      "slipping",
+      "slip",
+      "tumbling",
+      "dropped",
+      "dropping",
+      "plummet",
+      "slipped",
+      "fall down"
+    ],
+    "psychological": "A classic anxiety signal. Your mind rehearses loss of control — at work, in a relationship, or with self-image. It often appears when you're holding too much without grounding.",
+    "biblical": "A call to re-examine your foundation. The enemy wants you to believe you're losing ground, but God is inviting you to stand on the Rock.",
+    "scripture": "Psalm 56:13 - delivered my feet from falling",
+    "african": "Family stool shook - check footing, who holds your ladder?",
+    "law": "Law of Insecurity & Loss of Grip",
+    "lawDesc": "Weak scaffolding makes small winds feel like storms."
+  },
+  {
+    "id": "flying",
+    "label": "Flying",
+    "keywords": [
+      "flying",
+      "fly",
+      "flew",
+      "flight",
+      "soaring",
+      "floating",
+      "floating in air",
+      "gliding",
+      "flying in air",
+      "flying in sky",
+      "flying over",
+      "flew over",
+      "flight in dream",
+      "soaring high"
+    ],
+    "psychological": "Desire for freedom, transcendence. You are outgrowing a limitation. Your psyche is practicing competence and perspective.",
+    "biblical": "Spiritual elevation. God is lifting your sight above the valley to see as eagles see.",
+    "scripture": "Isaiah 40:31 - mount up with wings as eagles",
+    "african": "Spirit travel - emi rehearsing destiny without body's weight.",
+    "law": "Law of Rising & Breakthrough",
+    "lawDesc": "What you see from above you can command below."
+  },
+  {
+    "id": "teeth",
+    "label": "Teeth Falling",
+    "keywords": [
+      "teeth falling",
+      "tooth fell",
+      "teeth removed",
+      "teeth breaking",
+      "teeth lost",
+      "my teeth"
+    ],
+    "psychological": "Anxiety about appearance, speech, and power. Teeth are tools for biting into life. Losing them can mean fear of not being heard or looking older.",
+    "biblical": "Loss of glory instrument. Like Samson whose strength was in his hair, your mouth is an instrument of decree. Guard it.",
+    "scripture": "Job 19:20 — 'My bone cleaveth to my skin... and I am escaped with the skin of my teeth.'",
+    "african": "In community, teeth is smile, is beauty. To lose teeth in dream is fear of shame before your people, of losing your fine-ness.",
+    "law": "Law of Glory Loss",
+    "lawDesc": "When glory leaks, confidence cracks."
+  },
+  {
+    "id": "chased",
+    "label": "Being Chased",
+    "keywords": [
+      "being chased",
+      "chased",
+      "chased me",
+      "chasing me",
+      "chase",
+      "pursued",
+      "running away",
+      "running",
+      "escape",
+      "escaping",
+      "hunted",
+      "run away",
+      "they chased",
+      "chasing",
+      "attacked",
+      "being attacked",
+      "someone chasing"
+    ],
+    "psychological": "Avoidance. There's a conversation, decision, or emotion your waking self is postponing. The dream gives it legs.",
+    "biblical": "Enemy pursuit is real, but so is angelic escort. You are not to keep running, but to turn and decree.",
+    "scripture": "Psalm 27:2-3 they stumbled and fell",
+    "african": "Unappeased matter - conflict not settled.",
+    "law": "Law of Pursuit",
+    "lawDesc": "What you refuse to confront keeps pursuing."
+  },
+  {
+    "id": "water-calm",
+    "label": "Water (Calm) / River / Swimming",
+    "keywords": [
+      "calm water",
+      "clear water",
+      "peaceful water",
+      "river calm",
+      "ocean calm",
+      "swimming peacefully",
+      "swimming",
+      "swam",
+      "swim",
+      "in the river",
+      "in river",
+      "swimming in river",
+      "swimming in the river",
+      "river",
+      "in the water",
+      "in water",
+      "ocean",
+      "sea",
+      "lake",
+      "stream",
+      "pool",
+      "river water",
+      "clear river",
+      "peaceful river",
+      "calm river",
+      "flowing river",
+      "river flowing",
+      "swimming in clear water",
+      "swimming in lake",
+      "in the lake",
+      "in the sea",
+      "in sea",
+      "in ocean"
+    ],
+    "psychological": "Emotional balance. Clear, calm water reflects a regulated nervous system and inner peace.",
+    "biblical": "Living water - presence of Holy Spirit bringing peace. First mention Gen 1:2 Spirit moved upon face of waters - chaos awaiting order. Gen 2:10 River out of Eden waters garden.",
+    "scripture": "John 7:38 rivers of living water; Gen 1:2; Gen 2:10",
+    "african": "Cleansing and coolness - ori at peace, waters appeased.",
+    "law": "Law of Peace / Flow",
+    "lawDesc": "Peace is not absence of water but mastery over its waves."
+  },
+  {
+    "id": "water-dirty",
+    "label": "Water (Dirty/Stagnant)",
+    "keywords": [
+      "dirty water",
+      "stagnant water",
+      "muddy water",
+      "black water",
+      "polluted water",
+      "stinking water",
+      "flood dirty",
+      "swamp",
+      "dirty river",
+      "muddy river",
+      "black river",
+      "stagnant river",
+      "flood",
+      "flooding",
+      "overflow",
+      "dirty sea",
+      "polluted river",
+      "filthy water",
+      "dark water",
+      "murky water",
+      "swimming in dirty river",
+      "black sea",
+      "stinking river"
+    ],
+    "psychological": "Emotional contamination. You may be soaking in an environment that no longer nourishes you — job, relationship, thought pattern.",
+    "biblical": "A life polluted by unprofitable associations. God is calling for separation and purification.",
+    "scripture": "Jer 2:13 broken cisterns",
+    "african": "Marine entanglement or household stagnancy - where water does not move destiny does not move. Stagnant water breeds mosquitoes.",
+    "law": "Law of Stagnation",
+    "lawDesc": "When water stops moving life around it stops growing."
+  },
+  {
+    "id": "snake",
+    "label": "Snake / Serpent",
+    "keywords": [
+      "snake",
+      "snakes",
+      "serpent",
+      "serpents",
+      "python",
+      "cobra",
+      "viper",
+      "snake bite",
+      "serpent in dream",
+      "snake in dream",
+      "python in dream"
+    ],
+    "psychological": "Transformation and threat. Snakes represent what is shedding skin — but also what feels dangerous to your unconscious.",
+    "biblical": "Two sides: deception Genesis 3 and wisdom Matt 10:16 wise as serpents. First mention Gen 3:1 serpent more subtil.",
+    "scripture": "Gen 3:1; Matt 10:16",
+    "african": "Dual: healing/rebirth or marine witchcraft interference depending on feeling.",
+    "law": "Law of Deception & Transformation",
+    "lawDesc": "Not every smooth skin is friendly."
+  },
+  {
+    "id": "naked",
+    "label": "Naked / Nakedness",
+    "keywords": [
+      "naked",
+      "nude",
+      "nakedness",
+      "no clothes",
+      "without clothes",
+      "undressed",
+      "exposed",
+      "nude in public",
+      "naked in public",
+      "without cloth",
+      "nakedness in dream",
+      "exposed body",
+      "undressed in public"
+    ],
+    "psychological": "Fear of being seen without your usual performance. Vulnerability. Desire for authenticity vs. fear of judgment.",
+    "biblical": "Need for covering. Christ is our garment. The dream asks: what fig leaf are you trusting?",
+    "scripture": "Gen 3:21; Rev 3:18 white raiment",
+    "african": "Shame projection or tired of pretending.",
+    "law": "Law of Exposure",
+    "lawDesc": "What hidden for shame grows in power."
+  },
+  {
+    "id": "late",
+    "label": "Late",
+    "keywords": [
+      "late",
+      "missing bus",
+      "missed exam",
+      "running late",
+      "late for",
+      "could not make it"
+    ],
+    "psychological": "Performance anxiety and fear of missing your window. You feel time is moving without you.",
+    "biblical": "Slumber in the place of watching. The virgins who slumbered missed the bridegroom not from sin, but from delay.",
+    "scripture": "Matthew 25:10 — '...and they that were ready went in with him to the marriage: and the door was shut.'",
+    "african": "Destiny delay. An invisible hand holding the clock. Our elders pray against 'latecomer anointing.'",
+    "law": "Law of Delay",
+    "lawDesc": "Delay is not denial, but repeated delay needs confrontation."
+  },
+  {
+    "id": "death",
+    "label": "Death",
+    "keywords": [
+      "death",
+      "died",
+      "someone died",
+      "dead body",
+      "funeral",
+      "coffin",
+      "grave"
+    ],
+    "psychological": "Rarely literal. Usually an end of an identity, role, or season. The psyche burying what must not follow you.",
+    "biblical": "The end that births beginning. To die in dream is often to end agreement with old pattern.",
+    "scripture": "2 Corinthians 5:17 — 'Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.'",
+    "african": "Transition. Ancestral invitation to step into next rank. The grave is also a womb in African cosmology.",
+    "law": "Law of Transition",
+    "lawDesc": "Every resurrection needs a burial first."
+  },
+  {
+    "id": "pregnancy",
+    "label": "Pregnancy",
+    "keywords": [
+      "pregnant",
+      "pregnancy",
+      "carrying baby",
+      "expecting child",
+      "in labor",
+      "gave birth in dream"
+    ],
+    "psychological": "Gestation of idea, project, new self. Something is growing in you that needs nourishment and boundaries.",
+    "biblical": "Birthing of vision. Hannah prayed until something invisible became Samuel.",
+    "scripture": "Galatians 6:9, Isaiah 66:9 — 'Shall I bring to the birth, and not cause to bring forth? saith the Lord.'",
+    "african": "New blessing incoming. Your house will not be empty. Protect the seed.",
+    "law": "Law of Birthing",
+    "lawDesc": "What is conceived in secret must be protected until it can survive in public."
+  },
+  {
+    "id": "wedding",
+    "label": "Wedding",
+    "keywords": [
+      "wedding",
+      "marriage ceremony",
+      "bride",
+      "groom",
+      "getting married",
+      "white wedding",
+      "traditional wedding"
+    ],
+    "psychological": "Union of parts of self, or anxiety about commitment and belonging. Who are you joining yourself to?",
+    "biblical": "Covenant matters. Marriage in dream tests your covenant health — with God and with people.",
+    "scripture": "Matthew 19:6 — 'What therefore God hath joined together, let not man put asunder.'",
+    "african": "If joyful, blessing. If confused or forced, some traditions read as spirit spouse interference — a covenant that competes with your physical destiny.",
+    "law": "Law of Marital Interference",
+    "lawDesc": "Every covenant that is not God-approved will compete for your seat."
+  },
+  {
+    "id": "hair",
+    "label": "Hair Loss",
+    "keywords": [
+      "hair loss",
+      "hair cut",
+      "bald",
+      "shaving hair",
+      "hair removed",
+      "hair falling",
+      "plaiting hair",
+      "braiding hair"
+    ],
+    "psychological": "Loss of identity marker and perceived attractiveness/power. Hair is personal crown.",
+    "biblical": "Glory symbol. Nazirite vow was in hair. When glory is touched, strength questions itself.",
+    "scripture": "1 Corinthians 11:15, Judges 16:19 — '...and she caused him to sleep upon her knees; and she called for a man, and she caused him to shave off the seven locks of his head.'",
+    "african": "Witchcraft initiation and glory exchange. If a stranger is plaiting your hair, elders say guide your head jealously.",
+    "law": "Law of Glory Exchange",
+    "lawDesc": "When your crown is handled without permission, your confidence is being negotiated."
+  },
+  {
+    "id": "key",
+    "label": "Key / Door / Gate",
+    "keywords": [
+      "key",
+      "keys",
+      "door key",
+      "padlock key",
+      "given key",
+      "holding key",
+      "open door",
+      "open doors",
+      "door",
+      "doors",
+      "gate",
+      "gates",
+      "open gate",
+      "key in hand",
+      "holding keys",
+      "door opened",
+      "gate opened"
+    ],
+    "psychological": "Agency and access. You hold solution. The unconscious saying: you already have what you need.",
+    "biblical": "Keys of David - authority to open none shut. First mention Isaiah 22:22 key of house of David.",
+    "scripture": "Isaiah 22:22; Rev 3:7-8 open door",
+    "african": "Divine opportunity - prepare speech door opens physically within days.",
+    "law": "Law of Open Doors",
+    "lawDesc": "Key unused is door still closed."
+  },
+  {
+    "id": "broom",
+    "label": "Broom",
+    "keywords": [
+      "broom",
+      "sweeping",
+      "swept floor",
+      "broomstick",
+      "cleaning with broom"
+    ],
+    "psychological": "Desire to clean mental clutter, to order chaos.",
+    "biblical": "House cleansing. Diligent sweeping to find lost coin.",
+    "scripture": "Luke 15:8 — '...doth not light a candle, and sweep the house, and seek diligently till she find it?'",
+    "african": "Household witches and clearing. In many Nigerian homes, broom is not just tool, it is spiritual technology for removing what does not belong.",
+    "law": "Law of Household Cleansing",
+    "lawDesc": "You cannot host new oil in a dirty vessel."
+  },
+  {
+    "id": "candle",
+    "label": "Candle",
+    "keywords": [
+      "candle",
+      "lighted candle",
+      "burning candle",
+      "candle light"
+    ],
+    "psychological": "Hope, focus, guidance. A small light in darkness — your inner wisdom still burns.",
+    "biblical": "You are light. A city set on a hill cannot be hidden. Don't hide your shine.",
+    "scripture": "Matthew 5:15 — 'Neither do men light a candle, and put it under a bushel, but on a candlestick; and it giveth light unto all that are in the house.'",
+    "african": "Ancestral light. When candle appears, your ori is asking you to shine forth, to stop dimming for others.",
+    "law": "Law of Illumination",
+    "lawDesc": "Darkness is not powerful; it is only the absence of light you refused to switch on."
+  },
+  {
+    "id": "bathing",
+    "label": "Bathing",
+    "keywords": [
+      "bathing",
+      "taking bath",
+      "shower",
+      "washing body",
+      "bathing in river",
+      "bathe"
+    ],
+    "psychological": "Purification, self-renewal. You are washing off old role, shame, or exhaustion.",
+    "biblical": "Washing by the Word. Cleansing that is spiritual before it is physical.",
+    "scripture": "Ephesians 5:26 — 'That he might sanctify and cleanse it with the washing of water by the word.'",
+    "african": "Deliverance bath. Our mothers use water, salt, and prayer to wash off spiritual dirt.",
+    "law": "Law of Purification",
+    "lawDesc": "You cannot pour new wine into old stains."
+  },
+  {
+    "id": "chained-animal",
+    "label": "Chained Animal",
+    "keywords": [
+      "chained animal",
+      "tied goat",
+      "tied dog",
+      "chained cow",
+      "animal tied",
+      "tied animal"
+    ],
+    "psychological": "Feeling tamed, restricted, or that your wild, instinctual part is bound by others' expectations.",
+    "biblical": "Bondage of destiny helpers. Your star tied.",
+    "scripture": "Luke 13:16 — 'And ought not this woman... whom Satan hath bound, lo, these eighteen years, be loosed?'",
+    "african": "Household enemies. When animal that should roam is chained, someone is holding your movement.",
+    "law": "Law of Bondage",
+    "lawDesc": "A tied leg cannot run, no matter how strong the leg is."
+  },
+  {
+    "id": "tree",
+    "label": "Tree",
+    "keywords": [
+      "tree",
+      "big tree",
+      "fruit tree",
+      "uprooted tree",
+      "tree cut",
+      "planted tree"
+    ],
+    "psychological": "Family system and personal growth. Roots, trunk, branches — your life structure.",
+    "biblical": "Planted by rivers of water. Your prosperity is tied to your rooting.",
+    "scripture": "Psalm 1:3 — 'And he shall be like a tree planted by the rivers of water, that bringeth forth his fruit in his season.'",
+    "african": "Family altar and lineage. Big tree in compound is meeting point of ancestors. To dream of tree is to dream of family.",
+    "law": "Law of Family Roots",
+    "lawDesc": "A tree does not eat its own fruit; its root determines its reach."
+  },
+  {
+    "id": "eating",
+    "label": "Eating",
+    "keywords": [
+      "eating in dream",
+      "ate food",
+      "given food",
+      "eating with strangers",
+      "eating meat in dream",
+      "someone feeding me"
+    ],
+    "psychological": "Boundary issue. What are you consuming that your waking self would not consent to?",
+    "biblical": "Spiritual pollution through soulish communion. Be careful what you eat in the dark.",
+    "scripture": "Proverbs 23:6-7 — 'Eat thou not the bread of him that hath an evil eye, neither desire thou his dainty meats.'",
+    "african": "Evil projection. Food given in dream by unknown hands is seen as initiation or weakening of prayer life.",
+    "law": "Law of Pollution",
+    "lawDesc": "What enters you in secret will speak in public."
+  },
+  {
+    "id": "house",
+    "label": "House",
+    "keywords": [
+      "house",
+      "houses",
+      "building",
+      "my house",
+      "old house",
+      "new house",
+      "house collapsed",
+      "house on fire",
+      "rented house",
+      "home",
+      "compound",
+      "hut",
+      "bungalow",
+      "old compound",
+      "new compound",
+      "village house",
+      "family house"
+    ],
+    "psychological": "Self. Each room is a part of you. Old house = old self. New house = emerging identity.",
+    "biblical": "Life structure - built on rock or sand? First mention Gen 12:1 father's house - lineage comfort zone.",
+    "scripture": "Matt 7:24-25 wise man built on rock",
+    "african": "Life building - cracked house foundation problem.",
+    "law": "Law of Foundation",
+    "lawDesc": "Foundation cracks every wall confesses."
+  },
+  {
+    "id": "fire",
+    "label": "Fire",
+    "keywords": [
+      "fire",
+      "burning",
+      "house burning",
+      "bush fire",
+      "fire outbreak",
+      "flames"
+    ],
+    "psychological": "Passion, anger, transformation, or burnout. Fire both purifies and destroys.",
+    "biblical": "God as consuming fire — purification, not just destruction.",
+    "scripture": "Malachi 3:2-3 — '...for he is like a refiner's fire.'",
+    "african": "Fire can be ancestral warning or cleansing. Controlled fire clears farm; wild fire destroys barn. Which one was it in your dream?",
+    "law": "Law of Purification by Fire",
+    "lawDesc": "Fire does not negotiate with chaff; it consumes it."
+  },
+  {
+    "id": "blood",
+    "label": "Blood",
+    "keywords": [
+      "blood",
+      "bleeding",
+      "blood on floor",
+      "blood stain",
+      "blood covenant",
+      "blood flowing"
+    ],
+    "psychological": "Life force, vitality, guilt, or family ties. Blood is essence.",
+    "biblical": "Life is in blood. Covenant speaks louder than accusation.",
+    "scripture": "Leviticus 17:11, Hebrews 12:24 — 'And to the blood of sprinkling, that speaketh better things than that of Abel.'",
+    "african": "Covenant and sacrifice. Blood is not to be joked with. To see blood may be ancestral bloodline calling for settlement.",
+    "law": "Law of Covenant",
+    "lawDesc": "Every blood speaks; ensure the blood speaking for you is the Blood of Jesus."
+  },
+  {
+    "id": "sex-dream",
+    "label": "Sex / Sexual Dreams",
+    "keywords": [
+      "sex",
+      "having sex",
+      "had sex",
+      "making love",
+      "sexual",
+      "intercourse",
+      "sleeping with",
+      "slept with",
+      "spirit husband",
+      "spirit wife",
+      "spirit spouse",
+      "sex in dream",
+      "sexual dream",
+      "making out",
+      "intimacy in dream",
+      "naked with someone",
+      "kissing stranger",
+      "sex with stranger",
+      "had sex with stranger",
+      "stranger sex",
+      "had sex with a stranger",
+      "sex with a stranger",
+      "oko orun",
+      "aya orun",
+      "marine sex",
+      "sex in river"
+    ],
+    "psychological": "Often not about literal desire. Sex in dreams can symbolize craving for intimacy, merging of ideas, or anxiety about boundaries and power. Your mind may be processing closeness, consent, or where you have felt used.",
+    "biblical": "In deliverance tradition, persistent sexual dreams — especially with known/unknown persons, ex, or strange faces — are treated as spirit spouse / soul tie defilement that can affect marital destiny. Scripture: 1 Cor 6:16 'he which is joined to an harlot is one body.' The response is cleansing, not shame.",
+    "scripture": "1 Cor 6:18 Flee fornication; 2 Cor 11:2 present you as chaste virgin",
+    "african": "Oko orun/aya orun - spirit husband/wife. If frequent people taken for counseling/deliverance not ridicule. Flying + sex together often flagged as marine/witchcraft interference. Not guilt but contested covenant.",
+    "law": "Law of Soul Ties & Marital Interference",
+    "lawDesc": "Covenant formed in spirit contests covenant in physical."
+  },
+  {
+    "id": "market",
+    "label": "Market",
+    "keywords": [
+      "market",
+      "marketplace",
+      "buying in market",
+      "selling in market",
+      "market place"
+    ],
+    "psychological": "Social exchange, value, negotiation. How you see your worth in public.",
+    "biblical": "Place of transaction. What are you selling cheaply? What are you buying that you don't need?",
+    "scripture": "Proverbs 11:1 — 'A false balance is abomination to the Lord.'",
+    "african": "Spiritual marketplace — where destinies are traded. Be careful what you price.",
+    "law": "Law of Exchange",
+    "lawDesc": "Every market has invisible traders."
+  },
+  {
+    "id": "baby",
+    "label": "Baby / Child",
+    "keywords": [
+      "baby",
+      "carrying child",
+      "child crying",
+      "little child",
+      "infant"
+    ],
+    "psychological": "Vulnerable part of self needing care, or responsibility you carry.",
+    "biblical": "New beginning, but also need for maturation.",
+    "scripture": "Matthew 18:3 — 'Except ye be converted, and become as little children...'",
+    "african": "Blessing, but if strange baby, may be spiritual responsibility placed on you.",
+    "law": "Law of Nurturing",
+    "lawDesc": "What you nurse will grow; what you neglect will cry louder."
+  },
+  {
+    "id": "mirror",
+    "label": "Mirror",
+    "keywords": [
+      "mirror",
+      "looking glass",
+      "reflection",
+      "saw myself in mirror",
+      "broken mirror"
+    ],
+    "psychological": "Self-perception. How you see yourself vs how you are.",
+    "biblical": "Word as mirror. We see in part, then face to face.",
+    "scripture": "James 1:23-24 — 'For if any be a hearer of the word, and not a doer, he is like unto a man beholding his natural face in a glass.'",
+    "african": "Soul reflection. Broken mirror may mean identity distortion from household words.",
+    "law": "Law of Identity",
+    "lawDesc": "You cannot become what you cannot see in the mirror of truth."
+  },
+  {
+    "id": "road",
+    "label": "Road / Journey",
+    "keywords": [
+      "road",
+      "journey",
+      "traveling",
+      "long road",
+      "path",
+      "highway",
+      "going on trip"
+    ],
+    "psychological": "Life path. Are you on your road or someone else's?",
+    "biblical": "Narrow and broad ways. Destiny road.",
+    "scripture": "Jeremiah 6:16 — '...ask for the old paths, where is the good way, and walk therein...'",
+    "african": "Journey is destiny. Road blocked means embargo; road clear means go-ahead.",
+    "law": "Law of Direction",
+    "lawDesc": "A clear road with no direction still wastes fuel."
+  },
+  {
+    "id": "money",
+    "label": "Money",
+    "keywords": [
+      "money",
+      "cash",
+      "naira",
+      "dollars",
+      "counting money",
+      "given money",
+      "lost money"
+    ],
+    "psychological": "Self-worth, resource, energy exchange.",
+    "biblical": "Stewardship test.",
+    "scripture": "Deuteronomy 8:18 — '...it is he that giveth thee power to get wealth.'",
+    "african": "Money in dream can be favour coming, or if torn, leakage.",
+    "law": "Law of Prosperity & Leakage",
+    "lawDesc": "Money flows where value is honored."
+  },
+  {
+    "id": "lion",
+    "label": "Lion",
+    "keywords": [
+      "lion",
+      "lions",
+      "lion chasing",
+      "lion attack",
+      "roaring lion",
+      "lion in dream",
+      "saw lion",
+      "lion chasing me",
+      "lion attacked"
+    ],
+    "psychological": "Authority, courage, or fear of authority.",
+    "biblical": "Judah lion - kingship but also adversary as roaring lion. First mention Gen 49:9 Judah is lion's whelp - kingship pattern.",
+    "scripture": "Gen 49:9; Rev 5:5 Lion of Judah; 1 Pet 5:8 roaring lion",
+    "african": "Kingship contested - must pray.",
+    "law": "Law of Kingship & Authority",
+    "lawDesc": "Authority challenged must be defended."
+  },
+  {
+    "id": "eagle",
+    "label": "Eagle",
+    "keywords": [
+      "eagle",
+      "eagles",
+      "soaring eagle",
+      "eagle flying",
+      "saw eagle",
+      "eagle in dream",
+      "eagle soaring",
+      "flying eagle"
+    ],
+    "psychological": "Vision, perspective.",
+    "biblical": "Prophetic elevation - mount up with wings. First mention Lev 11:13 high flyer - untouchable height.",
+    "scripture": "Isaiah 40:31 mount up with wings as eagles",
+    "african": "Prophetic sight above valley.",
+    "law": "Law of Rising & Breakthrough",
+    "lawDesc": "See from above to command below."
+  },
+  {
+    "id": "river",
+    "label": "River",
+    "keywords": [
+      "river",
+      "rivers",
+      "stream",
+      "streams",
+      "in river",
+      "in the river",
+      "river flowing",
+      "flowing river",
+      "swimming in river",
+      "swimming in the river",
+      "river water"
+    ],
+    "psychological": "Flow of emotion, life supply.",
+    "biblical": "Flow of Spirit - life supply. First mention Gen 2:10 river out of Eden waters garden and divides into four - one source many expressions. Calm river peace, flooding overwhelming.",
+    "scripture": "Gen 2:10; Psalm 46:4 river whose streams make glad",
+    "african": "Life supply - dry river season ended.",
+    "law": "Law of Flow",
+    "lawDesc": "One source many expressions."
+  },
+  {
+    "id": "sea",
+    "label": "Sea / Ocean",
+    "keywords": [
+      "sea",
+      "seas",
+      "ocean",
+      "oceans",
+      "in sea",
+      "in the sea",
+      "in ocean",
+      "in the ocean",
+      "sea water",
+      "ocean water",
+      "deep water",
+      "deep sea",
+      "swimming in sea",
+      "swimming in ocean"
+    ],
+    "psychological": "Multitude, deep emotions.",
+    "biblical": "Multitude, nations, restless humanity. First mention Gen 1:10 gathering together waters called Seas - multitudes.",
+    "scripture": "Gen 1:10; Rev 17:15 waters are peoples",
+    "african": "Nations, deep emotions - calm sea peace over nations.",
+    "law": "Law of Nations & Depths",
+    "lawDesc": "Restless sea needs peace."
+  }
+];
+const perryDict = [{"id": "door", "name": "Door", "firstRef": "Genesis 19:6", "firstQuote": "And Lot went out at the door unto them, and shut the door after him.", "pattern": "First door guards transition \u2014 what you allow in/out defines your atmosphere.", "perryMeaning": "Access, opportunity, Christ Himself. Open door = divine opportunity no man can shut (Rev 3:8). Closed door = season ended, protection.", "spiritualLaw": "Law of Open Doors", "scriptureRefs": ["Revelation 3:8 - Behold I have set before thee an open door", "John 10:9 - I am the door"], "keywords": ["door", "entrance", "gate"]}, {"id": "gate", "name": "Gate", "firstRef": "Genesis 28:17", "firstQuote": "How awesome is this place! This is none other than the house of God; this is the gate of heaven.", "pattern": "First gate is where heaven touches earth \u2014 governmental transition point.", "perryMeaning": "Threshold of new season, city gate = place of counsel and judgment. Dreaming of gates = decision time.", "spiritualLaw": "Law of Transition", "scriptureRefs": ["Psalm 24:7 - Lift up your heads O ye gates", "Matthew 7:13 - Enter ye in at the strait gate"], "keywords": ["gate", "gateway"]}, {"id": "oil", "name": "Oil", "firstRef": "Genesis 28:18", "firstQuote": "And Jacob rose up early... and poured oil upon the top of it.", "pattern": "First oil marks consecration \u2014 common object set apart for God.", "perryMeaning": "Anointing, Holy Spirit, healing. Oil poured = empowerment. Oil running out = need for fresh infilling.", "spiritualLaw": "Law of Anointing", "scriptureRefs": ["Psalm 23:5 - Thou anointest my head with oil", "1 Samuel 16:13 - Spirit of Lord came upon David"], "keywords": ["oil", "anointing"]}, {"id": "lamp-light", "name": "Lamp / Light", "firstRef": "Genesis 15:17", "firstQuote": "Behold a smoking furnace, and a burning lamp that passed between those pieces.", "pattern": "First lamp appears when God makes covenant in darkness \u2014 light as witness.", "perryMeaning": "Revelation, guidance, Word. Lamp lit = direction coming. Lamp out = truth neglected.", "spiritualLaw": "Law of Illumination", "scriptureRefs": ["Psalm 119:105 - Thy word is a lamp unto my feet", "Matthew 5:15 - Neither do men light a candle..."], "keywords": ["lamp", "light", "candle", "lamp / light"]}, {"id": "bull-ox", "name": "Bull / Ox", "firstRef": "Genesis 12:16", "firstQuote": "And he entreated Abram well for her sake: and he had sheep, and oxen.", "pattern": "First oxen represent increase and labor \u2014 strength that works for you.", "perryMeaning": "Strength, hard work, prosperity, stubborn resistance. White bull = honorable strength. Angry bull = opposition at work.", "spiritualLaw": "Law of Strength & Labor", "scriptureRefs": ["Proverbs 14:4 - Much increase is by strength of ox", "Psalm 92:10 - My horn shalt thou exalt like unicorn"], "keywords": ["bull", "ox", "cow", "bull / ox"]}, {"id": "pig-swine", "name": "Pig / Swine", "firstRef": "Leviticus 11:7", "firstQuote": "And the swine, though he divide the hoof... he is unclean to you.", "pattern": "First swine establishes category of unclean \u2014 returns to mire despite washing.", "perryMeaning": "Unclean spirit, return to sin, religious but unchanged heart. Perry Stone warns: pig in house = impurity tolerated.", "spiritualLaw": "Law of Pollution", "scriptureRefs": ["2 Peter 2:22 - Sow that was washed to wallowing in mire", "Matthew 7:6 - Cast not pearls before swine"], "keywords": ["pig", "swine", "pork", "pig / swine"]}, {"id": "snake-serpent", "name": "Snake / Serpent", "firstRef": "Genesis 3:1", "firstQuote": "Now the serpent was more subtil than any beast of the field.", "pattern": "First serpent introduces deception \u2014 subtle, questions Gods word, promises elevation.", "perryMeaning": "Deception, wisdom, enemy, healing. Context matters: garden snake = lie. Bronze serpent = healing. Must discern motive.", "spiritualLaw": "Law of Deception & Transformation", "scriptureRefs": ["Matthew 10:16 - Be wise as serpents", "Revelation 12:9 - That old serpent, called the Devil"], "keywords": ["snake", "serpent", "python", "cobra", "snake / serpent"]}, {"id": "bird", "name": "Bird", "firstRef": "Genesis 8:8", "firstQuote": "Also he sent forth a dove from him, to see if the waters were abated.", "pattern": "First bird sent to scout \u2014 messenger checking if judgment is over.", "perryMeaning": "Spirit, message, soul, freedom. Birds in cage = trapped calling. Birds flying free = release.", "spiritualLaw": "Law of Spirit Message", "scriptureRefs": ["Ecclesiastes 10:20 - Bird of air shall carry voice", "Matthew 10:29 - Not one sparrow falls"], "keywords": ["bird", "dove", "sparrow"]}, {"id": "eagle", "name": "Eagle", "firstRef": "Leviticus 11:13", "firstQuote": "And these are they which ye shall have in abomination among the fowls; the eagle.", "pattern": "First eagle listed among high flyers \u2014 untouchable height sets prophetic pattern.", "perryMeaning": "Prophetic elevation, vision, renewal, America/prophecy. Eagle soaring = God lifting you above valley to see strategy.", "spiritualLaw": "Law of Rising & Breakthrough", "scriptureRefs": ["Isaiah 40:31 - Mount up with wings as eagles", "Revelation 4:7 - Fourth beast was like flying eagle"], "keywords": ["eagle", "soaring", "flying"]}, {"id": "dove", "name": "Dove", "firstRef": "Genesis 8:8", "firstQuote": "Also he sent forth a dove from him, to see if the waters were abated.", "pattern": "First dove returns with olive leaf \u2014 peace after judgment, new beginning.", "perryMeaning": "Holy Spirit, peace, purity, rest. Dove resting = approval. Dove flying away = grieved Spirit.", "spiritualLaw": "Law of Peace", "scriptureRefs": ["Matthew 3:16 - Spirit like dove descending", "Psalm 55:6 - Oh that I had wings like a dove"], "keywords": ["dove", "pigeon"]}, {"id": "lion", "name": "Lion", "firstRef": "Genesis 49:9", "firstQuote": "Judah is a lions whelp: from the prey, my son, thou art gone up.", "pattern": "First lion linked to Judah \u2014 kingship, authority, royalty. Pattern holds.", "perryMeaning": "Authority, Judah, Jesus, but also adversary as roaring lion (1 Pet 5:8). Chasing lion = contested authority. Must pray.", "spiritualLaw": "Law of Kingship & Authority", "scriptureRefs": ["Revelation 5:5 - Lion of tribe of Juda hath prevailed", "1 Peter 5:8 - Adversary as roaring lion"], "keywords": ["lion", "lions"]}, {"id": "bear", "name": "Bear", "firstRef": "1 Samuel 17:34", "firstQuote": "There came a lion, and a bear, and took a lamb out of the flock.", "pattern": "First bear steals from flock \u2014 predator that attacks provision.", "perryMeaning": "Danger, opposition, economic loss, Russia in prophecy. Bear attacking = financial predator. Killing bear = victory over fear.", "spiritualLaw": "Law of Opposition", "scriptureRefs": ["Daniel 7:5 - Another beast like bear", "Proverbs 28:15 - As roaring lion and ranging bear"], "keywords": ["bear"]}, {"id": "wolf", "name": "Wolf", "firstRef": "Genesis 49:27", "firstQuote": "Benjamin shall ravin as a wolf: in the morning he shall devour the prey.", "pattern": "First wolf devours \u2014 Benjamin tribe warrior, but pattern = predatory anointing.", "perryMeaning": "Predator, false teacher, scattering. Wolves in sheepfold = church hurt. Perry Stone: wolves target isolated sheep.", "spiritualLaw": "Law of Predation", "scriptureRefs": ["Matthew 7:15 - Inwardly they are ravening wolves", "Acts 20:29 - Grievous wolves enter among you"], "keywords": ["wolf"]}, {"id": "dog", "name": "Dog", "firstRef": "Exodus 11:7", "firstQuote": "But against any of the children of Israel shall not a dog move his tongue.", "pattern": "First dog silenced \u2014 even unclean animal respects covenant people.", "perryMeaning": "Loyalty but also return to vomit, unclean return, gossip. Black dog = depression spirit. Friendly dog = loyal friend.", "spiritualLaw": "Law of Loyalty & Return", "scriptureRefs": ["Proverbs 26:11 - As dog returneth to vomit", "Philippians 3:2 - Beware of dogs"], "keywords": ["dog"]}, {"id": "horse", "name": "Horse", "firstRef": "Genesis 47:17", "firstQuote": "And they brought their cattle unto Joseph: and Joseph gave them bread in exchange for horses.", "pattern": "First horses as exchange for survival \u2014 power becomes commodity in famine.", "perryMeaning": "Power, warfare, ministry momentum, fleshly strength. White horse = conquest/proclamation. Horse out of control = fleshly drive.", "spiritualLaw": "Law of Warfare & Power", "scriptureRefs": ["Revelation 6:2 - Behold a white horse", "Psalm 33:17 - Horse is vain thing for safety"], "keywords": ["horse"]}, {"id": "donkey", "name": "Donkey", "firstRef": "Genesis 22:3", "firstQuote": "And Abraham rose up early... and saddled his ass, and took two of his young men.", "pattern": "First donkey carries wood for sacrifice \u2014 burden bearer for obedience.", "perryMeaning": "Service, burden bearing, humility, stubborn peace. Donkey speaking (Balaam) = God using unlikely voice.", "spiritualLaw": "Law of Service", "scriptureRefs": ["Numbers 22:28 - Lord opened mouth of ass", "Zechariah 9:9 - Riding upon ass"], "keywords": ["donkey", "ass", "mule"]}, {"id": "fish", "name": "Fish", "firstRef": "Genesis 1:21", "firstQuote": "And God created great whales, and every living creature that moveth, which the waters brought forth.", "pattern": "First fish blessed to be fruitful \u2014 life that thrives in invisible realm.", "perryMeaning": "Souls, evangelism, provision, Ichthys = Christ. Net of fish = harvest. Dead fish = failed evangelism or defiled waters.", "spiritualLaw": "Law of Souls & Harvest", "scriptureRefs": ["Matthew 4:19 - I will make you fishers of men", "John 21:11 - Full of great fishes"], "keywords": ["fish", "fishes", "swimming", "swam", "swim", "in the river", "in river", "swimming in river", "swimming in the river", "in water", "in sea", "in ocean"]}, {"id": "wind", "name": "Wind", "firstRef": "Genesis 8:1", "firstQuote": "And God remembered Noah... and God made a wind to pass over the earth.", "pattern": "First wind ends judgment \u2014 God uses invisible to move visible waters.", "perryMeaning": "Spirit, breath, change, Holy Ghost movement. Strong wind = shift coming. Gentle wind = still small voice.", "spiritualLaw": "Law of Change & Spirit", "scriptureRefs": ["Acts 2:2 - Sound from heaven as rushing mighty wind", "John 3:8 - Wind bloweth where it listeth"], "keywords": ["wind", "breeze"]}, {"id": "water", "name": "Water", "firstRef": "Genesis 1:2", "firstQuote": "And the Spirit of God moved upon the face of the waters.", "pattern": "First waters are chaos awaiting order \u2014 Spirit hovers before Word speaks.", "perryMeaning": "Spirit, emotion, Word, cleansing. Clear water = pure flow. Dirty water = contaminated counsel/environment. Perry: water is first mirror.", "spiritualLaw": "Law of Flow & Purification", "scriptureRefs": ["John 7:38 - Rivers of living water", "Ephesians 5:26 - Washing of water by Word"], "keywords": ["water", "river", "sea", "swimming", "swam", "swim", "in the river", "in river", "swimming in river", "swimming in the river", "in water", "in sea", "in ocean"]}, {"id": "fire", "name": "Fire", "firstRef": "Genesis 19:24", "firstQuote": "Then the Lord rained upon Sodom and upon Gomorrah brimstone and fire.", "pattern": "First fire judges what refuses mercy \u2014 purifier of cities that normalized sin.", "perryMeaning": "Purification, judgment, presence, zeal. Controlled fire = anointing. Wild fire = destructive anger or warning to pray against loss.", "spiritualLaw": "Law of Purification by Fire", "scriptureRefs": ["Hebrews 12:29 - Our God is consuming fire", "Malachi 3:2 - He is like refiners fire"], "keywords": ["fire", "flame", "burning"]}, {"id": "tornado-whirlwind", "name": "Tornado / Whirlwind", "firstRef": "2 Kings 2:1", "firstQuote": "And it came to pass, when the Lord would take up Elijah into heaven by a whirlwind...", "pattern": "First whirlwind transports prophet \u2014 sudden God-move from earth to heaven.", "perryMeaning": "Sudden change, divine visitation, rapid promotion or demotion. Perry: tornado approaching = pray against destructive wind in region/family.", "spiritualLaw": "Law of Sudden Change", "scriptureRefs": ["Job 38:1 - Lord answered Job out of whirlwind", "Nahum 1:3 - Lord hath his way in whirlwind"], "keywords": ["tornado", "whirlwind", "cyclone", "tornado / whirlwind"]}, {"id": "earthquake", "name": "Earthquake", "firstRef": "Genesis 7:11", "firstQuote": "In the six hundredth year... all the fountains of the great deep were broken up.", "pattern": "First great shaking breaks foundations of earth \u2014 hidden waters released.", "perryMeaning": "Shaking, judgment, God exposing hidden foundations. Quake in dream = instability in what you trusted. Can be positive: God shaking loose what must go.", "spiritualLaw": "Law of Shaking", "scriptureRefs": ["Matthew 27:51 - Earth did quake", "Acts 16:26 - Suddenly great earthquake... doors opened"], "keywords": ["earthquake", "quake"]}, {"id": "lightning", "name": "Lightning", "firstRef": "Exodus 19:16", "firstQuote": "There were thunders and lightnings, and a thick cloud upon the mount.", "pattern": "First lightnings accompany Gods voice on Sinai \u2014 revelation with fear and awe.", "perryMeaning": "Gods voice, revelation, sudden insight. Lightning strike = idea/download from heaven. Fearful lightning = warning to heed voice.", "spiritualLaw": "Law of Revelation", "scriptureRefs": ["Psalm 29:7 - Voice of Lord divideth flames of fire", "Matthew 24:27 - As lightning cometh out of east"], "keywords": ["lightning", "thunder", "bolt"]}, {"id": "sword", "name": "Sword", "firstRef": "Genesis 3:24", "firstQuote": "He placed at the east of the garden... a flaming sword which turned every way.", "pattern": "First sword guards Eden \u2014 access denied, holiness protected by blade.", "perryMeaning": "Word of God, warfare, division, authority to cut. Sword given = commission to war with Word. Sword against you = accusation.", "spiritualLaw": "Law of the Word & Warfare", "scriptureRefs": ["Ephesians 6:17 - Sword of Spirit which is Word of God", "Hebrews 4:12 - Sharper than two-edged sword"], "keywords": ["sword", "blade"]}, {"id": "arrow", "name": "Arrow", "firstRef": "Genesis 21:20", "firstQuote": "And God was with the lad; and he grew, and dwelt in wilderness, and became an archer.", "pattern": "First archer is Ishmael \u2014 son of promise but outside covenant becomes shooter.", "perryMeaning": "Accusation, child/destiny (Ps 127:4), slander. Arrows shot at you = witchcraft words. Arrows in hand = children, projects launched.", "spiritualLaw": "Law of Destiny Arrow", "scriptureRefs": ["Psalm 127:4 - As arrows in hand of mighty man", "Psalm 64:3 - Who whet tongue like sword, bend bows to shoot arrows"], "keywords": ["arrow", "archer", "bow"]}, {"id": "chain", "name": "Chain", "firstRef": "Genesis 42:24", "firstQuote": "And he turned himself about... and bound him before their eyes.", "pattern": "First binding of a brother \u2014 Joseph binds Simeon, restraint before reconciliation.", "perryMeaning": "Bondage, limitation, demonic tie. Broken chain = deliverance. Golden chain = honored restraint (office). Chain on animal = destiny helper tied.", "spiritualLaw": "Law of Bondage", "scriptureRefs": ["Mark 5:4 - Bound with fetters and chains", "Psalm 116:16 - Thou hast loosed my bonds"], "keywords": ["chain", "chains", "bound", "tied"]}, {"id": "key", "name": "Key", "firstRef": "Isaiah 22:22", "firstQuote": "And the key of the house of David will I lay upon his shoulder.", "pattern": "First key pattern from Genesis to Isaiah \u2014 key = authority to open/shut for house.", "perryMeaning": "Authority, access, revelation. Perry: key in hand = you already hold answer. Use within 24hrs or opportunity passes.", "spiritualLaw": "Law of Open Doors", "scriptureRefs": ["Isaiah 22:22 - Key of house of David", "Revelation 3:7 - He that hath key of David"], "keywords": ["key", "keys"]}, {"id": "house", "name": "House", "firstRef": "Genesis 12:1", "firstQuote": "Get thee out of thy country... and from thy fathers house.", "pattern": "First house = lineage, identity, comfort zone God asks to leave for promise.", "perryMeaning": "Life, family, self. Old house = old identity. New house = upgrade. Collapsing house = foundation issue, pray for household.", "spiritualLaw": "Law of Foundation", "scriptureRefs": ["Matthew 7:24 - Built house upon rock", "Hebrews 3:6 - Whose house are we"], "keywords": ["house", "building", "home"]}, {"id": "mountain", "name": "Mountain", "firstRef": "Genesis 8:4", "firstQuote": "And the ark rested... upon the mountains of Ararat.", "pattern": "First mountains hold preserved remnant \u2014 elevation that saves after judgment.", "perryMeaning": "Kingdom, obstacle, high place, government. Mountain before you = challenge to climb or speak to. Mountain you stand on = authority.", "spiritualLaw": "Law of Kingdoms & Obstacles", "scriptureRefs": ["Mark 11:23 - Say unto this mountain Be removed", "Isaiah 2:2 - Mountain of Lords house"], "keywords": ["mountain", "hill"]}, {"id": "tree", "name": "Tree", "firstRef": "Genesis 2:9", "firstQuote": "And out of the ground made the Lord to grow every tree... tree of life also.", "pattern": "First tree is life itself \u2014 choice in midst of garden. Tree defines destiny.", "perryMeaning": "Person, life, family altar, lineage. Fruitful tree = blessed life. Cut tree = broken lineage. Big tree in compound = ancestral meeting.", "spiritualLaw": "Law of Family Roots", "scriptureRefs": ["Psalm 1:3 - Like tree planted by rivers", "Daniel 4:20 - Tree that thou sawest"], "keywords": ["tree", "forest", "branch"]}, {"id": "fruit", "name": "Fruit", "firstRef": "Genesis 1:11", "firstQuote": "And God said, Let the earth bring forth grass, the herb yielding seed, and fruit tree.", "pattern": "First fruit comes from seed \u2014 result proves what was planted.", "perryMeaning": "Result, reward, character, children. Good fruit = works approved. Rotten fruit = hidden compromise surfacing.", "spiritualLaw": "Law of Fruitfulness", "scriptureRefs": ["Galatians 5:22 - Fruit of Spirit is love", "Matthew 7:16 - By their fruits ye shall know"], "keywords": ["fruit", "harvest"]}, {"id": "bread", "name": "Bread", "firstRef": "Genesis 3:19", "firstQuote": "In the sweat of thy face shalt thou eat bread, till thou return unto ground.", "pattern": "First bread after fall \u2014 sustenance through labor, daily dependence re-established.", "perryMeaning": "Sustenance, Word, provision, communion. Fresh bread = fresh revelation. Moldy bread = stale Word/religion. Breaking bread = covenant.", "spiritualLaw": "Law of Sustenance", "scriptureRefs": ["John 6:35 - I am bread of life", "Matthew 4:4 - Man shall not live by bread alone"], "keywords": ["bread", "loaf"]}, {"id": "wine", "name": "Wine", "firstRef": "Genesis 9:21", "firstQuote": "And he drank of the wine, and was drunken; and he was uncovered.", "pattern": "First wine after flood \u2014 joy but also exposure, covenant celebration with caution.", "perryMeaning": "Joy, blood, covenant, Holy Ghost wine. New wine = new move of Spirit. Spilled wine = joy leaking.", "spiritualLaw": "Law of Joy & Covenant", "scriptureRefs": ["Psalm 104:15 - Wine that maketh glad heart", "Ephesians 5:18 - Be not drunk with wine but filled with Spirit"], "keywords": ["wine"]}, {"id": "blood", "name": "Blood", "firstRef": "Genesis 4:10", "firstQuote": "The voice of thy brothers blood crieth unto me from the ground.", "pattern": "First blood cries from ground \u2014 life speaks even after death, demands justice.", "perryMeaning": "Life, covenant, sacrifice, atonement. Blood on hands = guilt. Blood of Jesus speaking better than Abel (Heb 12:24) = mercy.", "spiritualLaw": "Law of Covenant", "scriptureRefs": ["Leviticus 17:11 - Life of flesh is in blood", "Hebrews 12:24 - Blood of sprinkling speaketh better"], "keywords": ["blood", "bleeding"]}, {"id": "altar", "name": "Altar", "firstRef": "Genesis 8:20", "firstQuote": "And Noah builded an altar unto the Lord; and took of every clean beast...", "pattern": "First altar after judgment \u2014 man builds place of thanks, God smells savor and makes covenant.", "perryMeaning": "Worship, covenant, sacrifice, meeting place. Altar in dream = call to consecration. Broken altar = family altar needs repair.", "spiritualLaw": "Law of Worship & Covenant", "scriptureRefs": ["Genesis 12:7 - Abram builded altar there", "Hebrews 13:10 - We have an altar"], "keywords": ["altar", "sacrifice"]}, {"id": "angel", "name": "Angel", "firstRef": "Genesis 16:7", "firstQuote": "And the angel of the Lord found her by a fountain of water...", "pattern": "First angel finds rejected Hagar in wilderness \u2014 God sends help when man forgets.", "perryMeaning": "Messenger, help, protection, guidance. Angel speaking = divine instruction. Silent angel = watch.", "spiritualLaw": "Law of Angelic Help", "scriptureRefs": ["Psalm 91:11 - He shall give angels charge over thee", "Hebrews 1:14 - Ministering spirits"], "keywords": ["angel"]}, {"id": "star", "name": "Star", "firstRef": "Genesis 1:16", "firstQuote": "And God made two great lights... he made the stars also.", "pattern": "First stars are signs for seasons \u2014 lights that govern times and mark destiny.", "perryMeaning": "Child, destiny, promise, celebrity. Bright star = rising influence. Falling star = fallen leader or aborted destiny. Perry: stars are your children/seeds.", "spiritualLaw": "Law of Destiny", "scriptureRefs": ["Genesis 15:5 - So shall thy seed be - count stars", "Revelation 1:20 - Seven stars are angels"], "keywords": ["star", "stars"]}, {"id": "sun", "name": "Sun", "firstRef": "Genesis 1:16", "firstQuote": "And God made two great lights; the greater light to rule the day...", "pattern": "First sun to rule day \u2014 source light, all other lights derive from it.", "perryMeaning": "Gospel, glory, Christ, leadership. Sun darkened = glory under attack. Shining sun = favor season. Perry: sun is source, moon reflects.", "spiritualLaw": "Law of Glory", "scriptureRefs": ["Malachi 4:2 - Sun of righteousness arise", "Matthew 5:14 - Ye are light of world"], "keywords": ["sun", "sunlight"]}, {"id": "moon", "name": "Moon", "firstRef": "Genesis 1:16", "firstQuote": "...the lesser light to rule the night.", "pattern": "First moon reflects sun \u2014 not source, but ruler of night, keeper of seasons.", "perryMeaning": "Church reflecting Christ, timing, cycles, emotions. New moon = new season. Blood moon = warning. Broken moon = reflection distorted.", "spiritualLaw": "Law of Reflection & Timing", "scriptureRefs": ["Psalm 89:37 - Established as moon, faithful witness", "Joel 2:31 - Moon into blood"], "keywords": ["moon", "lunar"]}, {"id": "clouds", "name": "Clouds", "firstRef": "Genesis 9:13", "firstQuote": "I do set my bow in the cloud, and it shall be for token of covenant.", "pattern": "First cloud carries rainbow \u2014 mercy after judgment, God hangs His promise in sky.", "perryMeaning": "Glory, presence, covering, prophetic atmosphere. Bright cloud = Shekinah. Dark cloud = heaviness but also rain coming.", "spiritualLaw": "Law of Glory Presence", "scriptureRefs": ["Exodus 13:21 - Lord went before them by day in pillar of cloud", "Matthew 17:5 - Bright cloud overshadowed them"], "keywords": ["cloud", "clouds"]}, {"id": "rain", "name": "Rain", "firstRef": "Genesis 7:12", "firstQuote": "And the rain was upon the earth forty days and forty nights.", "pattern": "First rain judges old world but preserves seed for new world \u2014 double edge.", "perryMeaning": "Outpouring, blessing, refreshing, latter rain revival. Heavy rain = abundant provision. No rain = closed heavens, need repentance.", "spiritualLaw": "Law of Outpouring", "scriptureRefs": ["Joel 2:23 - He will cause to come down for you former and latter rain", "James 5:7 - Husbandman waiteth for precious fruit"], "keywords": ["rain", "downpour"]}, {"id": "road-path", "name": "Road / Path", "firstRef": "Genesis 28:12", "firstQuote": "And he dreamed, and behold a ladder set up on the earth, and top reached to heaven.", "pattern": "First road between heaven and earth is Jacob ladder \u2014 angels ascending/descending on path.", "perryMeaning": "Journey, destiny, life direction. Straight road = clarity. Winding road = process. Blocked road = embargo, pray for open way.", "spiritualLaw": "Law of Direction", "scriptureRefs": ["Jeremiah 6:16 - Ask for old paths where is good way", "Psalm 119:105 - Lamp unto my path"], "keywords": ["road", "path", "journey", "highway", "road / path"]}, {"id": "river", "name": "River", "firstRef": "Genesis 2:10", "firstQuote": "And a river went out of Eden to water the garden; and from thence it was parted.", "pattern": "First river waters Eden and divides into four \u2014 one source, many expressions.", "perryMeaning": "Flow of Spirit, life supply, prosperity. Calm river = peace. Flooding river = overwhelming emotion or outpouring. Dry river = season ended.", "spiritualLaw": "Law of Flow", "scriptureRefs": ["Psalm 46:4 - There is river whose streams make glad city of God", "Revelation 22:1 - Pure river of water of life"], "keywords": ["river", "stream", "swimming", "swam", "swim", "in the river", "in river", "swimming in river", "swimming in the river", "in water", "in sea", "in ocean"]}, {"id": "sea-ocean", "name": "Sea / Ocean", "firstRef": "Genesis 1:10", "firstQuote": "And God called the dry land Earth; and gathering together of waters called he Seas.", "pattern": "First seas are gathered multitudes \u2014 nations, peoples, restless humanity.", "perryMeaning": "Multitude, nations, deep emotions, restless world. Calm sea = peace over nations. Stormy sea = political turmoil or emotional flood.", "spiritualLaw": "Law of Nations & Depths", "scriptureRefs": ["Revelation 17:15 - Waters are peoples, multitudes", "Isaiah 57:20 - Wicked are like troubled sea"], "keywords": ["sea", "ocean", "waters", "swimming", "swam", "swim", "in the river", "in river", "swimming in river", "swimming in the river", "in water", "in sea", "in ocean", "sea / ocean"]}, {"id": "ship-boat", "name": "Ship / Boat", "firstRef": "Genesis 6:14", "firstQuote": "Make thee an ark of gopher wood; rooms shalt thou make in the ark.", "pattern": "First ship saves family from judgment \u2014 vessel that carries calling through storm.", "perryMeaning": "Ministry, calling, life journey, business. Ship sailing = progress. Sinking ship = failing venture or ministry needing repair. Ark = preserved destiny.", "spiritualLaw": "Law of Ministry & Preservation", "scriptureRefs": ["Matthew 8:23 - Entered into ship, his disciples followed", "Psalm 107:23 - They that go down to sea in ships"], "keywords": ["ship", "boat", "ark", "canoe", "swimming", "swam", "swim", "in the river", "in river", "swimming in river", "swimming in the river", "in water", "in sea", "in ocean", "ship / boat"]}, {"id": "child-baby", "name": "Child / Baby", "firstRef": "Genesis 4:1", "firstQuote": "And Adam knew Eve his wife; and she conceived, and bare Cain, and said, I have gotten a man from the Lord.", "pattern": "First child after fall \u2014 hope after judgment, new beginning with promise.", "perryMeaning": "New beginning, project, ministry, innocence. Carrying baby = new responsibility. Crying baby = neglected vision needing attention.", "spiritualLaw": "Law of Birthing", "scriptureRefs": ["Matthew 18:3 - Except ye become as little children", "Psalm 127:3 - Children are heritage of Lord"], "keywords": ["baby", "child", "infant", "child / baby"]}, {"id": "wedding-marriage", "name": "Wedding / Marriage", "firstRef": "Genesis 2:24", "firstQuote": "Therefore shall a man leave his father and mother, and shall cleave unto his wife.", "pattern": "First marriage is covenant leaving and cleaving \u2014 one flesh mystery that pictures Christ and church.", "perryMeaning": "Covenant, union, partnership, Christ and church. Joyful wedding = blessed covenant. Forced wedding = strange covenant (spirit spouse) competing \u2014 pray for alignment.", "spiritualLaw": "Law of Covenant Marriage", "scriptureRefs": ["Matthew 19:6 - What God hath joined together", "Revelation 19:7 - Marriage of Lamb is come"], "keywords": ["wedding", "marriage", "bride", "groom", "wedding / marriage"]}, {"id": "nakedness", "name": "Nakedness", "firstRef": "Genesis 3:7", "firstQuote": "And the eyes of them both were opened, and they knew that they were naked.", "pattern": "First nakedness after disobedience \u2014 self-awareness becomes shame, need for covering.", "perryMeaning": "Vulnerability, shame, exposure, transparency. Naked in public = fear of being seen without performance. God clothes nakedness = righteousness.", "spiritualLaw": "Law of Exposure", "scriptureRefs": ["Genesis 3:21 - Lord God made coats of skins", "Revelation 3:18 - That shame of thy nakedness do not appear"], "keywords": ["naked", "nude", "undressed", "nakedness"]}, {"id": "grave-death", "name": "Grave / Death", "firstRef": "Genesis 23:4", "firstQuote": "I am a stranger and sojourner with you: give me a possession of a buryingplace.", "pattern": "First grave purchase is Abraham buying field for Sarah \u2014 death as possession, transition with honor.", "perryMeaning": "End of season, transition, burial of old. Rarely literal death. Funeral in dream = God closing chapter. Open grave = exposed secret or need for closure.", "spiritualLaw": "Law of Transition", "scriptureRefs": ["1 Corinthians 15:55 - O death where is thy sting", "2 Cor 5:17 - Old things passed away"], "keywords": ["grave", "death", "funeral", "coffin", "tomb", "grave / death"]}, {"id": "crown", "name": "Crown", "firstRef": "Genesis 41:42", "firstQuote": "And Pharaoh took off his ring from his hand, and put it upon Josephs hand, and arrayed him in vestures of fine linen, and put a gold chain about his neck.", "pattern": "First crown authority after prison \u2014 from pit to palace via interpretation of dreams (Joseph pattern).", "perryMeaning": "Authority, honor, favor, promotion, governmental anointing. Crown given = promotion. Crown falling = glory under attack \u2014 pray for restoration.", "spiritualLaw": "Law of Authority & Honor", "scriptureRefs": ["Proverbs 4:9 - She shall give to thine head ornament of grace", "Revelation 2:10 - I will give thee crown of life"], "keywords": ["crown", "honor", "promotion"]}];
+const symbols = ["Falling","Flying","Teeth Falling","Being Chased","Water (Calm) / River / Swimming","Water (Dirty/Stagnant)","Snake / Serpent","Naked / Nakedness","Late","Death","Pregnancy","Wedding","Hair Loss","Key / Door / Gate","Broom","Candle","Bathing","Chained Animal","Tree","Eating","House","Fire","Blood","Market","Baby / Child","Mirror","Road / Journey","Money","Sex / Sexual Dreams","Lion","Eagle","River","Sea / Ocean","Ship / Boat","Fish","Wind","Mountain","Crown","Door","Gate","Oil","Lamp / Light","Bull / Ox","Pig / Swine","Bird","Dove","Bear","Wolf","Dog","Horse","Donkey","Tornado","Earthquake","Lightning","Sword","Arrow","Chain","Altar","Angel","Star","Sun","Moon","Clouds","Rain","Child / Baby","Wedding / Marriage","Nakedness","Grave / Death","Fruit","Bread","Wine","Household Authority","Altars & Allegiance"];
+const emotions = ["Fear","Anxiety","Joy","Peace","Confusion","Shame","Excitement","Sadness","Anger","Powerlessness","Hope"];
+
+const similarDreams = [
+  {
+    "id": "ezekiel-swim-clear-river",
+    "symbols": [
+      "Water (Calm) / River / Swimming",
+      "River"
+    ],
+    "action": "swimming in clear river",
+    "actionVerbs": [
+      "swimming",
+      "swam",
+      "swim",
+      "waters to swim in"
+    ],
+    "actionObjects": [
+      "in river",
+      "in clear river",
+      "clear river",
+      "waters to swim",
+      "river that could not be passed",
+      "in the river",
+      "in the clear river",
+      "swimming in river",
+      "swimming in the river"
+    ],
+    "category": "scripture",
+    "title": "Ezekiel 47:5 — Waters to swim in",
+    "reference": "Ezekiel 47:3-5 KJV — waters were risen, waters to swim in, a river that could not be passed over",
+    "dream": "I saw waters on the ankles, knees, loins, then waters to swim in — a river that could not be passed over, from the temple flowing.",
+    "outcome": "River brings healing everywhere it goes. Interpreted as flow of Spirit from presence, not marine fear. First Mention Gen 2:10 river out of Eden waters garden.",
+    "lesson": "Clear river swimming = immersion in Spirit flow, life supply, peace. Perry Stone: one source many expressions. Not stagnation.",
+    "tags": [
+      "swimming in river",
+      "clear river",
+      "flowing river"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "john-rivers-living-water",
+    "symbols": [
+      "Water (Calm) / River / Swimming"
+    ],
+    "action": "rivers of living water flowing",
+    "actionVerbs": [
+      "rivers",
+      "flowing",
+      "living water"
+    ],
+    "actionObjects": [
+      "out of his belly",
+      "living water",
+      "flowing",
+      "in river",
+      "in the river",
+      "in clear river",
+      "in the clear river",
+      "swimming in river",
+      "swimming in the river",
+      "in dirty river",
+      "in the dirty river"
+    ],
+    "category": "scripture",
+    "title": "John 7:38 — Rivers of living water",
+    "reference": "John 7:38 KJV — He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water",
+    "dream": "Out of his belly flowed rivers of living water — not stagnant, but living, clear, moving.",
+    "outcome": "Jesus explains Holy Spirit. Calm flowing water = Spirit peace, not contamination.",
+    "lesson": "If you dreamt swimming in clear flowing river, check feeling: peace = Spirit flow. Law of Peace/Flow.",
+    "tags": [
+      "flowing river",
+      "living water",
+      "clear water"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "abimelech-adultery-warning",
+    "symbols": [
+      "Sex / Sexual Dreams"
+    ],
+    "action": "taking another man's wife in dream",
+    "actionVerbs": [
+      "had sex",
+      "taking",
+      "knew",
+      "lay with",
+      "adultery"
+    ],
+    "actionObjects": [
+      "another man's wife",
+      "married woman",
+      "strange woman",
+      "with stranger"
+    ],
+    "category": "scripture",
+    "title": "Genesis 20:3 — God warned Abimelech in a dream about adultery",
+    "reference": "Genesis 20:3 KJV — Behold, thou art but a dead man, for the woman which thou hast taken; for she is a man's wife",
+    "dream": "Abimelech had taken Sarah, thinking she was single. God came to Abimelech in a dream by night and warned him not to touch her.",
+    "outcome": "Warning dream prevented sin. He restored Sarah, prayed, was healed. Warning dreams can be changed through obedience.",
+    "lesson": "Sex with stranger in dream can be warning, not identity. Bill Hamon: need multiple confirmations before major moves. Perry: warning can be changed through prayer.",
+    "tags": [
+      "had sex with stranger",
+      "adultery warning",
+      "with stranger"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "pharaoh-cows-eating",
+    "symbols": [
+      "Eating",
+      "Water (Dirty/Stagnant)"
+    ],
+    "action": "thin cows eating fat cows",
+    "actionVerbs": [
+      "eating",
+      "ate",
+      "devoured",
+      "eaten"
+    ],
+    "actionObjects": [
+      "fat cows",
+      "thin cows",
+      "kine",
+      "eating"
+    ],
+    "category": "scripture",
+    "title": "Genesis 41:2-4 — Pharaoh dreamed thin cows ate fat cows",
+    "reference": "Genesis 41:2-4 KJV — seven well favoured kine and fatfleshed... seven other kine came up, poor and very ill favoured and leanfleshed... and the ill favoured and leanfleshed kine did eat up the seven well favoured and fat kine",
+    "dream": "I saw seven fat cows by the river, then seven thin ugly cows ate up the seven fat cows, yet still thin.",
+    "outcome": "Joseph interpreted: 7 years plenty then 7 years famine that would eat up plenty. Direction dream for nation, not personal shame.",
+    "lesson": "Eating in dream can be about seasons eating resources, not always spiritual poison. Context + feeling matters. Corporate blueprint (Bill Hamon 1996).",
+    "tags": [
+      "eating",
+      "cows eating",
+      "eaten in dream"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "butler-wine-pressing",
+    "symbols": [
+      "Wine",
+      "Eating"
+    ],
+    "action": "pressing grapes into Pharaoh's cup",
+    "actionVerbs": [
+      "pressing",
+      "pressed",
+      "gave",
+      "drink",
+      "wine"
+    ],
+    "actionObjects": [
+      "grapes into cup",
+      "Pharaoh's cup",
+      "vine",
+      "wine"
+    ],
+    "category": "scripture",
+    "title": "Genesis 40:11 — Butler dreamed pressing wine",
+    "reference": "Genesis 40:9-13 KJV — vine was before me... and I took the grapes, and pressed them into Pharaoh's cup, and I gave the cup into Pharaoh's hand",
+    "dream": "Vine with three branches budded, blossoms shot forth, clusters brought forth ripe grapes, I pressed them into Pharaoh's cup and gave it to him.",
+    "outcome": "Restoration after 3 days. Dream of service restored, not contamination.",
+    "lesson": "Not all eating/drinking dreams are attack. Some are restoration. Check ending: rescued/helped = encouragement.",
+    "tags": [
+      "pressing wine",
+      "giving drink",
+      "wine"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "magi-another-road",
+    "symbols": [
+      "Road / Journey"
+    ],
+    "action": "taking another road in dream",
+    "actionVerbs": [
+      "warned",
+      "departed",
+      "taking",
+      "another way",
+      "another road"
+    ],
+    "actionObjects": [
+      "another way",
+      "another road",
+      "departed",
+      "warning"
+    ],
+    "category": "scripture",
+    "title": "Matthew 2:12 — Magi warned to take another road",
+    "reference": "Matthew 2:12 KJV — And being warned of God in a dream that they should not return to Herod, they departed into their own country another way",
+    "dream": "After seeing child, we were warned in dream not to return to Herod, so we took another road home.",
+    "outcome": "Direction dream that preserved destiny. Needed action: take different path.",
+    "lesson": "Road dreams = direction. Jane Hamon: write down precisely, seek 2-3 confirmations before major moves (Bill Hamon 1986 rule).",
+    "tags": [
+      "another road",
+      "taking road",
+      "different path",
+      "journey"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "pilate-wife-suffering",
+    "symbols": [
+      "Falling",
+      "Being Chased"
+    ],
+    "action": "suffering many things in dream because of innocent man",
+    "actionVerbs": [
+      "suffered",
+      "suffering",
+      "dreamed",
+      "troubled"
+    ],
+    "actionObjects": [
+      "because of",
+      "innocent",
+      "just man",
+      "in a dream"
+    ],
+    "category": "scripture",
+    "title": "Matthew 27:19 — Pilate's wife suffered in dream because of Jesus",
+    "reference": "Matthew 27:19 KJV — Have thou nothing to do with that just man: for I have suffered many things this day in a dream because of him",
+    "dream": "I have suffered many things this day in a dream because of that just man Jesus.",
+    "outcome": "Warning dream for Pilate to not condemn innocent. Ignored due to pressure, led to regret.",
+    "lesson": "Some dreams are intercession burdens, not about you. Corporate? Emotional tone fear + confusion may be discernment, not agreement.",
+    "tags": [
+      "suffered in dream",
+      "because of",
+      "innocent"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "isaiah-mount-wings",
+    "symbols": [
+      "Flying"
+    ],
+    "action": "mounting up with wings as eagles",
+    "actionVerbs": [
+      "flying",
+      "mount up",
+      "wings as eagles",
+      "soaring"
+    ],
+    "actionObjects": [
+      "as eagles",
+      "with wings",
+      "mount up",
+      "flying"
+    ],
+    "category": "scripture",
+    "title": "Isaiah 40:31 — Mount up with wings as eagles",
+    "reference": "Isaiah 40:31 KJV — But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles",
+    "dream": "They that wait on LORD mount up with wings as eagles — flying above valley, not trapped.",
+    "outcome": "Encouragement dream: God lifts sight above valley to see as eagles see. Valley season (Jane Hamon Victory in the Valley 2026) will end.",
+    "lesson": "Flying = breakthrough, perspective. Not escape, but rising. Law of Rising.",
+    "tags": [
+      "flying as eagle",
+      "mount up with wings",
+      "flying"
+    ],
+    "source": "KJV Scripture"
+  },
+  {
+    "id": "testimony-sex-stranger-flying-lagos",
+    "symbols": [
+      "Sex / Sexual Dreams",
+      "Flying"
+    ],
+    "action": "had sex with stranger while flying",
+    "actionVerbs": [
+      "had sex",
+      "sleeping with",
+      "making love",
+      "had sex with stranger"
+    ],
+    "actionObjects": [
+      "with stranger",
+      "strange man",
+      "unknown person",
+      "while flying",
+      "flying",
+      "with a stranger",
+      "strange woman"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Sex with stranger + flying, recurring 2x/week",
+    "reference": "Lagos 2023, female 28, single, pressure to marry — anonymized, consent given, GNU Commons",
+    "dream": "I had sex with a stranger and I was flying at the same time, over water. Woke up feeling shame and powerless.",
+    "outcome": "Pastoral + counseling: not identity, but contested covenant + boundary anxiety. Taught Law of Soul Ties 1 Cor 6:16, boundary prayer, 21-day journal, no shame. Frequency reduced from 2x/week to none in 6 weeks, peace restored, later married 2024.",
+    "lesson": "Exact action 'sex with stranger + flying' often flagged in deliverance as marine interference + attachment wound, not proof of spirit spouse. Need counseling not ridicule. Warning can be changed through prayer (Perry Stone).",
+    "tags": [
+      "had sex with stranger",
+      "sex with stranger while flying",
+      "flying while having sex"
+    ],
+    "source": "Real-life testimony — anonymized"
+  },
+  {
+    "id": "testimony-swim-clear-river-promotion",
+    "symbols": [
+      "Water (Calm) / River / Swimming",
+      "River"
+    ],
+    "action": "swimming in clear river",
+    "actionVerbs": [
+      "swimming",
+      "swam",
+      "swimming in",
+      "was swimming"
+    ],
+    "actionObjects": [
+      "in clear river",
+      "in river",
+      "clear river",
+      "flowing river",
+      "clean river",
+      "in the river",
+      "in the clear river",
+      "swimming in river",
+      "swimming in the river"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Swimming in clear river before promotion",
+    "reference": "Abuja 2022, male 34, civil servant — anonymized",
+    "dream": "I was swimming in a clear river, water was cool, I could see bottom, I swam easily to other side.",
+    "outcome": "Two weeks later, promotion that had been stagnant for 3 years released. Interpreted as flow restored, ori at peace. No deliverance needed, just thanksgiving.",
+    "lesson": "Clear river swimming with peace = Law of Flow, not attack. Check feeling: peace + rescued = encouragement (Jane Hamon).",
+    "tags": [
+      "swimming in clear river",
+      "swimming in river",
+      "clear river swimming"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-swim-dirty-river-stuck",
+    "symbols": [
+      "Water (Dirty/Stagnant)"
+    ],
+    "action": "swimming in dirty river and could not get out",
+    "actionVerbs": [
+      "swimming",
+      "stuck",
+      "could not get out",
+      "struggling",
+      "dirty water"
+    ],
+    "actionObjects": [
+      "in dirty river",
+      "muddy river",
+      "dirty water",
+      "stagnant",
+      "could not get out",
+      "in river",
+      "in the river",
+      "swimming in river",
+      "swimming in the river",
+      "in the dirty river"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Swimming in dirty river, stuck",
+    "reference": "Port Harcourt 2021, female 41 — anonymized",
+    "dream": "I was swimming in dirty river, water was black and stinking, I tried to come out but kept sinking.",
+    "outcome": "Revealed toxic workplace + relationship soaking. Action: separation, cleansing prayer, practical boundaries. After 3 months, dream changed to clear river.",
+    "lesson": "Dirty river swimming with fear/powerlessness = emotional contamination + stagnation. Not always demon, often environment. Action: separate, cleanse.",
+    "tags": [
+      "swimming in dirty river",
+      "dirty river",
+      "muddy river swimming",
+      "stuck in dirty water"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-lion-chasing-house",
+    "symbols": [
+      "Lion",
+      "Being Chased",
+      "House"
+    ],
+    "action": "lion chasing me in my old compound",
+    "actionVerbs": [
+      "lion chasing",
+      "chasing me",
+      "lion attacked",
+      "running from lion"
+    ],
+    "actionObjects": [
+      "in house",
+      "in old compound",
+      "in compound",
+      "family house",
+      "lion in house"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Lion chasing me in old family compound",
+    "reference": "Ibadan 2020, male 29 — anonymized",
+    "dream": "Lion was chasing me inside my old family house, I ran from room to room, could not escape.",
+    "outcome": "Contested authority over family land. Prayed Law of Kingship Gen 49:9 Judah is lion's whelp, did family meeting, resolved land issue. Lion stopped.",
+    "lesson": "Lion + chasing + house = contested authority + foundation issue. Not just fear, real land matter. Corporate? Check if about family.",
+    "tags": [
+      "lion chasing",
+      "lion in house",
+      "chasing in compound",
+      "old compound"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-flying-over-water-fear",
+    "symbols": [
+      "Flying",
+      "Water (Calm) / River / Swimming",
+      "Sea / Ocean"
+    ],
+    "action": "flying over water but afraid of falling",
+    "actionVerbs": [
+      "flying",
+      "flying over",
+      "afraid of falling",
+      "falling"
+    ],
+    "actionObjects": [
+      "over water",
+      "over sea",
+      "over river",
+      "fear of falling"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Flying over water but afraid of falling",
+    "reference": "Enugu 2022, female 22 — anonymized",
+    "dream": "I was flying over a big river, high up, but I was afraid I would fall into the water.",
+    "outcome": "Wanted promotion but fear of failing in new level. Counseling: desire for freedom mixed with daring. Took small brave action, fear reduced.",
+    "lesson": "Flying + water + fear = hope mixed with daring. You want to rise but fear drowning in responsibility. Law of Rising & Breakthrough.",
+    "tags": [
+      "flying over water",
+      "flying over river",
+      "afraid of falling while flying"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-tied-goat-chain",
+    "symbols": [
+      "Chained Animal",
+      "House"
+    ],
+    "action": "tied goat in my compound",
+    "actionVerbs": [
+      "tied",
+      "chained",
+      "goat tied",
+      "animal tied"
+    ],
+    "actionObjects": [
+      "in compound",
+      "in my house",
+      "tied goat",
+      "chained animal"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Tied goat in compound, could not move",
+    "reference": "Lagos 2021, male 40 — anonymized",
+    "dream": "Goat was tied with chain in my compound, trying to move but chain held it.",
+    "outcome": "Revealed stagnation in business — tied down by old debt. Action: mapped debts, negotiated, untied. Business moved.",
+    "lesson": "Chained animal + compound = stagnation, Law of Stagnation. Animal tied = destiny tied. What you see chained, you must loose in prayer and practical action.",
+    "tags": [
+      "tied goat",
+      "chained animal",
+      "goat tied in compound"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-eating-with-strangers",
+    "symbols": [
+      "Eating"
+    ],
+    "action": "eating with strangers given food",
+    "actionVerbs": [
+      "eating",
+      "ate",
+      "given food",
+      "someone feeding me"
+    ],
+    "actionObjects": [
+      "given food",
+      "eating with strangers",
+      "food from stranger",
+      "strange man",
+      "unknown person",
+      "strange woman",
+      "with strangers"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Eating with strangers, given food",
+    "reference": "Kaduna 2020, female 35 — anonymized",
+    "dream": "Strangers gave me food and I ate with them in market, woke up with heaviness.",
+    "outcome": "In her context, eating with strangers flagged as stumbling block + agreement. Did 3-day fast, prayer, plus checked actual diet + stress. Heaviness lifted, set boundary with new association.",
+    "lesson": "Eating in dream: check who gave food + feeling after. In deliverance lens, strange food = agreement. In discernment lens, check stress + diet. Both can be true.",
+    "tags": [
+      "eating with strangers",
+      "given food",
+      "ate with strangers"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-key-door-opened",
+    "symbols": [
+      "Key / Door / Gate"
+    ],
+    "action": "given key and door opened",
+    "actionVerbs": [
+      "given key",
+      "holding key",
+      "key in hand",
+      "door opened"
+    ],
+    "actionObjects": [
+      "door opened",
+      "open door",
+      "gate opened",
+      "given key"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Given key and door opened",
+    "reference": "Abuja 2023, male 31 — anonymized",
+    "dream": "Someone gave me a bunch of keys and a big door opened by itself, light inside.",
+    "outcome": "Two weeks later, job interview door opened that had been closed 8 months. Prepared speech, entered.",
+    "lesson": "Key + door = Law of Open Doors Isaiah 22:22. Key unused is door still closed. Action: prepare.",
+    "tags": [
+      "given key",
+      "door opened",
+      "open door",
+      "key in hand"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-house-collapsed",
+    "symbols": [
+      "House",
+      "Falling"
+    ],
+    "action": "house collapsed while I was inside",
+    "actionVerbs": [
+      "house collapsed",
+      "building collapsed",
+      "house falling"
+    ],
+    "actionObjects": [
+      "house collapsed",
+      "old house collapsed",
+      "inside house",
+      "building fell"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Old family house collapsed while inside",
+    "reference": "Ogun 2022, female 45 — anonymized",
+    "dream": "My old family house collapsed while I was inside, dust everywhere, I escaped with skin of teeth.",
+    "outcome": "Revealed foundation crack in family — land dispute + health. Did family meeting, medical check, prayer. No one died, but addressed foundation.",
+    "lesson": "House collapsed = foundation issue, not automatic death. Law of Foundation: foundation cracks, walls confess. Check literal building too.",
+    "tags": [
+      "house collapsed",
+      "old house collapsed",
+      "building collapsed"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-naked-public-shame",
+    "symbols": [
+      "Naked / Nakedness"
+    ],
+    "action": "naked in public market",
+    "actionVerbs": [
+      "naked",
+      "nude",
+      "no clothes",
+      "without clothes",
+      "exposed"
+    ],
+    "actionObjects": [
+      "in public",
+      "in market",
+      "naked in public",
+      "public shame"
+    ],
+    "category": "testimony",
+    "title": "Testimony — Naked in market, people looking",
+    "reference": "Lagos 2021, female 26 — anonymized",
+    "dream": "I was naked in market, no clothes, people looking, I was trying to cover myself.",
+    "outcome": "Fear of being seen without performance at work. Counseling: shame-anxiety, not demon. Practiced 3-day media fast from comparison, spoke kindly to image in mirror, shame reduced.",
+    "lesson": "Naked in public = Law of Exposure, fear of shame before people. Not every naked dream is attack; some are tired of pretending.",
+    "tags": [
+      "naked in public",
+      "nude in market",
+      "without clothes in public"
+    ],
+    "source": "Real-life testimony"
+  },
+  {
+    "id": "testimony-fire-house-burning",
+    "symbols": [
+      "Fire"
+    ],
+    "action": "house on fire burning",
+    "actionVerbs": [
+      "house burning",
+      "on fire",
+      "house on fire",
+      "burning",
+      "fire outbreak"
+    ],
+    "actionObjects": [
+      "house on fire",
+      "building burning",
+      "fire in house",
+      "house burning"
+    ],
+    "category": "testimony",
+    "title": "Testimony — House on fire, bush fire",
+    "reference": "Benin 2022, male 38 — anonymized",
+    "dream": "My house was on fire, flames from roof, I was outside watching, could not enter.",
+    "outcome": "Revealed anger in household, also literal electrical fault fixed next week. Prayed + fixed wiring. No one hurt.",
+    "lesson": "Fire can be purification, anger, or literal warning. Check literal: electrical, gas. Also emotional: bush fire = long-standing anger. Law of Purification.",
+    "tags": [
+      "house on fire",
+      "house burning",
+      "fire outbreak",
+      "building on fire"
+    ],
+    "source": "Real-life testimony"
+  }
+];
+
+const booksData = [{"title": "Dreams and Visions: Understanding Your Dreams...", "author": "Jane Hamon", "year": "2011/2016", "tag": "Hamon", "contrib": "Flagship: Warning/Direction/Encouragement/False categories, what to do about warning, recognize false messages. Source for Jane Hamon classifier.", "color": "hamon"}, {"title": "Victory in the Valley", "author": "Jane Hamon", "year": "2026", "tag": "Hamon", "contrib": "Valley season warfare - breakthrough when stuck, weary, trapped. Worship, decrees, Psalm 23.", "color": "hamon"}, {"title": "Prophets and Personal Prophecy", "author": "Dr Bill Hamon", "year": "1986 Landmark", "tag": "Hamon", "contrib": "More examples of personal prophecy in Scripture than any other subject. Guidelines judging prophecy, marriage/business/geographic moves need multiple confirmations.", "color": "hamon"}, {"title": "Apostles, Prophets and Coming Moves of God", "author": "Dr Bill Hamon", "year": "1996", "tag": "Hamon", "contrib": "Corporate revelation, end-time blueprints, apostles+prophets together. House, church, city, ship, sea may be corporate not personal.", "color": "hamon"}, {"title": "How to Interpret Dreams and Visions", "author": "Perry Stone", "year": "2011", "tag": "Biblical", "contrib": "50 symbols, Law of First Mention, warning dreams can be changed through prayer. First mention principle.", "color": ""}, {"title": "The Visions", "author": "Perry Stone", "year": "2022", "tag": "Biblical", "contrib": "Personal dream journal, ancient oracles", "color": ""}, {"title": "Dream Language", "author": "James W. Goll", "year": "2006", "tag": "Biblical", "contrib": "Framework receiving/understanding/applying dream revelation", "color": ""}, {"title": "Understanding Dreams + Top 20", "author": "John Paul Jackson", "year": "2010", "tag": "Biblical", "contrib": "20 categories pioneer", "color": ""}, {"title": "Understanding the Dreams You Dream", "author": "Ira Milligan", "year": "2012", "tag": "Biblical", "contrib": "Biblical keys, nightmares carry messages", "color": ""}, {"title": "Complete Guide to Dream Interpretation", "author": "Marsha Dunstan", "year": "2018", "tag": "Biblical", "contrib": "3800 entries step-by-step", "color": ""}, {"title": "Biblical Dream Symbols Dictionary", "author": "Tyler Wolfe", "year": "2012", "tag": "Biblical", "contrib": "1600 symbols with scripture", "color": ""}, {"title": "The Dream Book", "author": "Lee Ann Rubsam", "year": "2015", "tag": "Biblical", "contrib": "Discern God/self/enemy source", "color": ""}, {"title": "The Divinity Code", "author": "Beale & Thompson", "year": "2008", "tag": "Biblical", "contrib": "Most extensive bible-based work", "color": ""}, {"title": "Biblical Dream Interpretations + 125 Symbols + Warfare Prayers", "author": "Evangelist Joshua Orekhie", "year": "2019", "tag": "African", "contrib": "Nigerian deliverance lens: stagnation, glory loss, wedding battles, hair loss", "color": ""}, {"title": "777 Dreams and Prophetic Interpretations + 900 Prayers", "author": "Remilekun & Olukoya", "year": "2018", "tag": "Deliverance", "contrib": "Prayer bank", "color": ""}, {"title": "From Dreams to Deliverance", "author": "Dr Ademola Borode", "year": "2020", "tag": "Deliverance", "contrib": "Strange dreams + Psalms + acidic prayers", "color": ""}, {"title": "Dictionary of Dreams M-Z", "author": "Tella Olayeri", "year": "", "tag": "African", "contrib": "God answers through dreams", "color": ""}, {"title": "Power Against Dream Criminals", "author": "D.K. Olukoya", "year": "", "tag": "Deliverance", "contrib": "Deliverance manual", "color": ""}, {"title": "Source and Interpretation of Dreams", "author": "Clement Ekundayo", "year": "", "tag": "Deliverance", "contrib": "Weapons to cancel bad dreams", "color": ""}, {"title": "Deliverance From Sexual Dreams", "author": "Johannes Tefo", "year": "", "tag": "Deliverance", "contrib": "Spirit spouse specialized - informs Sex / Sexual Dreams Law of Soul Ties", "color": ""}, {"title": "The Interpretation of Dreams", "author": "Sigmund Freud", "year": "1900", "tag": "Psychology", "contrib": "Royal road to unconscious", "color": ""}, {"title": "Man and His Symbols", "author": "C.G. Jung", "year": "", "tag": "Psychology", "contrib": "Archetypes collective unconscious", "color": ""}, {"title": "The Dream Game", "author": "Ann Faraday", "year": "1974", "tag": "Psychology", "contrib": "Active approach", "color": ""}, {"title": "Why We Sleep", "author": "Matthew Walker", "year": "2017", "tag": "Science", "contrib": "Neuroscience of dreaming", "color": ""}, {"title": "Dream Dictionary A-Z", "author": "Theresa Cheung", "year": "2006", "tag": "Psychology", "contrib": "Popular A-Z", "color": ""}];
+
+const $ = id => document.getElementById(id);
+let selectedSymbols = new Set();
+let selectedEmotions = new Set();
+let lastReport = "";
+
+function renderPills(items, rootId, selectedSet) {
+  const root = $(rootId);
+  if(!root) return;
+  root.innerHTML = items.map(x => `<button type="button" class="pill ${selectedSet.has(x)?'active':''}" data-value="${x.replace(/"/g,'&quot;')}">${x}</button>`).join('');
+  root.querySelectorAll('button').forEach(b => {
+    b.onclick = () => {
+      const v = b.dataset.value;
+      if(selectedSet.has(v)) selectedSet.delete(v); else selectedSet.add(v);
+      b.classList.toggle('active');
+      updateCounts();
+    }
+  });
+}
+
+function updateCounts() {
+  const dream = ($('dream').value||'').toLowerCase();
+  const coreMatches = dreamDict.filter(d => d.keywords.some(k => dream.includes(k.toLowerCase()))).length;
+  const perryMatches = perryDict.filter(p => p.keywords.some(k => dream.includes(k.toLowerCase())) || dream.includes(p.name.toLowerCase())).length;
+  const manual = selectedSymbols.size;
+  const total = coreMatches + perryMatches + manual;
+  const el = $('diagCount');
+  if(el) el.textContent = `${total} DIAGNOSIS • ${perryMatches} PERRY MATCHES • ${manual} MANUAL — auto: ${coreMatches} core + ${perryMatches} perry`;
+  const autoRoot = $('autoTags');
+  if(autoRoot) {
+    const autoCore = dreamDict.filter(d => d.keywords.some(k => dream.includes(k.toLowerCase())));
+    const autoPerry = perryDict.filter(p => p.keywords.some(k => dream.includes(k.toLowerCase())) || dream.includes(p.name.toLowerCase()));
+    autoRoot.innerHTML = [...autoCore.map(c=>`<span class="tag">${c.label}</span>`), ...autoPerry.map(p=>`<span class="tag" style="background:#fff7ed;border:1px solid #c76b3b33">Perry: ${p.name} • ${p.firstRef}</span>`)].join('') || '<span class="small">Type "I had sex with a stranger and I was flying" → should show Sex + Flying. Type "swimming in the river" → Water + River + Sea</span>';
+  }
+}
+
+renderPills(symbols, "symbols", selectedSymbols);
+renderPills(emotions, "emotions", selectedEmotions);
+$('dream')?.addEventListener('input', updateCounts);
+updateCounts();
+
+function analyze() {
+  const s = [...selectedSymbols];
+  const dream = $('dream').value.trim();
+  const lower = dream.toLowerCase();
+  const ctx = $('context').value.trim();
+  const freq = $('frequency').value;
+  const date = $('date').value;
+  const dreamTime = $('dreamTime')?.value || '';
+  const ending = $('ending').value;
+  const e = [...selectedEmotions];
+
+  const autoCore = dreamDict.filter(d => d.keywords.some(k => lower.includes(k.toLowerCase())));
+  const autoPerry = perryDict.filter(p => p.keywords.some(k => lower.includes(k.toLowerCase())) || lower.includes(p.name.toLowerCase()));
+  const allDetected = [...autoCore, ...autoPerry.map(p => ({label:p.name, id:'perry-'+p.id, psychological:`Perry: ${p.perryMeaning}. Pattern ${p.pattern}`, biblical:`${p.firstQuote} - ${p.firstRef}. ${p.perryMeaning}`, scripture:p.scriptureRefs.join(' | '), african:`Cross-check: ${p.spiritualLaw} - ${p.pattern}`, law:p.spiritualLaw, lawDesc:p.pattern, firstRef:p.firstRef, firstQuote:p.firstQuote}))];
+
+  // merge manual picks
+  const combined = [...allDetected];
+  s.forEach(lbl => {
+    const found = dreamDict.find(d => d.label===lbl) || dreamDict.find(d => lbl.toLowerCase().includes(d.label.toLowerCase().split(' ')[0])) || {label:lbl, id:'manual-'+lbl, psychological:'Manual pick', biblical:'Manual', scripture:'', african:'', law:'Law of Attention', lawDesc:'What you pick matters'};
+    if(found && !combined.some(c=>c.label===found.label)) combined.push(found);
+  });
+
+  // dedupe only exact same id, keep distinct labels (so sex+flying both stay)
+  const seen = new Set();
+  const unique = [];
+  for(const c of combined) {
+    if(!seen.has(c.id)) { seen.add(c.id); unique.push(c); }
+  }
+
+  const lawScores = {};
+  const addLaw = (n) => lawScores[n]=(lawScores[n]||0)+1;
+  unique.forEach(c => { if(c.law) addLaw(c.law); });
+  if(/water|river|sea|ocean|swimming/i.test(dream + s.join(' '))) addLaw('Marine / Water / Flow');
+  if(/sex|sexual|spirit spouse|spirit husband|spirit wife/i.test(lower + s.join(' '))) addLaw('Soul Ties & Marital Interference');
+
+  const topLaws = Object.entries(lawScores).sort((a,b)=>b[1]-a[1]).slice(0,4);
+
+  const lawDefs = {
+  "Marine / Water / Flow": {
+    "status": "B",
+    "refs": "Genesis 1:2; Genesis 2:10; Psalm 46:4; Revelation 17:15",
+    "text": "Water can represent Spirit, emotion, peoples, cleansing. Clear calm water often peace, dirty/stagnant suggests contamination or stuck season. Swimming indicates immersion in that flow."
+  },
+  "Soul Ties & Marital Interference": {
+    "status": "A",
+    "refs": "1 Cor 6:16-18; 2 Cor 11:2; Gen 4:1",
+    "text": "Covenant formed in spirit may contest physical covenants. Sex in dream is never just physical - covenant exchange. Who you join with claims authority. Response is cleansing, boundary, not shame. If recurring, seek pastoral + counseling support. Flying + sex together often flagged as marine."
+  },
+  "Law of Rising & Breakthrough": {
+    "status": "B",
+    "refs": "Isaiah 40:31",
+    "text": "Desire for elevation above limitation. God lifting sight above valley."
+  },
+  "Law of Soul Ties & Marital Interference": {
+    "status": "A",
+    "refs": "1 Cor 6:16",
+    "text": "Whoever you join with you become one with. Sex is covenant signature."
+  },
+  "Law of Peace / Flow": {
+    "status": "B",
+    "refs": "John 7:38; Gen 1:2; Gen 2:10",
+    "text": "Peace is not absence of water but mastery over its waves. River out of Eden - one source many expressions."
+  },
+  "Law of Marital Interference": {
+    "status": "A",
+    "refs": "1 Cor 6:16; Genesis 20:3; 2 Cor 11:2",
+    "text": "Spirit spouse / soul tie pattern - contested marital destiny. Not identity, but covenant needing cleansing and boundaries. Requires pastoral + counseling, not shame."
+  },
+  "Law of Exchange": {
+    "status": "A",
+    "refs": "1 Samuel 15:23; Genesis 25:33",
+    "text": "Glory or virtue exchanged through covenants, food, sex, or agreement. What is taken in dream must be restored in prayer and practical action."
+  },
+  "Law of Glory Loss": {
+    "status": "A",
+    "refs": "1 Samuel 4:21-22; Job 19:20",
+    "text": "Glory leaking through teeth, hair, nakedness. Confidence cracks when glory leaks. Prayer for restoration."
+  },
+  "Law of Glory Exchange": {
+    "status": "A",
+    "refs": "Hosea 4:7; Genesis 25:33",
+    "text": "Glory exchanged for shame - when your fine-ness is traded. Esau exchanged birthright. Recover glory."
+  },
+  "Law of Prosperity & Leakage": {
+    "status": "B",
+    "refs": "Haggai 1:6; Malachi 3:10",
+    "text": "Money, market, bag with holes - prosperity leaking through broken cistern, unfaithful associations."
+  },
+  "Law of Delay": {
+    "status": "B",
+    "refs": "Daniel 10:12-13; Habakkuk 2:3",
+    "text": "Late, stagnation, chain - delay tactics. War in heavens, persistence in prayer and practical untying."
+  },
+  "Law of Household Cleansing": {
+    "status": "A",
+    "refs": "2 Kings 4:3-4; Acts 19:19",
+    "text": "House, compound, broom, candle, bathing - need for cleansing household altar and allegiance. Sweep out old agreement."
+  },
+  "Law of Identity": {
+    "status": "B",
+    "refs": "Genesis 1:26-27; 1 Peter 2:9",
+    "text": "Mirror, nakedness - who you see vs who God says. Identity theft through shame."
+  },
+  "Law of Nurturing": {
+    "status": "B",
+    "refs": "Genesis 21:8; 1 Thess 2:7",
+    "text": "Baby, pregnancy, breastfeeding - nurturing new thing, destiny child, ministry, business. What you birth needs guarding."
+  },
+  "Law of Insecurity & Loss of Grip": {
+    "status": "C",
+    "refs": "Psalm 56:13",
+    "text": "Falling - weak scaffolding makes small winds feel like storms."
+  },
+  "Law of Peace": {
+    "status": "B",
+    "refs": "John 14:27; Philippians 4:7",
+    "text": "Calm water - regulated nervous system, inner peace, Spirit guarding heart."
+  },
+  "Law of Stagnation": {
+    "status": "B",
+    "refs": "Jeremiah 2:13",
+    "text": "Dirty/stagnant water - where water does not move destiny does not move. Break stagnancy physically and spiritually."
+  },
+  "Law of Pursuit": {
+    "status": "B",
+    "refs": "Psalm 27:2-3",
+    "text": "Being chased - avoidance. What you refuse to confront keeps pursuing."
+  },
+  "Law of Exposure": {
+    "status": "B",
+    "refs": "Genesis 3:21; Revelation 3:18",
+    "text": "Nakedness - fear of being seen without performance. Need covering - Christ garment."
+  },
+  "Law of Foundation": {
+    "status": "A",
+    "refs": "Matthew 7:24-25",
+    "text": "House - life structure built on rock or sand. Old house old self, new house new season. Cracked foundation every wall confesses."
+  },
+  "Law of Open Doors": {
+    "status": "B",
+    "refs": "Isaiah 22:22; Revelation 3:7-8",
+    "text": "Key, door, gate - authority to open none shut. Key unused is door still closed."
+  },
+  "Law of Kingship & Authority": {
+    "status": "A",
+    "refs": "Genesis 49:9; Revelation 5:5",
+    "text": "Lion - kingship contested, must pray and defend authority."
+  },
+  "Law of Rising": {
+    "status": "B",
+    "refs": "Isaiah 40:31",
+    "text": "Eagle, flying - prophetic elevation, vision above valley."
+  },
+  "Law of Flow": {
+    "status": "B",
+    "refs": "Genesis 2:10; Psalm 46:4",
+    "text": "River - flow of Spirit, life supply, one source many expressions."
+  },
+  "Law of Nations & Depths": {
+    "status": "B",
+    "refs": "Genesis 1:10; Revelation 17:15",
+    "text": "Sea, ocean - multitude, nations, deep emotions. Restless sea needs peace."
+  },
+  "Law of Deception & Transformation": {
+    "status": "B",
+    "refs": "Genesis 3:1; Matthew 10:16",
+    "text": "Snake - two sides: deception and wisdom, transformation, shedding skin but also danger."
+  },
+  "Law of Change & Spirit": {
+    "status": "B",
+    "refs": "2 Corinthians 5:17",
+    "text": "Broom, candle, bathing - change, cleansing, illumination."
+  },
+  "Law of Bondage": {
+    "status": "A",
+    "refs": "Isaiah 52:2; Acts 12:7",
+    "text": "Chained animal - destiny tied, stagnancy, need to loose."
+  },
+  "Law of Fruitfulness": {
+    "status": "B",
+    "refs": "Psalm 1:3",
+    "text": "Tree, fruit - life bearing fruit, rootedness, season."
+  },
+  "Law of Joy & Covenant": {
+    "status": "B",
+    "refs": "Psalm 16:11",
+    "text": "Wedding, marriage - covenant joy, celebration, but also spiritual marriage battle."
+  },
+  "Law of Covenant": {
+    "status": "A",
+    "refs": "Genesis 15:18",
+    "text": "Blood, market - covenant exchange, life traded, need to break evil covenant."
+  },
+  "Law of First Mention": {
+    "status": "A",
+    "refs": "Genesis 1:1; Perry Stone 2011",
+    "text": "First mention establishes pattern. Gen 1:2 water, Gen 2:10 river, Gen 4:1 sex as covenant knowledge."
+  },
+  "Law of Warning Can Be Changed": {
+    "status": "A",
+    "refs": "Perry Stone 2011; 1 Thess 5:21",
+    "text": "Warning dreams can be changed through prayer. Prove all things, hold fast good."
+  }
+};
+
+  let html = `<div class="report-grid"><div><strong>Dream details</strong><p class="small">${dream?dream.replace(/</g,'&lt;'):'No written dream supplied.'}</p><p class="small">Context: ${ctx||'Not provided'}</p></div><div><strong>Selected symbols (multi-detect fixed)</strong><div>${unique.length?unique.map(x=>`<span class="tag">${x.label}</span>`).join(''):'<span class=small>None - general guidance</span>'}</div><p class="small">Frequency: ${freq}<br>Emotions: ${e.join(', ')||'Not selected'}<br>Ending: ${ending}<br>Date: ${date||'Not specified'}<br><strong>${unique.length} DIAGNOSIS • ${autoPerry.length} PERRY MATCHES • ${autoCore.length} CORE</strong><br>Test: "sex with stranger and flying" should show Sex + Flying. "swimming in river" should show Water + River.</p></div></div><hr><h3>Symbol breakdown — 3 Lenses + First Mention (Fixed)</h3>`;
+
+  unique.forEach(sym => {
+    html += `<div class="law"><strong>${sym.label}</strong> <span class="tag warn">${sym.law||'Law of Processing'}</span>${sym.firstRef?`<div class="small"><strong>First Mention:</strong> ${sym.firstRef} — "${sym.firstQuote||''}"</div>`:''}<div class="small"><strong>Pattern:</strong> ${sym.lawDesc||''}</div><p><strong>Psychological:</strong> ${sym.psychological||''}</p><p><strong>Biblical:</strong> ${sym.biblical||''} <em>${sym.scripture||''}</em></p><p><strong>African / Deliverance:</strong> ${sym.african||''}</p><p><strong>Prayer:</strong> I break every negative pattern around ${sym.label.toLowerCase()} and receive God's pattern. Warning dreams can be changed through prayer (Perry Stone).</p><p><strong>Action:</strong> Journal what ${sym.label.toLowerCase()} means, pray, seek 2-3 confirmations before major decisions (Bill Hamon 1986 rule for marriage/business/geographic).</p></div>`;
+  });
+
+  if(unique.length===0) html += `<div class="law">No strong symbol match — this may be processing dream. Record feeling after waking — feeling is real symbol. Try typing "swimming in the river" or "lion chasing me".</div>`;
+
+  html += `<hr><h3>Relevant study areas</h3>`;
+  if(topLaws.length) {
+    topLaws.forEach(([name])=>{
+      const l = lawDefs[name] || {status:"C",refs:"Various",text:name};
+      html += `<div class="law"><strong>${name}</strong> <span class="tag">KJV status: ${l.status}</span><div class="small"><strong>References:</strong> ${l.refs}</div><p>${l.text}</p></div>`;
+    });
+  } else html += `<p class="small">No law assigned automatically. Begin with written account and prayerful discernment.</p>`;
+
+  html += `<hr><h3>Jane Hamon Prophetic Category + Bill Hamon Judging</h3>`;
+  const lowerAll = (dream + ' ' + s.join(' ') + ' ' + e.join(' ')).toLowerCase();
+  let cat = 'Direction';
+  if(/sex|snake|chase|dirty|chain|naked|blood|eating|death|flood|attack/i.test(lowerAll)) cat='Warning / Warfare';
+  if(/stuck|wilderness|trapped|pit|weary|valley|desert/i.test(lowerAll)) cat='Valley / Warfare (Victory in the Valley 2026)';
+  if(/key|door|road|mountain|light|crown|river|baby/i.test(lowerAll) && cat==='Direction') cat='Direction';
+  if(/wedding|tree|fruit|rain|angel|sun|harvest/i.test(lowerAll)) cat='Encouragement / Confirmation';
+  if(/house|church|city|ship|nation|sea|ocean|compound/i.test(lowerAll)) cat+=' + Corporate / Blueprint';
+  html += `<div class="law"><strong>${cat} Dream</strong> — Jane Hamon: ${cat.includes('Warning')?'Warning can be changed through prayer — intercede, test, cleanse. Sex dreams: Law of Soul Ties, flying+sex = possible marine, not shame but contested covenant.':cat.includes('Valley')?'From Victory in the Valley 2026: valley season feels stuck, weary, trapped. Worship, decrees, Psalm 23, remember past victories.':'Direction: Write down precisely, seek 2-3 confirmations before major marriage/business/geographic moves (Bill Hamon 1986: more examples of personal prophecy in Scripture than any other subject, but major decisions need multiple witnesses).'} <span class="tag">${cat}</span></div>`;
+
+  // === Action-based Similar Dreams (Exact/Similar Action on Keyword, not just keyword) ===
+  function scoreActionMatch(userLower, example) {
+    const normalize = (s) => s.toLowerCase().replace(/\bthe\b/g,'').replace(/\s+/g,' ').trim();
+    const dreamNorm = normalize(userLower);
+    const actionNorm = normalize(example.action.toLowerCase());
+    const dreamLower = userLower.toLowerCase();
+    // Exact action phrase present (normalized)
+    if (dreamLower.includes(example.action.toLowerCase()) || dreamNorm.includes(actionNorm)) {
+      return {score: 3, reason: `exact action: "${example.action}"`, type: 'exact'};
+    }
+    // Verb + Object proximity check with normalization
+    let verbFound = false, objFound = false, minDist = 9999, matchedVerb='', matchedObj='';
+    for (let v of example.actionVerbs) {
+      const vNorm = normalize(v);
+      const vi = dreamNorm.indexOf(vNorm) > -1 ? dreamNorm.indexOf(vNorm) : dreamLower.indexOf(v.toLowerCase());
+      if (vi > -1) {
+        verbFound = true;
+        matchedVerb = v;
+        for (let o of example.actionObjects) {
+          const oNorm = normalize(o);
+          const oi = dreamNorm.indexOf(oNorm) > -1 ? dreamNorm.indexOf(oNorm) : dreamLower.indexOf(o.toLowerCase());
+          if (oi > -1) {
+            objFound = true;
+            matchedObj = o;
+            const dist = Math.abs(vi - oi);
+            if (dist < minDist) minDist = dist;
+          }
+        }
+      }
+    }
+    // Also check if both river and swimming present close
+    if (verbFound && objFound && minDist < 80) {
+      return {score: 2, reason: `similar action: "${matchedVerb} + ${matchedObj}" within ${minDist} chars`, type: 'similar', dist: minDist};
+    }
+    if (verbFound || objFound) {
+      return {score: 1, reason: `partial action: ${verbFound? 'verb '+matchedVerb : ''} ${objFound? 'object '+matchedObj : ''}`.trim(), type: 'partial'};
+    }
+    return {score: 0, reason: 'no action match', type: 'none'};
+  }
+
+  const scored = similarDreams.map(ex => {
+    const res = scoreActionMatch(lower, ex);
+    return {...ex, matchScore: res.score, matchReason: res.reason, matchType: res.type};
+  }).filter(x => x.matchScore >= 1).sort((a,b) => b.matchScore - a.matchScore);
+
+  const exactMatches = scored.filter(x => x.matchScore >= 2);
+  const partialMatches = scored.filter(x => x.matchScore === 1);
+
+  if (exactMatches.length > 0) {
+    html += `<hr><h3>Similar Dreams — Exact / Similar Action on Keyword (Not Just Keyword)</h3><p class="small">Showing dreams with same described action, not just same keyword. Eg. "swimming in river" shows swimming + in river, not just any river. "had sex with stranger + flying" shows same combo.</p>`;
+    exactMatches.slice(0,6).forEach(ex => {
+      html += `<div class="law" style="border-left-color:${ex.category==='scripture'?'#2d4a3e':'#c76b3b'}"><strong>${ex.title}</strong> <span class="tag" style="background:${ex.category==='scripture'?'#2d4a3e':'#c76b3b'};color:#fff">${ex.category} • ${ex.matchType} • score ${ex.matchScore}</span> <span class="tag">${ex.action}</span><div class="small"><strong>Why this matches:</strong> ${ex.matchReason} — action on keyword: "${ex.action}"</div><div class="small"><strong>Reference:</strong> ${ex.reference}</div><p class="small"><strong>Dream:</strong> ${ex.dream}</p><p class="small"><strong>Outcome:</strong> ${ex.outcome}</p><p class="small"><strong>Lesson:</strong> ${ex.lesson}</p><div class="small"><strong>Source:</strong> ${ex.source}</div></div>`;
+    });
+    if (partialMatches.length > 0) {
+      html += `<details><summary class="small" style="cursor:pointer">Show ${partialMatches.length} loose keyword-only matches (hidden by default — not exact action)</summary>`;
+      partialMatches.slice(0,4).forEach(ex => {
+        html += `<div class="law" style="opacity:0.7"><strong>${ex.title}</strong> <span class="tag">keyword only • score ${ex.matchScore}</span> <span class="tag">${ex.action}</span><div class="small">Why hidden: ${ex.matchReason} — not exact action on keyword, just keyword match</div><p class="small">${ex.dream}</p></div>`;
+      });
+      html += `</details>`;
+    }
+  } else {
+    html += `<hr><h3>Similar Dreams — Action Match</h3><p class="small">No exact action match found for this dream. Try describing action more precisely: e.g. "swimming in clear river" not just "river", "had sex with stranger while flying" not just "sex". Similar dreams are matched on verb + object proximity, not just keyword.</p>`;
+    if (partialMatches.length > 0) {
+      html += `<p class="small">${partialMatches.length} loose keyword matches hidden — they match keyword but not exact action on keyword.</p>`;
+    }
+  }
+
+
+  html += `<div class="notice"><strong>KJV safeguard:</strong> "Prove all things; hold fast that which is good." — 1 Thess 5:21. A dream should be tested, not automatically obeyed or feared. Bill Hamon: judging prophecy. Jane Hamon: recognize false messages - pig, wolf, dog returning, confusion without peace = false. Test with scripture.</div>`;
+  html += `<div class="actions"><button class="btn primary" onclick="saveReport()">Save to Journal (Local)</button><button class="btn secondary" onclick="copyReport()">Copy Report</button><button class="btn secondary" onclick="shareReport()">Share</button></div>`;
+
+  $('result').innerHTML = html;
+  $('result').style.display='block';
+  $('result').scrollIntoView({behavior:'smooth'});
+  lastReport = `IYANU DREAM DIAGNOSTICS V7 CLEANER VISUAL\nDate: ${date||new Date().toLocaleDateString()}\nDream: ${dream}\nSymbols: ${unique.map(c=>c.label).join(', ')}\nCore: ${autoCore.length} Perry: ${autoPerry.length} Manual: ${s.length}\nLaws: ${topLaws.map(([n])=>n).join(', ')}`;
+}
+
+$('genBtn')?.addEventListener('click', analyze);
+$('resetBtn')?.addEventListener('click', ()=>{ $('dream').value=''; $('context').value=''; selectedSymbols.clear(); selectedEmotions.clear(); renderPills(symbols,'symbols',selectedSymbols); renderPills(emotions,'emotions',selectedEmotions); $('result').style.display='none'; updateCounts(); });
+
+function renderBooks() {
+  const root = $('books');
+  if(!root) return;
+  const q = ($('bookSearch')?.value||'').toLowerCase();
+  const filtered = booksData.filter(b=> !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q) || b.contrib.toLowerCase().includes(q));
+  root.innerHTML = filtered.map(b=>`<div class="book ${b.color}"><strong>${b.title}</strong><div class="small">${b.author} • ${b.year} • ${b.tag}</div><p class="small">${b.contrib}</p></div>`).join('');
+}
+$('bookSearch')?.addEventListener('input', renderBooks);
+renderBooks();
+
+function renderPerry() {
+  const root = $('perryGrid');
+  if(!root) return;
+  const q = ($('perrySearch')?.value||'').toLowerCase();
+  const filtered = perryDict.filter(p=> !q || p.name.toLowerCase().includes(q) || p.firstRef.toLowerCase().includes(q) || p.perryMeaning.toLowerCase().includes(q) || p.spiritualLaw.toLowerCase().includes(q));
+  root.innerHTML = filtered.map(p=>`<div class="book"><strong>${p.name}</strong> <span class="tag">${p.spiritualLaw}</span><div class="small">${p.firstRef} — "${p.firstQuote}"</div><p class="small"><strong>Pattern:</strong> ${p.pattern}</p><p class="small"><strong>Meaning:</strong> ${p.perryMeaning}</p><div class="small"><strong>Refs:</strong> ${p.scriptureRefs.join(', ')}</div><div style="margin-top:8px"><button class="btn secondary" onclick="addPerry('${p.name}')">Add to diagnosis</button></div></div>`).join('');
+}
+$('perrySearch')?.addEventListener('input', renderPerry);
+renderPerry();
+window.addPerry = (name)=>{ selectedSymbols.add(name); renderPills(symbols,'symbols',selectedSymbols); document.querySelector('[data-tab=diagnose]')?.click(); window.scrollTo({top:0,behavior:'smooth'}); };
+
+// Tabs
+function initTabs() {
+  const tabIds = ['diagnose','appendix','law','journal','bookshelf'];
+  const labels = ['Diagnose','Appendix: Perry Stone 50','Law of First Mention','Journal','Bookshelf'];
+  const tabsRoot = $('tabs');
+  tabsRoot.innerHTML = tabIds.map((id,i)=>`<button class="tab ${i===0?'active':''}" data-tab="${id}">${labels[i]}</button>`).join('');
+  tabsRoot.querySelectorAll('.tab').forEach(btn=>{
+    btn.onclick=()=>{
+      tabsRoot.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      tabIds.forEach(tid=>{ const el = $('tab-'+tid); if(el) el.classList.toggle('hidden', tid!==btn.dataset.tab); });
+    };
+  });
+}
+initTabs();
+
+function journalRender() {
+  const j = JSON.parse(localStorage.getItem('iyanuDreamJournal')||'[]');
+  const root = $('journal');
+  if(!root) return;
+  root.innerHTML = j.length? j.map((x,i)=>`<div class="journal-item"><strong>${x.date}</strong><div class="small">${x.preview}</div><div style="margin-top:6px"><button class="btn secondary" onclick="delEntry(${i})">Delete</button> <button class="btn secondary" onclick="viewEntry(${i})">View</button></div></div>`).join('') : 'No saved entries yet. Generate report then Save to Journal.';
+}
+window.delEntry = (i)=>{ const j=JSON.parse(localStorage.getItem('iyanuDreamJournal')||'[]'); j.splice(i,1); localStorage.setItem('iyanuDreamJournal',JSON.stringify(j)); journalRender(); };
+window.viewEntry = (i)=>{ const j=JSON.parse(localStorage.getItem('iyanuDreamJournal')||'[]'); alert(j[i]?.full||'Not found'); };
+$('clearJournal')?.addEventListener('click',()=>{ if(confirm('Clear all?')){ localStorage.removeItem('iyanuDreamJournal'); journalRender(); } });
+journalRender();
+
+window.saveReport = ()=>{
+  if(!lastReport){ alert('Generate report first'); return; }
+  const j = JSON.parse(localStorage.getItem('iyanuDreamJournal')||'[]');
+  j.unshift({date:new Date().toLocaleString(), preview:lastReport.slice(0,260)+'…', full:lastReport});
+  localStorage.setItem('iyanuDreamJournal', JSON.stringify(j.slice(0,30)));
+  journalRender();
+  alert('Saved locally on this device.');
+};
+window.copyReport = async ()=>{
+  if(!lastReport) return;
+  try{ await navigator.clipboard.writeText(lastReport); alert('Copied ✓'); }catch(e){ alert(lastReport); }
+};
+window.shareReport = async ()=>{
+  if(!lastReport) return;
+  if(navigator.share){ try{ await navigator.share({title:'Iyanu Dream Diagnostics Report', text:lastReport}); }catch(e){} } else { await navigator.clipboard.writeText(lastReport); alert('Copied instead'); }
+};
+
+// Auto-test for size verification
+console.log('V7 Cleaner Visual loaded', 'dreamDict', dreamDict.length, 'perry', perryDict.length, 'books', booksData.length);
+
+// Text size control - fixed to affect all text including pills (rem-based)
+let iyanuTextSize = parseInt(localStorage.getItem('iyanuTextSize') || '100');
+function applyTextSize(){
+  document.documentElement.style.fontSize = iyanuTextSize + '%';
+  document.documentElement.style.setProperty('--scale', (iyanuTextSize/100).toString());
+  // Update active state
+  document.querySelectorAll('.ts-btn').forEach(btn=>{
+    btn.classList.remove('active');
+    const txt = btn.textContent.trim();
+    if(txt==='A' && iyanuTextSize===100) btn.classList.add('active');
+    if(txt==='A+' && iyanuTextSize>100) btn.classList.add('active');
+    if(txt==='A-' && iyanuTextSize<100) btn.classList.add('active');
+  });
+}
+function adjustTextSize(delta){
+  iyanuTextSize = Math.min(150, Math.max(80, iyanuTextSize + delta*10));
+  localStorage.setItem('iyanuTextSize', iyanuTextSize);
+  applyTextSize();
+}
+function resetTextSize(){
+  iyanuTextSize = 100;
+  localStorage.setItem('iyanuTextSize', iyanuTextSize);
+  applyTextSize();
+}
+applyTextSize();
+
+</script>
+</body>
+</html>
