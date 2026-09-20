@@ -14,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://iyanudiagnostics.netlify.app/iyanu_dream">
 <meta property="og:title" content="Iyanu Dream Diagnostics — Reflective Christian Dream-Study Tool">
-<meta property="og:description" content="KJV-centered dream-study tool with Perry Stone Law of First Mention, Jane Hamon categories, 33 symbols, 50 Appendix, 19 similar dreams matched by exact action on keyword. Local-first, private, no account.">
+<meta property="og:description" content="KJV-centered Dream-Study tool">
 <meta property="og:site_name" content="Iyanu Diagnostics">
 <meta property="og:locale" content="en_NG">
 <meta property="og:image" content="https://iyanudiagnostics.netlify.app/og-iyanu-dream.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://iyanudiagnostics.netlify.app/iyanu_dream">
 <meta name="twitter:title" content="Iyanu Dream Diagnostics — Reflective Christian Dream-Study Tool">
-<meta name="twitter:description" content="KJV-centered, local-first Christian dream-study tool. Perry Stone, Jane Hamon, African wisdom. 33 symbols, 50 Appendix, exact action matching for similar dreams.">
+<meta name="twitter:description" content="KJV-centered Dream-Study tool">
 <meta name="twitter:image" content="https://iyanudiagnostics.netlify.app/og-iyanu-dream.png">
 <script type="application/ld+json">
 {
@@ -1964,7 +1964,7 @@ function analyze() {
   $('result').innerHTML = html;
   $('result').style.display='block';
   $('result').scrollIntoView({behavior:'smooth'});
-  lastReport = `IYANU DREAM DIAGNOSTICS V7 CLEANER VISUAL\nDate: ${date||new Date().toLocaleDateString()}\nDream: ${dream}\nSymbols: ${unique.map(c=>c.label).join(', ')}\nCore: ${autoCore.length} Perry: ${autoPerry.length} Manual: ${s.length}\nLaws: ${topLaws.map(([n])=>n).join(', ')}`;
+  lastReport = `IYANU DREAM DIAGNOSTICS REPORT\nDate: ${date||new Date().toLocaleDateString()}\nDream: ${dream}\nSymbols: ${unique.map(c=>c.label).join(', ')}\nCore: ${autoCore.length} Perry: ${autoPerry.length} Manual: ${s.length}\nLaws: ${topLaws.map(([n])=>n).join(', ')}`;
 }
 
 $('genBtn')?.addEventListener('click', analyze);
