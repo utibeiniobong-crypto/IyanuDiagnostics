@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Architecture of Freedom — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fs: 1;
+        --night: #0b0f14; --night-deep: #05070a;
+        --parchment: #FCFCF9; --paper: #FFFFFF;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #c9a24b; --gold-bright: #e8c874; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: rgba(201,162,75,0.25); --hairline-soft: rgba(201,162,75,0.12);
+        --ink: #ece7db;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background:
+            radial-gradient(circle at 20% 10%, rgba(201,162,75,0.07), transparent 45%),
+            radial-gradient(circle at 85% 90%, rgba(4,120,87,0.10), transparent 45%),
+            var(--night);
+        margin: 0; padding: 0; line-height: 1.65; min-height: 100vh;
+    }
+    .toolbar {
+        position: sticky; top: 0; z-index: 20;
+        display:flex; align-items:center; justify-content:space-between; gap:10px;
+        flex-wrap: wrap;
+        padding: 10px 18px; background: rgba(5,7,10,0.92); backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--hairline);
+    }
+    .toolbar-group { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .toolbar a.home { font-size:12.5px; color: var(--gold-bright); text-decoration:none; border:1px solid var(--hairline); padding:6px 12px; border-radius:6px; }
+    .fs-btn { width:auto; padding:5px 11px; font-size:12.5px; font-weight:600; background:transparent; color:var(--gold-bright); border:1px solid var(--hairline); cursor:pointer; border-radius:6px; }
+    .fs-btn:hover { background: rgba(201,162,75,0.1); }
+    #google_translate_element { font-size: 12px; }
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
+
+    .stage {
+        max-width: 860px; margin: 0 auto; padding: 48px 22px 90px;
+    }
+    .kicker { text-align:center; font-size: calc(12.5px * var(--fs)); letter-spacing:0.12em; text-transform:uppercase; color: var(--gold); margin-bottom: 10px; }
+    .progress { text-align:center; font-size: calc(12px * var(--fs)); color: rgba(236,231,219,0.55); margin-bottom: 28px; }
+
+    .room-frame {
+        border: 1px solid var(--hairline); border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+        padding: 0; overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .room-image {
+        width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #10151c, #1a1206);
+        display:flex; align-items:center; justify-content:center; position:relative;
+        border-bottom: 1px solid var(--hairline);
+    }
+    .room-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .room-image .placeholder {
+        text-align:center; color: rgba(201,162,75,0.45); font-family:'Fraunces',serif; font-style:italic;
+        font-size: calc(14px * var(--fs)); padding: 20px; line-height:1.5;
+    }
+    .room-body { padding: 34px 30px 30px; }
+    @media (max-width: 640px) { .room-body { padding: 24px 18px 22px; } .stage{padding:30px 12px 70px;} }
+
+    .room-title { font-family:'Fraunces',serif; font-weight:600; font-size: calc(30px * var(--fs)); color: var(--gold-bright); margin: 0 0 6px; line-height:1.15; }
+    .room-subtitle { font-family:'Fraunces',serif; font-style:italic; font-size: calc(15px * var(--fs)); color: rgba(236,231,219,0.6); margin: 0 0 22px; }
+
+    .narrative p { font-size: calc(15.5px * var(--fs)); margin: 0 0 16px; color: rgba(236,231,219,0.92); }
+
+    .gatekeeper {
+        margin: 26px 0; padding: 18px 20px; border-left: 3px solid var(--wine);
+        background: rgba(159,18,57,0.08); border-radius: 0 10px 10px 0;
+    }
+    .gatekeeper-label { font-size: calc(11px * var(--fs)); letter-spacing:0.1em; text-transform:uppercase; color:#f0708f; font-weight:700; margin-bottom:6px; }
+    .gatekeeper p { font-size: calc(14.5px * var(--fs)); font-style:italic; color: rgba(236,231,219,0.85); margin:0; }
+
+    .letter-excerpt {
+        margin: 26px 0; padding: 18px 20px; border-left: 3px solid var(--gold);
+        background: rgba(201,162,75,0.07); border-radius: 0 10px 10px 0;
+    }
+    .letter-label { font-size: calc(11px * var(--fs)); letter-spacing:0.1em; text-transform:uppercase; color: var(--gold-bright); font-weight:700; margin-bottom:6px; }
+    .letter-excerpt p { font-size: calc(14px * var(--fs)); font-style:italic; color: rgba(236,231,219,0.8); margin:0 0 8px; }
+    .letter-sign { font-size: calc(13px * var(--fs)); color: var(--gold-bright); font-weight:700; }
+
+    .teaching-box {
+        margin: 26px 0 6px; padding: 18px 20px; border: 1px solid var(--hairline);
+        border-radius: 12px; background: rgba(16,185,129,0.06);
+    }
+    .teaching-label { font-size: calc(11px * var(--fs)); letter-spacing:0.1em; text-transform:uppercase; color: var(--gold-soft); font-weight:700; margin-bottom:8px; }
+    .teaching-box p { font-size: calc(14.5px * var(--fs)); margin:0; color: rgba(236,231,219,0.92); }
+    .teaching-box .anchor { font-size: calc(12px * var(--fs)); color: rgba(236,231,219,0.5); margin-top:8px; font-style:italic; }
+
+    .nav-row { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top: 34px; flex-wrap:wrap; }
+    .nav-btn {
+        font-family:'Inter',sans-serif; font-size: calc(14px * var(--fs)); font-weight:700;
+        padding: 13px 24px; border-radius: 10px; border: none; cursor:pointer;
+        transition: transform 0.12s ease;
+    }
+    .nav-btn:hover { transform: translateY(-1px); }
+    .nav-btn.primary { background: var(--gold); color: var(--night-deep); }
+    .nav-btn.secondary { background: transparent; color: var(--gold-bright); border: 1px solid var(--hairline); }
+    .nav-btn:disabled { opacity: 0.3; cursor: default; transform:none; }
+
+    .room-dots { display:flex; justify-content:center; gap:7px; margin: 24px 0 0; flex-wrap:wrap; }
+    .dot { width:8px; height:8px; border-radius:50%; background: var(--hairline-soft); cursor:pointer; border:none; }
+    .dot.active { background: var(--gold); }
+    .dot.visited { background: rgba(201,162,75,0.5); }
+
+    .cta-final {
+        text-align:center; margin-top: 10px;
+    }
+    .cta-final a {
+        display:inline-block; background: var(--gold); color: var(--night-deep); text-decoration:none;
+        font-weight:800; font-size: calc(15px * var(--fs)); padding: 15px 30px; border-radius: 12px; margin: 8px;
+    }
+    .cta-final a.secondary { background: transparent; border:1px solid var(--gold); color: var(--gold-bright); }
+
+    .entry-note { text-align:center; font-size: calc(12.5px * var(--fs)); color: rgba(236,231,219,0.5); max-width:560px; margin: 14px auto 0; }
+
+    .care-note { max-width:620px; margin: 22px auto 0; padding:14px 18px; border-left:3px solid var(--wine); background: rgba(159,18,57,0.08); border-radius: 0 10px 10px 0; font-size: calc(12.5px * var(--fs)); color: rgba(236,231,219,0.75); }
+    @media print { .toolbar, .nav-row, .room-dots { display:none; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+    <a class="home" href="index.html">&larr; Home</a>
+    <div class="toolbar-group">
+        <div id="google_translate_element"></div>
+    </div>
+    <div class="toolbar-group">
+        <button class="fs-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle background music" aria-pressed="false">&#9835; Music: Off</button>
+        <input type="range" id="musicVol" min="0" max="100" value="35" aria-label="Music volume" style="width:70px; accent-color:#c9a24b;" oninput="setMusicVolume(this.value)">
+        <button class="fs-btn" onclick="changeFontSize(-1)" aria-label="Decrease text size">A−</button>
+        <button class="fs-btn" onclick="changeFontSize(0)" aria-label="Reset text size">Reset</button>
+        <button class="fs-btn" onclick="changeFontSize(1)" aria-label="Increase text size">A+</button>
+    </div>
+</div>
+
+<audio id="bgMusic" loop preload="none">
+    <source src="architecture-theme.mp3" type="audio/mpeg">
+</audio>
+
+<div class="stage">
+    <div class="kicker">Iyanu Diagnostics &middot; An Allegory</div>
+    <div class="progress" id="progressLabel">Room 1 of 11</div>
+
+    <div class="room-frame">
+        <div class="room-image" id="roomImageWrap">
+            <img id="roomImage" src="" alt="" style="display:none;">
+            <div class="placeholder" id="roomPlaceholder"></div>
+        </div>
+        <div class="room-body">
+            <div class="room-title" id="roomTitle"></div>
+            <div class="room-subtitle" id="roomSubtitle"></div>
+            <div class="narrative" id="roomNarrative"></div>
+            <div id="roomExtras"></div>
+            <div class="nav-row" id="navRow"></div>
+        </div>
+    </div>
+
+    <div class="room-dots" id="roomDots"></div>
+    <div class="care-note">This is an allegory, not a diagnosis. If anything here touches a heaviness that will not lift, abuse or danger in your home, or thoughts of harming yourself, please reach out to a doctor, counselor, or trusted pastor as well. In the US, you can call or text 988 at any hour; elsewhere, contact your local emergency or crisis line. Real safety always comes before any exercise in this house.</div>
+    <p class="entry-note">Your place in the house is saved on this device. Close it any time — the door will be exactly where you left it.</p>
+</div>
+
+<script>
+const ROOMS = [
+{
+    key: "prologue",
+    title: "Born in the House",
+    subtitle: "Prologue",
+    image: "architecture-00-prologue.jpg",
+    imageAlt: "A newborn child inside an ancestral house rendered as both a carved doorway and a glowing architectural structure",
+    narrative: [
+        "You did not choose this house. No one does. By the time you were old enough to notice its walls, the walls were already old — older than your mother, older than the name you were given before you could speak for yourself.",
+        "Somewhere in the foundation, before you had teeth, a door was fitted into place by hands that are no longer living. You have lived inside this house your entire life without ever being shown its full floor plan.",
+        "This is not a story about blame. A child does not choose the house they are born into, and nothing in these rooms will ask you to carry guilt for walls you did not build. It is, instead, a story about finally being handed the plan."
+    ],
+    teaching: {
+        label: "What this room is",
+        text: "Every life begins inside structures it did not choose: a family line, a set of inherited words, sometimes an actual dedication spoken over a child before they could consent to it. Naming this is not blame. It is the first honest fact the rest of the house depends on.",
+        anchor: "Grounded in Book One, The Spiritual Loophole — \u201cThe Old Secret.\u201d"
+    }
+},
+{
+    key: "grace",
+    title: "The Grace Period",
+    subtitle: "Room 1",
+    image: "architecture-01-grace-period.jpg",
+    imageAlt: "A sunlit corridor with broken chains on the floor, warm and genuinely peaceful",
+    narrative: [
+        "Then, one day, light came into a hallway that had always been dim.",
+        "You remember the morning it happened. Something real broke. A weight you had carried so long you forgot it was a weight suddenly left your shoulders, and for a season — weeks, months, for some of you years — the house felt different. Lighter. Yours.",
+        "I want to be plain with you here, because this is the room most stories get wrong: this relief was not fake. It was not a trick played on you before the real trouble began. It was genuine grace, genuinely received, and nothing in the rooms ahead will ask you to doubt that it happened.",
+        "But a house this old rarely has only one door. And somewhere, past rooms you have not yet entered, something that has managed this file for a long time is still quietly keeping time."
+    ],
+    teaching: {
+        label: "What this room is",
+        text: "Deliverance fatigue does not mean your breakthrough wasn't real. Naming the pattern that follows a genuine grace period is not cynicism about grace. It's honesty about structure.",
+        anchor: "Grounded in Book Two, Total Freedom — the Sunday that was genuinely beautiful."
+    }
+},
+{
+    key: "clock",
+    title: "The Clock",
+    subtitle: "Room 2 — The Threshold of Accountability",
+    image: "architecture-02-the-clock.jpg",
+    imageAlt: "An enormous ornate clock built into a door frame, gears formed from ancestral geometric patterns, ominous and beautiful",
+    narrative: [
+        "There is a door in this house that was not there when you were small. Or perhaps it was always there, and you simply could not reach its handle until now.",
+        "It has a clock built into its frame, and the clock has been running since before you noticed it. It does not measure years the way a calendar does. It measures something closer to readiness — the point at which a thing that was once only inherited becomes, quietly and without ceremony, something you now carry by your own agreement too.",
+        "This is not a punishment for growing up. It is simply what growing up means inside a house like this one: the rooms your family built are still your family's rooms, until the day you are old enough to either close them or, without quite meaning to, keep them open yourself.",
+        "The clock does not wait for you to feel ready. It only waits for you to be able to choose. Past this door, the house stops being something that merely happened to you."
+    ],
+    teaching: {
+        label: "What this room is",
+        text: "Accountability is not a trap set to catch you off guard — it is what it means to become a moral agent rather than only an inheritor. The rooms ahead are the ones only you can now close.",
+        anchor: "A threshold concept drawn across the whole series, made explicit here."
+    }
+},
+{
+    key: "courtyard",
+    title: "The Courtyard of the Displaced Brick",
+    subtitle: "Room 3",
+    image: "architecture-03-courtyard.jpg",
+    imageAlt: "A walled courtyard at dusk, one brick missing from an otherwise solid wall, a small dark gap just visible",
+    narrative: [
+        "The courtyard looks secure from where you are standing. High walls, a gate that latches, flowers along the border that someone, once, planted with real care.",
+        "But the flowers are dying faster than they should. The water in the basin has gone sour. And if you walk the perimeter slowly, the way almost no one does, you will find it: one brick, quietly missing from the eastern wall, behind thick leaves nobody thought to move aside. A small, dark mouth. Just large enough for something to slip through."
+    ],
+    gatekeeper: {
+        name: "The Quiet One",
+        text: "\u201cYou will not see me often. I do not need a legion, a title, or a plan. I only need one brick, and your attention somewhere else. Most people spend their whole lives guarding the gate and never once walk the wall.\u201d"
+    },
+    teaching: {
+        label: "What this room is",
+        text: "Not every siege is a woven system. Sometimes freedom really is as simple as finding the one open thing and closing it — a confession, a returned item, an honest conversation. Simple does not mean small.",
+        anchor: "Grounded in Book One, The Spiritual Loophole — Ecclesiastes 10:8."
+    }
+},
+{
+    key: "fourlocks",
+    title: "The Room of Four Locks",
+    subtitle: "Room 4 — The Revolving Door",
+    image: "architecture-04-four-locks.jpg",
+    imageAlt: "An ornate door with four distinct locks at different heights, one open, three still engaged, in a dim architectural corridor",
+    narrative: [
+        "This door is harder to read than the courtyard wall, because at first glance it looks finished. One lock, the top one, hangs open. You remember opening it yourself, with real effort, real tears, real prayer.",
+        "But look lower. Three more locks sit beneath it, each a different shape: one shaped like an old fear, one like a dedicated object, one like a word you still say about yourself without noticing. They have not been touched.",
+        "Someone is here, tending them. Not frightened of you. Mildly, almost professionally, unbothered."
+    ],
+    gatekeeper: {
+        name: "Osiso, gatekeeper of this door",
+        text: "\u201cYou closed one lock and told everyone the door was finished. I let you believe that, because tired people stop counting, and curious people start closing things in order. I am not worried about your prayers. I am worried about your attention.\u201d"
+    },
+    letter: {
+        from: "Intercepted correspondence, found folded beneath the doormat",
+        text: "\u201cYour error was thinking your assignment was the door. Your assignment was never the door. Your assignment is to make sure that when she notices the trouble returning, she draws the conclusion that prayer failed, rather than the conclusion that she has three more doors to find.\u201d",
+        sign: "\u2014 Babalekun, to Osiso"
+    },
+    teaching: {
+        label: "What this room is",
+        text: "One closed lock is a real win, not a false one. But a woven siege needs all four locks named and closed in order \u2014 fear, environment, agreement, and your own words \u2014 or the other three will quietly reset the first.",
+        anchor: "Grounded in Book Two, Total Freedom \u2014 the Reverse Takedown Protocol."
+    }
+},
+{
+    key: "inherited",
+    title: "The Inherited Rooms",
+    subtitle: "Room 5",
+    image: "architecture-05-inherited-rooms.jpg",
+    imageAlt: "A room furnished entirely with old, mismatched furniture clearly belonging to previous generations, portraits on the wall of people the viewer has never met",
+    narrative: [
+        "Down a hallway you rarely use, there are rooms furnished entirely by people you never met. The chairs do not fit you. The paintings are of relatives whose names you had to ask your mother to remember.",
+        "And yet you have been living out of these rooms for years, without knowing it — an old grudge nobody taught you to put down, a fear that arrived in your chest already fully formed, a pattern of leaving relationships at the exact age your father left his.",
+        "You did not choose this furniture. But you are the one sitting in it."
+    ],
+    gatekeeper: {
+        name: "The Keeper of the Ledger",
+        text: "\u201cI do not create anything new. I only maintain what was already written down, generations before you, in a book you never signed. Every house like this one has a keeper. Most families simply call me tradition.\u201d"
+    },
+    teaching: {
+        label: "What this room is",
+        text: "Household patterns are not fate, but they are not nothing either. Naming a pattern across generations is the first step toward being the one who finally changes the furniture.",
+        anchor: "Grounded in When Your House Fights You \u2014 Law 6, Guard Your House."
+    }
+},
+{
+    key: "night",
+    title: "The Night Room",
+    subtitle: "Room 6",
+    image: "architecture-06-night-room.jpg",
+    imageAlt: "A dim bedroom at night, a single window showing a dark river beyond, a notebook and pen resting on the nightstand",
+    narrative: [
+        "This room only fully shows itself while you are asleep. By morning, most of what happened here fades into something you half remember and quickly stop trying to recall.",
+        "That is precisely how it prefers to work. A dream repeated often enough, kept mild enough, becomes background rather than information. You stop asking what it means. You start calling it, simply, a dream you have sometimes.",
+        "There is a notebook on the nightstand. It was not there before. Someone left it for you, along with three short questions: What happened? How did I feel on waking? What happened in the days around it?"
+    ],
+    letter: {
+        from: "Intercepted correspondence, left tucked inside the notebook",
+        text: "\u201cThe moment she begins keeping a record, even a short one, three questions on a notepad by her bed, we have lost the single greatest advantage a recurring dream ever gave us: her own forgetting.\u201d",
+        sign: "\u2014 Babalekun, to Osiso"
+    },
+    teaching: {
+        label: "What this room is",
+        text: "Not every dream is spiritual warfare, and treating every dream as a crisis creates its own kind of exhaustion. The useful test is repetition, timing, and residue \u2014 named and tracked, not feared.",
+        anchor: "A simple three-question nightly log is the whole practice here."
+    }
+},
+{
+    key: "candles",
+    title: "The Hallway of Unlit Candles",
+    subtitle: "An Interlude",
+    image: "architecture-07-unlit-candles.jpg",
+    imageAlt: "A long hallway lined with unlit candles, jars of oil, and plain wooden bowls, warm and unthreatening, no fire yet, waiting",
+    narrative: [
+        "This hallway unsettles some visitors before they have even stepped into it, because of what lines its walls: candles, small jars of oil, plain water in plain bowls. Objects that, elsewhere in this city, sit on altars that are not your friend.",
+        "It is tempting to decide, standing here, that the objects themselves are the danger. That is, I promise you, the wrong question to be asking in this hallway.",
+        "The true question was never what sits on the shelf. It was always what the shelf was dedicated to, and by whom, and under what covenant. An object carries nothing on its own. Dedication is the only thing that has ever carried weight here."
+    ],
+    letter: {
+        from: "Intercepted correspondence, pinned to the first candle in the row",
+        text: "\u201cThe liquid has not changed. The dedication has changed everything... stop counting objects and start locating covenants.\u201d",
+        sign: "\u2014 Babalekun, to Osiso"
+    },
+    teaching: {
+        label: "What this room is",
+        text: "Material elements \u2014 oil, water, a flame \u2014 are not inherently occultic, and they are not inherently safe either. The dividing line is dedication and where your faith actually rests, not the object's category.",
+        anchor: "Grounded in the Babalekun Letters, Six and Seven."
+    }
+},
+{
+    key: "road",
+    title: "The Road Outside",
+    subtitle: "Room 7",
+    image: "architecture-08-road-outside.jpg",
+    imageAlt: "A door standing open onto an open road under a wide dawn sky, deliberately breaking from the enclosed architecture of the previous rooms, hopeful and vast",
+    narrative: [
+        "Every room so far has had walls. This one does not.",
+        "Somewhere past the inherited furniture and the night room's window, there is a door that does not lead to another chamber at all. It leads outside the house entirely — onto an open road, under a sky too wide to be furnished by anyone.",
+        "Some seasons of struggle were never a siege to be dismantled. Some were simply formation: the no-address season, the lack, the waiting, shaping you into someone who can now walk into any room because you no longer need the room to prove you have arrived.",
+        "This door does not close behind you. It was never meant to."
+    ],
+    teaching: {
+        label: "What this room is",
+        text: "Not every hardship is an attack. Some seasons without a platform, a title, or a settled place are preparation, not siege \u2014 and treating every struggle as spiritual warfare can itself become exhausting.",
+        anchor: "Grounded in The Man With No Address."
+    }
+},
+{
+    key: "workshop",
+    title: "The Workshop",
+    subtitle: "Room 8 — Where the Foundation Is Repoured",
+    image: "architecture-09-workshop.jpg",
+    imageAlt: "A warmly lit workshop with tools, open blueprints on a table, visible work in progress on a wall's foundation, hopeful and industrious rather than dramatic",
+    narrative: [
+        "This is not a room you pass through once. It is the one room in the house still under active work, every single day, and it will likely still be under work for the rest of your life.",
+        "There is no dramatic deliverance happening here. No single prayer that fixes everything by morning. Instead there are tools on the table: a short daily practice, an honest conversation with someone who will actually ask follow-up questions, a replacement habit for the exact shape of the thing you removed.",
+        "This is the difference between an event and a process. An event can be outlasted. A process cannot, because it does not get tired of showing up."
+    ],
+    teaching: {
+        label: "What this room is",
+        text: "This is the Renewal Process itself \u2014 not a bigger, more dramatic deliverance, but an ongoing, sustainable rhythm: naming inherited patterns, distinguishing conviction from condemnation, building replacement practices rather than only removing things.",
+        anchor: "Grounded in The Mistakes We Make \u2014 the Renewal manuscript."
+    }
+},
+{
+    key: "epilogue",
+    title: "The Architecture of Freedom",
+    subtitle: "Epilogue",
+    image: "architecture-10-epilogue.jpg",
+    imageAlt: "The same house from the prologue, now transformed: warm light in every window, doors open, the structure unmistakably the same building but fully occupied and alive",
+    narrative: [
+        "Walk back through the house now, slowly, the way you walked the courtyard wall in Room Three. Notice what has changed, and notice, just as carefully, what has not.",
+        "The walls are the same walls. The foundation is the same foundation your grandparents laid, for better and for worse. This was never a story about a different house. It was always a story about this one, finally tended.",
+        "A house this well kept is no longer an easy file for anyone managing it from the outside. Not because it is empty \u2014 an empty house was never the goal \u2014 but because it is occupied, deliberately, continuously, by someone who now knows the floor plan.",
+        "You are not only free. You have become, slowly and without quite noticing when it happened, a house someone else can find their way into when their own has no roof left on it.",
+        "That is the architecture of freedom. Not the absence of walls. A house finally worth keeping."
+    ]
+}
+];
+
+// ---------- Background music (opt-in; never autoplays) ----------
+const MUSIC_PREF_KEY = 'iyanuDiagnostics.architectureMusic';
+function setMusicButton(on) {
+    const btn = document.getElementById('musicBtn');
+    btn.innerHTML = on ? '&#9835; Music: On' : '&#9835; Music: Off';
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
+function setMusicVolume(v) {
+    const audio = document.getElementById('bgMusic');
+    audio.volume = Math.max(0, Math.min(1, Number(v) / 100));
+    try { localStorage.setItem(MUSIC_PREF_KEY + '.vol', String(v)); } catch (e) {}
+}
+function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    if (audio.paused) {
+        audio.play().then(() => {
+            setMusicButton(true);
+            try { localStorage.setItem(MUSIC_PREF_KEY, 'on'); } catch (e) {}
+        }).catch(() => {
+            // Audio file missing or browser blocked playback
+            setMusicButton(false);
+            alert('The theme music file (architecture-theme.mp3) was not found next to this page yet.');
+        });
+    } else {
+        audio.pause();
+        setMusicButton(false);
+        try { localStorage.setItem(MUSIC_PREF_KEY, 'off'); } catch (e) {}
+    }
+}
+(function initMusic() {
+    const vol = (function () { try { return localStorage.getItem(MUSIC_PREF_KEY + '.vol'); } catch (e) { return null; } })();
+    const slider = document.getElementById('musicVol');
+    if (vol !== null && slider) { slider.value = vol; }
+    setMusicVolume(slider ? slider.value : 35);
+    // Browsers block autoplay, so the reader always has to tap Music to start it.
+})();
+
+const STORAGE_KEY = 'iyanuDiagnostics.architectureProgress';
+let currentRoom = 0;
+
+function loadProgress() {
+    try { return parseInt(localStorage.getItem(STORAGE_KEY), 10) || 0; } catch(e) { return 0; }
+}
+function saveProgress(i) {
+    try { localStorage.setItem(STORAGE_KEY, String(i)); } catch(e) {}
+}
+
+function renderExtras(room) {
+    let html = '';
+    if (room.gatekeeper) {
+        html += `<div class="gatekeeper"><div class="gatekeeper-label">Gatekeeper &mdash; ${room.gatekeeper.name}</div><p>${room.gatekeeper.text}</p></div>`;
+    }
+    if (room.letter) {
+        html += `<div class="letter-excerpt"><div class="letter-label">${room.letter.from}</div><p>${room.letter.text}</p><div class="letter-sign">${room.letter.sign}</div></div>`;
+    }
+    if (room.teaching) {
+        html += `<div class="teaching-box"><div class="teaching-label">${room.teaching.label}</div><p>${room.teaching.text}</p><div class="anchor">${room.teaching.anchor}</div></div>`;
+    }
+    return html;
+}
+
+function renderDots() {
+    const wrap = document.getElementById('roomDots');
+    wrap.innerHTML = '';
+    ROOMS.forEach((r, i) => {
+        const b = document.createElement('button');
+        b.className = 'dot' + (i === currentRoom ? ' active' : (i < currentRoom ? ' visited' : ''));
+        b.setAttribute('aria-label', r.title);
+        b.onclick = () => goTo(i);
+        wrap.appendChild(b);
+    });
+}
+
+function goTo(i) {
+    if (i < 0 || i >= ROOMS.length) return;
+    currentRoom = i;
+    const room = ROOMS[i];
+    document.getElementById('progressLabel').textContent = `Room ${i+1} of ${ROOMS.length}`;
+    document.getElementById('roomTitle').textContent = room.title;
+    document.getElementById('roomSubtitle').textContent = room.subtitle;
+    document.getElementById('roomNarrative').innerHTML = room.narrative.map(p => `<p>${p}</p>`).join('');
+    document.getElementById('roomExtras').innerHTML = renderExtras(room);
+
+    const img = document.getElementById('roomImage');
+    const ph = document.getElementById('roomPlaceholder');
+    img.src = room.image;
+    img.alt = room.imageAlt;
+    img.style.display = 'none';
+    ph.style.display = 'flex';
+    ph.textContent = `"${room.title}" — illustration pending (${room.image})`;
+    img.onload = () => { img.style.display = 'block'; ph.style.display = 'none'; };
+    img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+
+    // Rebuild the navigation row from scratch every time so no button is ever lost.
+    const navRow = document.getElementById('navRow');
+    const backBtn = `<button class="nav-btn secondary" ${i === 0 ? 'disabled' : ''} onclick="goTo(${i - 1})">&larr; Back</button>`;
+    if (i === ROOMS.length - 1) {
+        navRow.innerHTML = backBtn + `
+            <div class="cta-final" style="flex:1; text-align:right;">
+                <a href="Iyanu_Diagnostics.html">Take the Full Diagnostic &rarr;</a>
+                <a href="Renewal_Process.html">Join the Renewal Process &rarr;</a>
+            </div>`;
+    } else {
+        navRow.innerHTML = backBtn +
+            `<button class="nav-btn primary" onclick="goTo(${i + 1})">Enter the Next Room &rarr;</button>`;
+    }
+    renderDots();
+    saveProgress(i);
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    currentRoom = Math.min(loadProgress(), ROOMS.length - 1);
+    goTo(currentRoom);
+});
+
+// ---------- Text size (shared preference across the whole site) ----------
+const FONT_SCALE_STEPS = [0.85, 1, 1.15, 1.3, 1.45, 1.6];
+let fontScaleIndex = 1;
+function applyFontScale() {
+    document.documentElement.style.setProperty('--fs', FONT_SCALE_STEPS[fontScaleIndex]);
+    try { localStorage.setItem('iyanuDiagnostics.fontScaleIndex', String(fontScaleIndex)); } catch (e) {}
+}
+function changeFontSize(direction) {
+    if (direction === 0) { fontScaleIndex = 1; }
+    else {
+        const next = fontScaleIndex + direction;
+        if (next < 0 || next >= FONT_SCALE_STEPS.length) return;
+        fontScaleIndex = next;
+    }
+    applyFontScale();
+}
+(function initFontScale() {
+    try {
+        const saved = localStorage.getItem('iyanuDiagnostics.fontScaleIndex');
+        if (saved !== null && FONT_SCALE_STEPS[Number(saved)] !== undefined) fontScaleIndex = Number(saved);
+    } catch (e) {}
+    applyFontScale();
+})();
+</script>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deliverance Fatigue Checker — Iyanu Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fs: 1;
+        --parchment: #FCFCF9; --paper: #FFFFFF; --ink: #18181b;
+        --indigo: #047857; --indigo-deep: #064e3b;
+        --gold: #10b981; --gold-soft: #6ee7b7;
+        --wine: #9f1239; --forest: #0f766e;
+        --hairline: #e4e4e7; --hairline-soft: #f4f4f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+        font-family: 'Inter', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 15% 8%, rgba(16,185,129,0.08), transparent 45%),
+                    radial-gradient(circle at 90% 85%, rgba(4,120,87,0.06), transparent 40%),
+                    var(--parchment);
+        margin: 0; padding: 48px 20px; line-height: 1.6;
+    }
+    .container {
+        max-width: 780px; margin: 0 auto; background: var(--paper);
+        padding: 56px 52px 48px; border: 1px solid var(--hairline);
+        border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05);
+    }
+    @media (max-width: 640px) { body{padding:20px 10px;} .container{padding:30px 18px;} }
+
+    .back-link { display:inline-block; margin-bottom: 18px; font-size: 13.5px; color: var(--indigo); text-decoration: underline; }
+    .kicker { text-align:center; font-size:13px; letter-spacing:0.06em; color:var(--gold); font-weight:500; margin-bottom:6px; }
+    h1 { font-family:'Fraunces',serif; font-weight:600; color:var(--indigo-deep); text-align:center; font-size:36px; margin:0 0 6px; line-height:1.2; }
+    .subhead { text-align:center; color:#52525b; font-size:15px; max-width:580px; margin:0 auto 22px; }
+    .disclaimer { font-size: 12.5px; color:#71717a; text-align:center; max-width:580px; margin:0 auto 24px; border-top:1px solid var(--hairline-soft); padding-top:14px; }
+
+    .ornament { display:flex; align-items:center; gap:14px; margin: 32px 0 14px; }
+    .ornament::before, .ornament::after { content:""; flex:1; height:1px; background:var(--hairline); }
+    .ornament span { font-family:'Fraunces',serif; font-style:italic; font-size:19px; color:var(--indigo); white-space:nowrap; }
+
+    .lead-question { font-family:'Fraunces',serif; font-style:italic; font-size:20px; color:var(--indigo-deep); text-align:center; max-width:540px; margin: 0 auto 20px; line-height:1.45; }
+
+    .domain-card {
+        border: 1px solid var(--hairline-soft); border-radius: 14px;
+        padding: 18px 20px; margin-bottom: 12px; background: var(--parchment);
+        transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .domain-card.flagged { border-color: var(--gold-soft); background: #ecfdf5; }
+    .domain-title { font-weight: 700; font-size: 15px; color: var(--indigo); margin-bottom: 10px; letter-spacing:0.01em; }
+    .item { display:flex; align-items:flex-start; gap:10px; margin-bottom: 10px; }
+    .item:last-child { margin-bottom: 0; }
+    .item input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--indigo); flex-shrink:0; }
+    .item label { font-size: 14.5px; color: #3f3f46; line-height:1.5; cursor:pointer; }
+
+    .summary-box {
+        background: var(--indigo-deep); color: #fff; border-radius: 16px;
+        padding: 28px 30px; margin: 30px 0; text-align: center;
+    }
+    .summary-count { font-family:'Fraunces',serif; font-size: 40px; margin: 0 0 6px; }
+    .summary-text { font-size: 14.5px; color: rgba(255,255,255,0.88); margin-bottom: 18px; line-height:1.5; }
+    .btn-primary-summary {
+        display:inline-block; background: var(--gold); color: var(--indigo-deep); text-decoration:none;
+        font-weight: 700; font-size: 15px; padding: 13px 26px; border-radius: 10px;
+    }
+    .btn-primary-summary:hover { background: var(--gold-soft); }
+
+    .care-note { background:#fef2f2; border-left:4px solid var(--wine); padding:14px 18px; margin:16px 0; font-size: 13.5px; color:#3f3f46; }
+
+    .site-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top: 34px; }
+    .site-nav a { font-size: 13px; color: var(--indigo); text-decoration:none; border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover { background: var(--parchment); }
+
+    @media print { .back-link, .site-nav, .item input { display:none; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <a class="back-link" href="index.html">&larr; Home</a>
+
+    <div class="kicker">Iyanu Diagnostics</div>
+    <h1>Deliverance Fatigue Checker</h1>
+    <p class="subhead">Not every return of an old struggle means your deliverance wasn't real. Sometimes it means you closed one door while three others stayed open. This is a quiet way to check which ones.</p>
+
+    <p class="lead-question">"Did You Change Your Mind? Was My Faith Not Enough?"</p>
+
+    <div class="ornament"><span>What deliverance fatigue is</span></div>
+    <p style="font-size:14.5px; color:#3f3f46;">Deliverance fatigue is the specific exhaustion of fighting what feels like the same battle more than once — not because nothing happened the first time, but because a pattern, an environment, a dream, or an unspoken agreement kept the door propped open after the prayer ended. It is different from simply being tired, and it is different from a mental health condition that needs clinical care, though the two can sit close together. This checker does not diagnose either one. It helps you notice which one you might actually be facing.</p>
+
+    <div class="ornament"><span>Check what's true for you</span></div>
+    <p style="font-size:14px; color:#71717a;">Check a box only if it describes a real, repeated pattern over time — not a single hard week.</p>
+
+    <div class="domain-card" data-domain="return">
+        <div class="domain-title">The Return Pattern</div>
+        <div class="item"><input type="checkbox" id="r1"><label for="r1">Something I believed was dealt with has come back, in a slightly different form</label></div>
+        <div class="item"><input type="checkbox" id="r2"><label for="r2">I have had prayer for what feels like the same issue more than once</label></div>
+        <div class="item"><input type="checkbox" id="r3"><label for="r3">It feels like the same battle on a loop, just with new details each time</label></div>
+    </div>
+
+    <div class="domain-card" data-domain="dreams">
+        <div class="domain-title">Dreams and Night Patterns</div>
+        <div class="item"><input type="checkbox" id="d1"><label for="d1">I keep having a version of the same dream, even after praying against it</label></div>
+        <div class="item"><input type="checkbox" id="d2"><label for="d2">A certain dream reliably shows up right before something goes wrong</label></div>
+        <div class="item"><input type="checkbox" id="d3"><label for="d3">I wake up from some dreams feeling like something actually happened, not just that I imagined it</label></div>
+    </div>
+
+    <div class="domain-card" data-domain="fatigue">
+        <div class="domain-title">The Fatigue Itself</div>
+        <div class="item"><input type="checkbox" id="f1"><label for="f1">I feel tired in a way more prayer doesn't seem to touch</label></div>
+        <div class="item"><input type="checkbox" id="f2"><label for="f2">I dread the next relapse more than I trust the next breakthrough</label></div>
+        <div class="item"><input type="checkbox" id="f3"><label for="f3">I've stopped telling people when the thing comes back, because I'm tired of explaining it</label></div>
+    </div>
+
+    <div class="domain-card" data-domain="doubt">
+        <div class="domain-title">Quiet Doubt</div>
+        <div class="item"><input type="checkbox" id="q1"><label for="q1">I privately wonder whether deliverance even works for me specifically</label></div>
+        <div class="item"><input type="checkbox" id="q2"><label for="q2">I've started avoiding deliverance prayer or services because of how temporary it's felt before</label></div>
+    </div>
+
+    <div class="domain-card" data-domain="guardrails">
+        <div class="domain-title">Guardrail Gaps</div>
+        <div class="item"><input type="checkbox" id="g1"><label for="g1">After a breakthrough, I don't have a clear next practice — I just wait to see if it holds</label></div>
+        <div class="item"><input type="checkbox" id="g2"><label for="g2">I can name what I was delivered from, but not what I replaced it with</label></div>
+    </div>
+
+    <div class="summary-box">
+        <div class="summary-count" id="flagCount">0 of 13</div>
+        <div class="summary-text" id="summaryText">Check the boxes above that describe a real, repeated pattern.</div>
+        <a class="btn-primary-summary" href="Architecture_of_Freedom.html" id="ctaLink">Walk Through the Architecture of Freedom &rarr;</a>
+    </div>
+
+    <div class="care-note">This page is a mirror, not a diagnosis. If what you recognized here includes a heaviness that doesn't lift, thoughts of harming yourself, or signs of a deeper mental health struggle, please also speak with a doctor or therapist — in the US, you can call or text 988 any time. Deliverance fatigue and clinical burnout or depression can look similar from the inside; a professional can help you tell them apart.</div>
+
+    <div class="site-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="Iyanu_Diagnostics.html">Diagnostic Tool</a>
+        <a href="Iyanu_Symptoms_Checker.html">Symptoms Checker</a>
+        <a href="Architecture_of_Freedom.html">Architecture of Freedom</a>
+        <a href="Iyanu_Bible_Study.html">Bible Study Pack</a>
+    </div>
+</div>
+
+<script>
+const ITEM_IDS = ['r1','r2','r3','d1','d2','d3','f1','f2','f3','q1','q2','g1','g2'];
+const STORAGE_KEY = 'iyanuDiagnostics.deliveranceFatigueProgress';
+
+function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
+}
+function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+}
+function updateSummary() {
+    const count = ITEM_IDS.filter(id => document.getElementById(id).checked).length;
+    document.getElementById('flagCount').textContent = count + ' of ' + ITEM_IDS.length;
+    let text;
+    if (count === 0) {
+        text = "Nothing flagged yet — check what genuinely describes a repeated pattern in your life.";
+    } else if (count <= 3) {
+        text = "Something worth naming. The Architecture of Freedom starts exactly here — with naming it clearly.";
+    } else if (count <= 7) {
+        text = "This looks like more than one closed door with others still open. The Architecture of Freedom was built for this exact pattern.";
+    } else {
+        text = "This is a real, multi-layered pattern, not a single bad season. You're not weak, and you're not alone in this — the Architecture of Freedom walks through exactly this kind of layered fatigue, one layer at a time.";
+    }
+    document.getElementById('summaryText').textContent = text;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const state = loadState();
+    ITEM_IDS.forEach(id => {
+        const cb = document.getElementById(id);
+        if (state[id]) cb.checked = true;
+        cb.closest('.domain-card').classList.toggle('flagged',
+            Array.from(cb.closest('.domain-card').querySelectorAll('input')).some(i => i.checked));
+        cb.addEventListener('change', () => {
+            const s = loadState();
+            s[id] = cb.checked;
+            saveState(s);
+            cb.closest('.domain-card').classList.toggle('flagged',
+                Array.from(cb.closest('.domain-card').querySelectorAll('input')).some(i => i.checked));
+            updateSummary();
+        });
+    });
+    updateSummary();
+});
+</script>
+</body>
+</html>
